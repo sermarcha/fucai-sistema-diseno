@@ -1,0 +1,37 @@
+{
+  "$description": "Tema CLARO — paleta institucional FUCAI por defecto. Coincide con la base de tokens.json. Todas las claves de tema son idénticas entre claro/oscuro/tienda-fucai/cobranding-naane; solo cambian los valores.",
+  "$meta": { "theme": "claro", "extends": "tokens.json", "default": true },
+  "surface": {
+    "$type": "color",
+    "page":    { "$value": "#FFFFFF" },
+    "warmth":  { "$value": "#EDE8D3" },
+    "title":   { "$value": "#E94513" },
+    "section": { "$value": "#EDE8D3" }
+  },
+  "brand": {
+    "$type": "color",
+    "primary":   { "$value": "#E94513" },
+    "secondary": { "$value": "#EDE8D3" },
+    "territory": { "$value": "#2D6A4F" }
+  },
+  "accent": {
+    "$type": "color",
+    "appsheet":      { "$value": "#F4A28A" },
+    "soft":          { "$value": "#F4A28A" },
+    "territorySoft": { "$value": "#74B597" }
+  },
+  "text": {
+    "$type": "color",
+    "body":    { "$value": "#000000" },
+    "onColor": { "$value": "#FFFFFF" },
+    "heading": { "$value": "#E94513" },
+    "caption": { "$value": "#333333" },
+    "footer":  { "$value": "#666666" }
+  },
+  "component": {
+    "$type": "color",
+    "docx": { "coverBand": { "$value": "#EDE8D3" }, "tableHeaderBg": { "$value": "#E94513" } },
+    "pptx": { "titleBg": { "$value": "#E94513" } },
+    "appsheet": { "primary": { "$value": "#E94513" } }
+  }
+}

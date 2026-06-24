@@ -1,0 +1,37 @@
+{
+  "$description": "Tema TIENDA FUCAI — submarca comercial de productos artesanales. Subpaleta terracota/ocre/verde Amazonas/arena claro sobre la base FUCAI. SOLO materiales de tienda/producto; no mezclar en documentos institucionales. PROVISIONAL: terracota (#B5532E) y ocre (#C8923A) pendientes de confirmar contra el Manual de Identidad.",
+  "$meta": { "theme": "tienda-fucai", "extends": "tokens.json", "default": false, "provisional": ["brand.primary", "brand.secondary", "surface.title", "text.heading"] },
+  "surface": {
+    "$type": "color",
+    "page":    { "$value": "#F6F3E9" },
+    "warmth":  { "$value": "#EDE8D3" },
+    "title":   { "$value": "#B5532E" },
+    "section": { "$value": "#EDE8D3" }
+  },
+  "brand": {
+    "$type": "color",
+    "primary":   { "$value": "#B5532E" },
+    "secondary": { "$value": "#C8923A" },
+    "territory": { "$value": "#2D6A4F" }
+  },
+  "accent": {
+    "$type": "color",
+    "appsheet":      { "$value": "#B5532E" },
+    "soft":          { "$value": "#C8923A" },
+    "territorySoft": { "$value": "#74B597" }
+  },
+  "text": {
+    "$type": "color",
+    "body":    { "$value": "#000000" },
+    "onColor": { "$value": "#FFFFFF" },
+    "heading": { "$value": "#B5532E" },
+    "caption": { "$value": "#333333" },
+    "footer":  { "$value": "#666666" }
+  },
+  "component": {
+    "$type": "color",
+    "docx": { "coverBand": { "$value": "#EDE8D3" }, "tableHeaderBg": { "$value": "#B5532E" } },
+    "pptx": { "titleBg": { "$value": "#B5532E" } },
+    "appsheet": { "primary": { "$value": "#B5532E" } }
+  }
+}

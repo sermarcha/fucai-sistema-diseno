@@ -1,0 +1,37 @@
+{
+  "$description": "Tema CO-BRANDING NAANE (CC217 — OIKOS/AICS, Buen Vivir Amazonas). Hereda la paleta FUCAI: el color NO cambia. La diferencia del co-branding es el lockup de financiador (AICS + NAANE) y los logos del consorcio, gestionados por el skill naane-branding; la tipografía y la voz siguen siendo FUCAI. Mismas claves que los demás temas.",
+  "$meta": { "theme": "cobranding-naane", "extends": "tokens.json", "default": false, "lockup": "naane-branding", "proyecto": "CC217" },
+  "surface": {
+    "$type": "color",
+    "page":    { "$value": "#FFFFFF" },
+    "warmth":  { "$value": "#EDE8D3" },
+    "title":   { "$value": "#E94513" },
+    "section": { "$value": "#EDE8D3" }
+  },
+  "brand": {
+    "$type": "color",
+    "primary":   { "$value": "#E94513" },
+    "secondary": { "$value": "#EDE8D3" },
+    "territory": { "$value": "#2D6A4F" }
+  },
+  "accent": {
+    "$type": "color",
+    "appsheet":      { "$value": "#F4A28A" },
+    "soft":          { "$value": "#F4A28A" },
+    "territorySoft": { "$value": "#74B597" }
+  },
+  "text": {
+    "$type": "color",
+    "body":    { "$value": "#000000" },
+    "onColor": { "$value": "#FFFFFF" },
+    "heading": { "$value": "#E94513" },
+    "caption": { "$value": "#333333" },
+    "footer":  { "$value": "#666666" }
+  },
+  "component": {
+    "$type": "color",
+    "docx": { "coverBand": { "$value": "#EDE8D3" }, "tableHeaderBg": { "$value": "#E94513" } },
+    "pptx": { "titleBg": { "$value": "#E94513" } },
+    "appsheet": { "primary": { "$value": "#E94513" } }
+  }
+}

@@ -1,0 +1,17 @@
+# Normalización de fin de línea
+* text=auto eol=lf
+
+# === Git LFS — activos binarios pesados ===
+# Imágenes
+*.png  filter=lfs diff=lfs merge=lfs -text
+*.jpg  filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+
+# Tipografías
+*.otf   filter=lfs diff=lfs merge=lfs -text
+*.woff2 filter=lfs diff=lfs merge=lfs -text
+
+# === Plantillas maestras (assets/templates) ===
+assets/templates/**/*.docx filter=lfs diff=lfs merge=lfs -text
+assets/templates/**/*.xlsx filter=lfs diff=lfs merge=lfs -text
+assets/templates/**/*.pptx filter=lfs diff=lfs merge=lfs -text

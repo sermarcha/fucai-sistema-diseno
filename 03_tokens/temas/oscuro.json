@@ -1,0 +1,37 @@
+{
+  "$description": "Tema OSCURO — modo oscuro del Manual v1.1: fondo negro, texto arena. Mismas claves que los demás temas; solo cambian los valores. Para pantalla/web/pptx; Word mantiene fondo blanco por regla dura.",
+  "$meta": { "theme": "oscuro", "extends": "tokens.json", "default": false },
+  "surface": {
+    "$type": "color",
+    "page":    { "$value": "#000000" },
+    "warmth":  { "$value": "#EDE8D3" },
+    "title":   { "$value": "#E94513" },
+    "section": { "$value": "#EDE8D3" }
+  },
+  "brand": {
+    "$type": "color",
+    "primary":   { "$value": "#E94513" },
+    "secondary": { "$value": "#EDE8D3" },
+    "territory": { "$value": "#74B597" }
+  },
+  "accent": {
+    "$type": "color",
+    "appsheet":      { "$value": "#F4A28A" },
+    "soft":          { "$value": "#F4A28A" },
+    "territorySoft": { "$value": "#74B597" }
+  },
+  "text": {
+    "$type": "color",
+    "body":    { "$value": "#EDE8D3" },
+    "onColor": { "$value": "#FFFFFF" },
+    "heading": { "$value": "#F4A28A" },
+    "caption": { "$value": "#CCCCCC" },
+    "footer":  { "$value": "#999999" }
+  },
+  "component": {
+    "$type": "color",
+    "docx": { "coverBand": { "$value": "#EDE8D3" }, "tableHeaderBg": { "$value": "#E94513" } },
+    "pptx": { "titleBg": { "$value": "#000000" } },
+    "appsheet": { "primary": { "$value": "#E94513" } }
+  }
+}

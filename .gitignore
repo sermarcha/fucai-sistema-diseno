@@ -1,0 +1,22 @@
+# Dependencias
+node_modules/
+
+# Salida del build (se genera en ejecución, nunca se versiona)
+dist/
+
+# PDFs de QA (entregables derivados, no fuentes)
+*.pdf
+
+# Temporales de Office y del sistema
+~$*
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+*.bak
+
+# Entornos y cachés de generadores
+.venv/
+__pycache__/
+*.pyc
+.cache/
