@@ -82,4 +82,14 @@ const PT = {
 const SZ = Object.fromEntries(Object.entries(PT).map(([k, v]) => [k, v * 2])); // docx: medios puntos
 const twips = (pt) => Math.round(pt * 20);
 
-module.exports = { C, FONT, SZ, PT, twips, raw, hex, tokensPath: TOKENS_PATH };
+// Rampas de visualización de datos (dataviz.ramp.*) — arrays ordenados de HEX sin '#'.
+function ramp(name) {
+  return Object.keys(leaves)
+    .filter(k => k.startsWith("dataviz.ramp." + name + "."))
+    .sort((a, b) => parseInt(a.split(".").pop(), 10) - parseInt(b.split(".").pop(), 10))
+    .map(k => String(resolve(leaves[k])).replace(/^#/, ""));
+}
+const RAMP = { orange: ramp("naranja"), green: ramp("verde"), neutral: ramp("neutral") };
+const RAMP_ORANGE = RAMP.orange, RAMP_GREEN = RAMP.green, RAMP_NEUTRAL = RAMP.neutral;
+
+module.exports = { C, FONT, SZ, PT, twips, raw, hex, RAMP, RAMP_ORANGE, RAMP_GREEN, RAMP_NEUTRAL, tokensPath: TOKENS_PATH };

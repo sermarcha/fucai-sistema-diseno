@@ -71,4 +71,14 @@ FONT = {"heading": raw("font.family.heading")[0], "body": raw("font.family.body"
 PT = {k: raw("font.size.%s" % k)["value"] for k in
       ("coverTitle", "h1", "h2", "h3", "body", "caption", "footer")}
 
+def _ramp(name):
+    keys = [k for k in _leaves if k.startswith("dataviz.ramp.%s." % name)]
+    keys.sort(key=lambda k: int(k.split(".")[-1]))
+    return [str(_resolve(_leaves[k])).lstrip("#") for k in keys]
+
+RAMP_ORANGE = _ramp("naranja")   # serie general
+RAMP_GREEN = _ramp("verde")      # serie de territorio/naturaleza
+RAMP_NEUTRAL = _ramp("neutral")  # ejes/líneas/etiquetas
+
+
 TOKENS_PATH = _TOKENS_PATH

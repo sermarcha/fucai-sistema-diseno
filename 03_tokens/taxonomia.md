@@ -36,6 +36,12 @@ NIVEL 3 — DE COMPONENTE   appsheet.primary = "{brand.primary}" (mapeo a plataf
    consume cada generador. Referencian semánticos (o, excepcionalmente, otro
    token de componente), nunca un primitivo directo ni un hex.
 
+Las **rampas de visualización de datos** viven en `dataviz.ramp.*` (naranja, verde
+y neutral, 7 pasos cada una, índice 1→7 de oscuro a claro). Son de nivel componente:
+cada paso referencia un primitivo de `color.*`. La rampa verde es **exclusiva de
+territorio/naturaleza**. Las consumen los generadores vía `lib/tokens` (`RAMP_ORANGE`,
+`RAMP_GREEN`, `RAMP_NEUTRAL`).
+
 **Regla de cadena:** componente → semántico → primitivo. No se salta hacia
 arriba (un componente no apunta a un primitivo) ni se baja un hex a un semántico.
 

@@ -49,7 +49,9 @@ hace una pieza minimalista y sofisticada a la vez (ver `01_fundamentos/principio
 |-------|-----|-----|
 | `color.gris-texto` | #333333 | Texto secundario, captions, footers |
 | `color.gris-borde` | #666666 | Bordes y separadores |
+| `color.gris-medio` | #999999 | Etiquetas de eje en gráficas |
 | `color.gris-linea` | #CCCCCC | Líneas sutiles, datos atenuados |
+| `color.gris-relleno` | #E8E8E8 | Rellenos sutiles de tabla/celda |
 
 ## Combinaciones autorizadas y contraste
 
@@ -88,7 +90,21 @@ en negrita. Nunca transmitir información solo por color.
 
 ## Visualización de datos
 
-Una serie → rampa naranja; serie de territorio → rampa verde; ejes/etiquetas →
-grises. Sin azul/rojo/morado/amarillo; máx. 3 tonos por gráfico; resalta un dato
-clave en naranja y atenúa el resto a `color.gris-linea`. Rampas completas en
-`skill/fucai-branding/references/color-system.md`.
+Una serie → **rampa naranja**; serie de territorio/naturaleza → **rampa verde**;
+ejes/líneas/etiquetas → **rampa neutral**. Sin azul/rojo/morado/amarillo; máx. 3
+tonos por gráfico; resalta un dato clave en naranja y atenúa el resto a
+`color.gris-linea`. Las rampas viven en `03_tokens/tokens.json` (`dataviz.ramp.*`) y
+las consumen los generadores (p. ej. `scripts/generators/fucai_xlsx.py` →
+`RAMP_ORANGE`, `RAMP_GREEN`, `RAMP_NEUTRAL`).
+
+<!-- [GEN] derivado de tokens.json (dataviz.ramp.*) -->
+
+| Rampa | 1 (oscuro) | 2 | 3 | 4 | 5 | 6 | 7 (claro) |
+|-------|-----------|---|---|---|---|---|-----------|
+| Naranja — serie general | #C13A10 | #E94513 | #F06A3E | #F4A28A | #F8C4AE | #F6F3E9 | #FBF9F3 |
+| Verde — **solo territorio/naturaleza** | #1B4032 | #2D6A4F | #4E8A6F | #74B597 | #A0D0B8 | #C8E4D5 | #EDE8D3 |
+| Neutral — ejes/líneas/etiquetas | #000000 | #333333 | #666666 | #999999 | #CCCCCC | #E8E8E8 | #FFFFFF |
+
+Reglas: los tonos claros nunca como serie principal; el negro nunca como serie; sin
+degradados en barras ni sectores. El verde es **exclusivo de territorio/naturaleza**,
+nunca sustituto del naranja.

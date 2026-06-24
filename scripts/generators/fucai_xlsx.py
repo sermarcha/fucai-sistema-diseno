@@ -11,7 +11,7 @@ Validate formulas with /mnt/skills/public/xlsx/scripts/recalc.py.
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "lib"))
-from tokens import C, FONT  # colores y familias desde 03_tokens/tokens.json
+from tokens import C, FONT, RAMP_ORANGE, RAMP_GREEN, RAMP_NEUTRAL  # marca y rampas desde 03_tokens/tokens.json
 
 
 HEADER_FILL = PatternFill(start_color=C["primary"], end_color=C["primary"], fill_type="solid")
@@ -21,11 +21,9 @@ TITLE_FONT  = Font(name=FONT["heading"], size=14, bold=True, color=C["primary"])
 ALT_FILL    = PatternFill(start_color=C["lightSand"], end_color=C["lightSand"], fill_type="solid")
 BOTTOM_RULE = Border(bottom=Side(style="thin", color=C["grayLight"]))
 
-# Brand data ramps (use for charts; verde only for territory/nature series).
-# [Pendiente] tokenizar estas rampas de data-viz en 03_tokens/tokens.json (hoy literales del Manual).
-RAMP_ORANGE = ["C13A10", "E94513", "F06A3E", "F4A28A", "F8C4AE", "F6F3E9", "FBF9F3"]
-RAMP_GREEN  = ["1B4032", "2D6A4F", "4E8A6F", "74B597", "A0D0B8", "C8E4D5", "EDE8D3"]
-RAMP_NEUTRAL = ["000000", "333333", "666666", "999999", "CCCCCC", "E8E8E8", "FFFFFF"]
+# Rampas de visualización de datos (RAMP_ORANGE / RAMP_GREEN / RAMP_NEUTRAL): se
+# importan ya resueltas desde 03_tokens/tokens.json (dataviz.ramp.*). Úsalas para
+# gráficas; el verde SOLO para series de territorio/naturaleza.
 
 
 def style_title(ws, cell="A1", text=None):

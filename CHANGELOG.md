@@ -13,9 +13,37 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 ### Por hacer
 - Poblar `02_identidad-visual/iconos/` con los `.svg` y añadir el `.otf` de Space Grotesk.
 - Completar `scripts/build-skill.js` (compilador pleno: regenerar tablas [GEN] y empaquetar el `.skill`).
-- Tokenizar rampas de data-viz, radios/sombras y movimiento (hoy [Pendiente]).
+- Tokenizar radios/sombras y movimiento (hoy [Pendiente]); las rampas de data-viz ya están tokenizadas (v1.2.0).
 - Definir el posicionamiento formal y el arquetipo de marca (misión, visión y
   valores ya cargados en v1.1.0).
+
+## [1.2.0] — 2026-06-24
+
+Completa la cobertura de color del Manual: tokeniza las rampas de visualización de
+datos —incluida la **rampa verde** de territorio— que antes solo vivían en el skill.
+
+### Añadido
+- **9 primitivos de color faltantes** en `03_tokens/tokens.json` (pasos de rampa
+  naranja: `naranja-medio`, `durazno-claro`, `naranja-niebla`; pasos de rampa verde:
+  `verde-oscuro`, `verde-medio`, `verde-palido`, `verde-niebla`; grises `gris-medio`
+  #999999 y `gris-relleno` #E8E8E8). La paleta del Manual v1.1 queda **completa**.
+- Grupo **`dataviz.ramp.*`**: rampas naranja (serie general), verde (**solo
+  territorio/naturaleza**) y neutral (ejes/etiquetas), 7 pasos cada una, que
+  referencian primitivos (ningún hex repetido a mano).
+- `lib/tokens.js` y `lib/tokens.py` exponen `RAMP_ORANGE`/`RAMP_GREEN`/`RAMP_NEUTRAL`;
+  `scripts/build-skill.js` las incluye en las constantes de marca.
+- `02_identidad-visual/color.md`: tabla `[GEN]` de las tres rampas; grises
+  `gris-medio` y `gris-relleno` añadidos.
+
+### Cambiado
+- `scripts/generators/fucai_xlsx.py`: las rampas se **leen de tokens.json** (antes
+  literales) — resuelto el `[Pendiente]` de tokenización de data-viz.
+- `03_tokens/taxonomia.md`: documenta el grupo `dataviz`.
+
+### Verificado
+- 0 colores del skill faltan en tokens; todas las referencias resuelven; los 4 temas
+  conservan claves idénticas (19); la tabla `[GEN]` de rampas coincide con los tokens;
+  los generadores corren y `check_fucai.py` da PASS.
 
 ## [1.1.0] — 2026-06-24
 

@@ -48,8 +48,9 @@ function buildBrandConstants() {
     color: T.C,                 // { primary, arena, green, ... } en HEX sin '#'
     font: T.FONT,               // { heading, body }
     sizePt: T.PT,               // tamaños en puntos (escala Word/PDF)
-    // TODO: añadir rampas de data-viz y tokens de forma/movimiento cuando existan
-    //       en tokens.json (hoy [Pendiente] — ver 02_identidad-visual/*.md).
+    ramp: T.RAMP,               // rampas data-viz { orange, green, neutral } desde dataviz.ramp.*
+    // TODO: añadir tokens de forma/movimiento cuando existan en tokens.json
+    //       (hoy [Pendiente] — ver 02_identidad-visual/forma-y-profundidad.md y movimiento.md).
   };
 }
 
@@ -94,6 +95,7 @@ function main() {
   console.log("    color :", JSON.stringify(brand.color));
   console.log("    font  :", JSON.stringify(brand.font));
   console.log("    sizePt:", JSON.stringify(brand.sizePt));
+  console.log("    ramp  :", JSON.stringify(brand.ramp));
   console.log("\n[B] Tablas [GEN] detectadas (se regenerarían desde tokens):");
   for (const r of findGenTables()) console.log("    -", r.file, "->", r.marcadores, "marcador(es)");
   if (WRITE) {
