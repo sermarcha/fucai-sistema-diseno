@@ -24,6 +24,7 @@ const T = require("./lib/tokens.js"); // C, FONT, SZ, PT, RAMP, flat, leaves, re
 
 const ROOT = path.join(__dirname, "..");
 const WRITE = process.argv.includes("--write");
+const PACKAGE = process.argv.includes("--package");
 const OUT = path.join(ROOT, "dist", "skill");
 
 /* ============================ helpers de formato ========================== */
@@ -126,14 +127,15 @@ function section(md, title) { // extrae "## title" hasta el próximo "## "
   const m = md.match(re);
   return m ? m[2].trim() : "";
 }
-function emitBundle() {
-  fs.mkdirSync(OUT, { recursive: true });
+function emitBundle(outDir) {
+  outDir = outDir || OUT;
+  fs.mkdirSync(outDir, { recursive: true });
   const meta = T.meta || {};
 
   const flatResolved = {};
   for (const k of Object.keys(T.flat)) flatResolved[k] = deep(T.flat[k]);
-  fs.writeFileSync(path.join(OUT, "tokens.flat.json"), JSON.stringify(flatResolved, null, 2) + "\n");
-  fs.writeFileSync(path.join(OUT, "brand-constants.json"), JSON.stringify(buildBrandConstants(), null, 2) + "\n");
+  fs.writeFileSync(path.join(outDir, "tokens.flat.json"), JSON.stringify(flatResolved, null, 2) + "\n");
+  fs.writeFileSync(path.join(outDir, "brand-constants.json"), JSON.stringify(buildBrandConstants(), null, 2) + "\n");
 
   const cssVar = (name, val) => "  --fucai-" + name + ": " + css(val) + ";";
   const pick = (pre) => Object.keys(T.flat).filter((k) => k.startsWith(pre));
@@ -157,7 +159,7 @@ function emitBundle() {
     "  /* Espaciado */", spaceVars.join("\n"),
     "}", "",
   ].join("\n");
-  fs.writeFileSync(path.join(OUT, "tokens.css"), cssOut);
+  fs.writeFileSync(path.join(outDir, "tokens.css"), cssOut);
 
   const plat = fs.readFileSync(path.join(ROOT, "01_fundamentos/plataforma-de-marca.md"), "utf8");
   const platOut = [
@@ -170,9 +172,9 @@ function emitBundle() {
     "", "## Valores", section(plat, "Valores"),
     "", "## Pilares", section(plat, "Los cuatro pilares"), "",
   ].join("\n");
-  fs.writeFileSync(path.join(OUT, "brand-platform.md"), platOut);
+  fs.writeFileSync(path.join(outDir, "brand-platform.md"), platOut);
 
-  fs.writeFileSync(path.join(OUT, "MANIFEST.md"),
+  fs.writeFileSync(path.join(outDir, "MANIFEST.md"),
     "# Paquete del skill FUCAI (generado)\n\n" +
     "- Versión de tokens: " + (meta.version || "?") + "\n- Manual: " + (meta.manual || "?") + "\n" +
     "- Generado por: scripts/build-skill.js\n- Fuente de verdad: 03_tokens/tokens.json\n\n" +
@@ -181,7 +183,48 @@ function emitBundle() {
     "(misión/visión/valores/pilares). Este paquete representa el skill que INCLUYE todo el " +
     "sistema de diseño. dist/ no se versiona (ver .gitignore).\n");
 
-  return fs.readdirSync(OUT);
+  return fs.readdirSync(outDir);
+}
+
+/* ============== [A] empaquetar un skill subible a claude.ai ============== */
+function packageSkill() {
+  const SRC = path.join(ROOT, "skill", "fucai-branding");
+  const PKG_ROOT = path.join(ROOT, "dist", "skill-package");
+  const PKG = path.join(PKG_ROOT, "fucai-branding");
+  fs.rmSync(PKG_ROOT, { recursive: true, force: true });
+  fs.mkdirSync(PKG, { recursive: true });
+  fs.cpSync(SRC, PKG, { recursive: true }); // copia íntegra del skill (references, scripts, assets, SKILL.md)
+
+  // recursos del sistema de diseño (generados)
+  emitBundle(path.join(PKG, "design-system"));
+
+  // fuentes Space Grotesk
+  const fdst = path.join(PKG, "assets", "fonts");
+  fs.mkdirSync(fdst, { recursive: true });
+  const fsrc = path.join(ROOT, "02_identidad-visual", "tipografia");
+  for (const f of fs.readdirSync(fsrc).filter((x) => x.endsWith(".ttf"))) fs.copyFileSync(path.join(fsrc, f), path.join(fdst, f));
+
+  // guía de diseño completa
+  if (fs.existsSync(path.join(ROOT, "DESIGN.md"))) fs.copyFileSync(path.join(ROOT, "DESIGN.md"), path.join(PKG, "DESIGN.md"));
+
+  // SKILL.md con frontmatter compatible con claude.ai (name <=64, description <=200)
+  const orig = fs.readFileSync(path.join(SRC, "SKILL.md"), "utf8");
+  const body = orig.replace(/^---[\s\S]*?---\n/, "").trim();
+  const name = "FUCAI — Identidad de marca";
+  let desc = "Identidad de marca FUCAI: paleta, tipografía Space Grotesk/Calibri, logo, voz y léxico ético (comunidades protagonistas). Aplícala a documentos, presentaciones, web y diseños de FUCAI.";
+  if (desc.length > 200) desc = desc.slice(0, 197) + "...";
+  const fm = "---\nname: " + name + "\ndescription: " + JSON.stringify(desc) + "\n---\n\n";
+  const dsSection = "\n\n## Sistema de diseño (actualizaciones implementadas)\n\n" +
+    "Este paquete incorpora el sistema de diseño FUCAI como fuente de verdad de los valores:\n" +
+    "- **Valores de marca** (colores, tipografía, espaciado, radios, movimiento): `design-system/brand-constants.json` y `design-system/tokens.css` (variables CSS para web/AppSheet).\n" +
+    "- **Plataforma de marca** (Misión, Visión, Valores, pilares): `design-system/brand-platform.md`.\n" +
+    "- **Guía de diseño completa** (color, tipografía, logo, componentes, accesibilidad, voz, modo oscuro): `DESIGN.md`.\n" +
+    "- **Fuentes Space Grotesk** (Regular/Medium/Bold): `assets/fonts/`.\n";
+  fs.rmSync(path.join(PKG, "SKILL.md"), { force: true }); // venía de solo-lectura del skill
+  fs.writeFileSync(path.join(PKG, "SKILL.md"), fm + body + dsSection + "\n");
+
+  console.log("desc length:", desc.length, "(<=200:", desc.length <= 200, ")");
+  return PKG;
 }
 
 /* ================================== main ================================= */
@@ -201,11 +244,14 @@ function main() {
   if (r.issues.length) r.issues.forEach((i) => console.log("    ✗ " + i));
   else console.log("    ✓ todas las tablas [GEN] coinciden con los tokens");
 
-  if (WRITE) {
+  if (PACKAGE) {
+    const pkg = packageSkill();
+    console.log("\n[A] skill empaquetado en:", path.relative(ROOT, pkg));
+  } else if (WRITE) {
     const files = emitBundle();
     console.log("\n[A] dist/skill/ emitido:", files.join(", "));
   } else {
-    console.log("\n(usa --write para emitir dist/skill/)");
+    console.log("\n(usa --write para emitir dist/skill/ · --package para empaquetar el skill)");
   }
   console.log("=== fin ===\n");
   return r.issues.length ? 1 : 0;

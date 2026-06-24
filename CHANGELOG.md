@@ -20,6 +20,20 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 - Definir el posicionamiento formal y el arquetipo de marca (misión, visión y
   valores ya cargados en v1.1.0).
 
+## [1.7.0] — 2026-06-24
+
+### Añadido
+- **`build-skill.js --package`**: ensambla un **skill subible a claude.ai** en
+  `dist/skill-package/fucai-branding/` = el skill existente + las actualizaciones del
+  sistema de diseño. Incluye: `SKILL.md` con frontmatter **compatible** (name ≤64,
+  description ≤200), `design-system/` (brand-constants.json, tokens.css, tokens.flat.json,
+  brand-platform.md con Misión/Visión/Valores), `assets/fonts/` (Space Grotesk
+  Regular/Medium/Bold) y `DESIGN.md`. Script npm `package:skill`.
+
+### Verificado
+- Estructura con la carpeta `fucai-branding/` como raíz; descripción de 184 caracteres
+  (≤200); fuentes, plantillas y recursos presentes.
+
 ## [1.6.0] — 2026-06-24
 
 ### Cambiado
