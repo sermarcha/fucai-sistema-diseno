@@ -82,6 +82,10 @@ const PT = {
 const SZ = Object.fromEntries(Object.entries(PT).map(([k, v]) => [k, v * 2])); // docx: medios puntos
 const twips = (pt) => Math.round(pt * 20);
 
+// Mapa plano de TODOS los tokens, ya resueltas las referencias string de primer nivel.
+const flat = {};
+for (const k of Object.keys(leaves)) flat[k] = resolve(leaves[k]);
+
 // Rampas de visualización de datos (dataviz.ramp.*) — arrays ordenados de HEX sin '#'.
 function ramp(name) {
   return Object.keys(leaves)
@@ -92,4 +96,4 @@ function ramp(name) {
 const RAMP = { orange: ramp("naranja"), green: ramp("verde"), neutral: ramp("neutral") };
 const RAMP_ORANGE = RAMP.orange, RAMP_GREEN = RAMP.green, RAMP_NEUTRAL = RAMP.neutral;
 
-module.exports = { C, FONT, SZ, PT, twips, raw, hex, RAMP, RAMP_ORANGE, RAMP_GREEN, RAMP_NEUTRAL, tokensPath: TOKENS_PATH };
+module.exports = { C, FONT, SZ, PT, twips, raw, hex, resolve, leaves, flat, RAMP, RAMP_ORANGE, RAMP_GREEN, RAMP_NEUTRAL, tokensPath: TOKENS_PATH, meta: tokens.$meta };

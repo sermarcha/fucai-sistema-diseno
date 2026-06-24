@@ -12,13 +12,37 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 
 ### Por hacer
 - Poblar `02_identidad-visual/iconos/` con los `.svg` y añadir el `.otf` de Space Grotesk.
-- Completar `scripts/build-skill.js` (compilador pleno: regenerar tablas [GEN] y empaquetar el `.skill`).
+- Automatizar la publicación del `.skill` por Releases/CI desde `dist/skill/` (el compilador ya empaqueta).
 - Tokenizar la grilla de columnas y los breakpoints responsive (web/AppSheet).
 - Resolver las decisiones de marca pendientes: posicionamiento formal, arquetipo,
   personalidad (opcional) y la URL del repositorio. Color, forma y movimiento ya
   están tokenizados (v1.2.0–v1.3.0).
 - Definir el posicionamiento formal y el arquetipo de marca (misión, visión y
   valores ya cargados en v1.1.0).
+
+## [1.4.0] — 2026-06-24
+
+Completa el compilador `build-skill.js` (vía elegida para cerrar de forma duradera la
+brecha skill ↔ sistema de diseño detectada en v1.3.1).
+
+### Añadido / Cambiado
+- **`scripts/build-skill.js` IMPLEMENTADO** (antes esqueleto):
+  - **[B] Verifica** que las tablas `[GEN]` de las capas 02/06 coincidan con los
+    tokens (16 tablas, 58 celdas); falla si hay deriva. Es el guardián de sincronía.
+  - **[A] `--write` emite `dist/skill/`**: `tokens.flat.json` (tokens resueltos),
+    `tokens.css` (variables web/AppSheet: colores, rampas, radius, elevation, motion,
+    tipografía, espaciado), `brand-constants.json` (constantes que embeben los
+    generadores) y `brand-platform.md` (Misión/Visión/Valores/Pilares). Este paquete
+    es **"el skill que incluye todo el sistema de diseño"**.
+- `lib/tokens.js` expone `flat` (mapa resuelto), `leaves`, `resolve` y `meta`.
+- `package.json`: `build` ahora ejecuta `build-skill.js --write`; **versión 1.4.0**.
+- `03_tokens/tokens.json` `$meta.version` = **1.4.0** (estaba desincronizado en 0.1.0).
+- `mapa-fuente-de-verdad.md`, `versionado.md` y `scripts/README.md`: `build-skill`
+  documentado como compilador (ya no "esqueleto").
+
+### Verificado
+- `build-skill --write` produce `dist/skill/` (5 archivos); verificación `[GEN]` en
+  verde; los generadores corren y `check_fucai.py` da PASS; `dist/` ignorado por git.
 
 ## [1.3.1] — 2026-06-24
 

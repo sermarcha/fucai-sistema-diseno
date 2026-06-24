@@ -33,17 +33,21 @@ regenera el build.
         │  lib/tokens.js / lib/tokens.py  (cargan + resuelven referencias {a.b.c})
         ▼
    scripts/build-skill.js
-        ├─ [A] Constantes de marca (C, FONT, tamaños)  ──► generadores docx/pptx/xlsx
-        │                                                    (producen .docx/.pptx/.xlsx en dist/)
-        └─ [B] Tablas [GEN] de 02_identidad-visual ────────► .md de identidad visual
+        ├─ [A] EMITE dist/skill/  ──► tokens.flat.json, tokens.css (web/AppSheet),
+        │                              brand-constants.json (para los generadores) y
+        │                              brand-platform.md (Misión/Visión/Valores).
+        └─ [B] VERIFICA las tablas [GEN] de 02_/06_ contra los tokens (PASS/FAIL).
         ▼
    dist/  (artefactos; NO versionado — .gitignore)
         ▼
    Release de GitHub  ──► paquete .skill distribuible (ver versionado.md)
 ```
 
-Hoy `lib/` resuelve los tokens en vivo y los generadores ya los consumen;
-`scripts/build-skill.js` es un **esqueleto documentado** que materializará [A] y [B].
+`lib/` resuelve los tokens en vivo y los generadores ya los consumen.
+`scripts/build-skill.js` está **implementado**: `--write` emite el paquete
+`dist/skill/` (que INCLUYE todo el sistema de diseño: tokens resueltos, CSS,
+constantes de marca y la plataforma con Misión/Visión/Valores), y por defecto
+**verifica** que las tablas `[GEN]` sigan coincidiendo con los tokens.
 
-> [Pendiente: completar `scripts/build-skill.js` para que regenere automáticamente las
-> tablas `[GEN]` y empaquete el `.skill`. El contrato y el andamiaje ya están.]
+> [Pendiente: automatizar la publicación del `.skill` por Releases (CI). El
+> compilador ya produce el paquete; falta solo el flujo de publicación.]

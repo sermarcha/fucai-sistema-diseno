@@ -1,69 +1,72 @@
 /**
- * build-skill.js — ESQUELETO DOCUMENTADO del compilador del Sistema de Diseño FUCAI.
+ * build-skill.js — Compilador del Sistema de Diseño FUCAI.
  * =============================================================================
- * NO es todavía el compilador completo: es el CONTRATO y el andamiaje. Define con
- * precisión qué leerá, qué generará y con qué reglas, para que la automatización
- * plena (fase posterior) solo tenga que rellenar los TODO sin rediscutir el diseño.
+ * Hace mecánico el principio del repo: 03_tokens/tokens.json es la fuente de verdad
+ * y el skill/los documentos se DERIVAN de ahí. Dos responsabilidades:
  *
- * PRINCIPIO: 03_tokens/tokens.json es la fuente de verdad. Todo valor de marca
- * (color, familia, tamaño, espaciado) se DERIVA de ahí; nada se escribe a mano en
- * los consumidores. Este script es el mecanismo que hace de ese principio un hecho.
+ *   [A] EMITIR el paquete del skill regenerado desde el sistema de diseño (--write):
+ *       dist/skill/ con los tokens resueltos (JSON + CSS), las constantes de marca
+ *       que embeben los generadores y la plataforma de marca (Misión/Visión/Valores).
+ *       Así, el "skill" que se distribuye INCLUYE todo el sistema de diseño.
  *
- * DIAGRAMA DE COMPILACIÓN
- *   03_tokens/tokens.json  (+ temas/*.json)
- *            │  (cargar + resolver referencias  -> lib/tokens.js)
- *            ▼
- *   ┌─────────────────────────────────────────────────────────┐
- *   │ build-skill.js                                            │
- *   │   1. SALIDA A: constantes de marca del "skill" empaquetado│
- *   │      (los objetos C / FONT que consumen los generadores). │
- *   │   2. SALIDA B: tablas [GEN] de la capa 02_identidad-visual│
- *   │      (color.md, tipografia.md, espaciado-y-layout.md…).   │
- *   └─────────────────────────────────────────────────────────┘
- *            │
- *            ▼
- *   dist/  (artefactos generados; NO versionado — ver .gitignore)
+ *   [B] VERIFICAR que las tablas marcadas <!-- [GEN] ... --> de la capa 02/06 sigan
+ *       coincidiendo con los tokens (detección de deriva). Es la forma segura e
+ *       idempotente de "mantener generadas" esas tablas.
  *
- * CÓMO EJECUTAR (hoy: modo dry-run informativo)
- *   node scripts/build-skill.js            # imprime el plan y los valores resueltos
- *   node scripts/build-skill.js --write     # [TODO] escribiría las salidas en dist/
+ * USO
+ *   node scripts/build-skill.js            # dry-run: constantes + verificación [GEN]
+ *   node scripts/build-skill.js --write     # además emite dist/skill/ (ignorado por git)
  * =============================================================================
  */
 const fs = require("fs");
 const path = require("path");
-const T = require("./lib/tokens.js"); // C, FONT, SZ, PT, raw, twips
+const T = require("./lib/tokens.js"); // C, FONT, SZ, PT, RAMP, flat, leaves, resolve, raw, meta
 
 const ROOT = path.join(__dirname, "..");
 const WRITE = process.argv.includes("--write");
+const OUT = path.join(ROOT, "dist", "skill");
 
-/* -----------------------------------------------------------------------------
- * SALIDA A — Constantes de marca del skill / generadores.
- * Contrato: emitir el objeto de colores (HEX) y familias que los generadores
- * (fucai_docx.js, fucai_pptx.js, fucai_xlsx.py) consumen. Hoy esos generadores ya
- * leen de lib/tokens.js en vivo; este paso existe para PODER también materializar
- * un snapshot embebible en un paquete .skill distribuible por Releases.
- * --------------------------------------------------------------------------- */
-function buildBrandConstants() {
-  return {
-    color: T.C,                 // { primary, arena, green, ... } en HEX sin '#'
-    font: T.FONT,               // { heading, body }
-    sizePt: T.PT,               // tamaños en puntos (escala Word/PDF)
-    ramp: T.RAMP,               // rampas data-viz { orange, green, neutral } desde dataviz.ramp.*
-    // TODO: añadir tokens de forma/movimiento cuando existan en tokens.json
-    //       (hoy [Pendiente] — ver 02_identidad-visual/forma-y-profundidad.md y movimiento.md).
-  };
+/* ============================ helpers de formato ========================== */
+const isObj = (v) => v && typeof v === "object" && !Array.isArray(v);
+const norm = (s) => String(s).replace(/−/g, "-").trim(); // normaliza el menos unicode
+
+// Resuelve referencias también dentro de objetos (p. ej. el color de una sombra).
+function deep(v) {
+  v = T.resolve(v);
+  if (isObj(v)) { const o = {}; for (const k of Object.keys(v)) o[k] = deep(v[k]); return o; }
+  if (Array.isArray(v)) return v.map(deep);
+  return v;
+}
+// Representación "de documento" de un valor (para verificar tablas [GEN]).
+function display(v) {
+  v = deep(v);
+  if (typeof v === "string") return v.startsWith("#") ? v.toUpperCase() : v;
+  if (Array.isArray(v)) return v.join(", ");
+  if (isObj(v) && "value" in v && "unit" in v) return v.value + " " + v.unit;
+  return null; // compuesto (p. ej. sombra): no se verifica como celda simple
+}
+// Valor CSS de un token según su forma.
+function css(v) {
+  v = deep(v);
+  if (typeof v === "string") return v; // color hex
+  if (Array.isArray(v)) {
+    if (v.every((x) => typeof x === "number")) return "cubic-bezier(" + v.join(", ") + ")"; // easing
+    return v.map((f) => (/\s/.test(f) ? "'" + f + "'" : f)).join(", "); // fontFamily
+  }
+  if (isObj(v) && "value" in v && "unit" in v) return "" + v.value + v.unit; // dimension/duration
+  if (isObj(v) && "color" in v) { // shadow
+    const d = (x) => "" + x.value + x.unit;
+    return d(v.offsetX) + " " + d(v.offsetY) + " " + d(v.blur) + " " + d(v.spread) + " " + v.color;
+  }
+  return String(v);
 }
 
-/* -----------------------------------------------------------------------------
- * SALIDA B — Regenerar las tablas marcadas <!-- [GEN] derivado de tokens.json -->
- * en la capa 02. Contrato del algoritmo (a implementar):
- *   1. Recorrer los .md objetivo (lista GEN_TARGETS).
- *   2. Por cada bloque que empiece con el marcador [GEN], localizar la tabla
- *      Markdown inmediatamente siguiente.
- *   3. Reconstruir las filas desde los tokens correspondientes (resueltos) y
- *      reemplazar SOLO el cuerpo de esa tabla, dejando intacta la narrativa.
- *   4. Idempotencia: re-ejecutar no debe producir diffs si los tokens no cambian.
- * --------------------------------------------------------------------------- */
+/* ===================== [A] constantes de marca (snapshot) ================= */
+function buildBrandConstants() {
+  return { color: T.C, font: T.FONT, sizePt: T.PT, ramp: T.RAMP };
+}
+
+/* ===================== [B] verificación de tablas [GEN] =================== */
 const GEN_TARGETS = [
   "02_identidad-visual/color.md",
   "02_identidad-visual/tipografia.md",
@@ -72,42 +75,141 @@ const GEN_TARGETS = [
   "02_identidad-visual/movimiento.md",
   "06_accesibilidad/estandar-accesibilidad.md",
 ];
-const GEN_MARKER = "[GEN] derivado de tokens.json";
+const GEN_RE = /\[GEN\][^\n]*tokens\.json/;
+const TOKEN_REF = /`((?:color|surface|brand|accent|text|font|space|layout|docx|pptx|appsheet|dataviz|radius|elevation|motion)\.[A-Za-z0-9_.\-]+)`/g;
 
-function findGenTables() {
-  const report = [];
+function checkGenTables() {
+  const issues = [];
+  let tablesChecked = 0, rowsChecked = 0;
   for (const rel of GEN_TARGETS) {
     const p = path.join(ROOT, rel);
-    if (!fs.existsSync(p)) { report.push({ file: rel, marcadores: "FALTA ARCHIVO" }); continue; }
-    const n = (fs.readFileSync(p, "utf8").match(/\[GEN\][^\n]*tokens\.json/g) || []).length;
-    report.push({ file: rel, marcadores: n });
+    if (!fs.existsSync(p)) { issues.push(rel + ": ARCHIVO FALTANTE"); continue; }
+    const lines = fs.readFileSync(p, "utf8").split("\n");
+    let marker = null;
+    for (const line of lines) {
+      if (GEN_RE.test(line)) { marker = (/[Cc]ontraste|Manual/.test(line)) ? null : line; if (marker) tablesChecked++; continue; }
+      if (!marker) continue;
+      if (!line.trim().startsWith("|") || /^\|[\s|:-]+\|?\s*$/.test(line)) continue; // no fila / separador
+      const refs = [...line.matchAll(TOKEN_REF)].map((m) => m[1].replace(/\.$/, ""));
+      if (!refs.length) continue;
+      for (const ref of refs) {
+        if (!(ref in T.flat)) { issues.push(rel + ": token inexistente `" + ref + "`"); continue; }
+        const d = display(T.flat[ref]);
+        if (d === null) continue; // token compuesto (sombra): no verificable como celda
+        rowsChecked++;
+        const want = norm(d);
+        if (!norm(line).includes(want)) issues.push(rel + ": `" + ref + "` esperaba \"" + want + "\" — no aparece en la fila");
+      }
+    }
   }
-  return report;
-}
-function regenerateGenTables() {
-  // TODO: implementar el reemplazo descrito arriba. Por ahora solo se inventaría.
-  throw new Error("regenerateGenTables(): pendiente de implementar (esqueleto).");
+  // Caso especial: tabla de rampas (filas sin token por celda).
+  const cm = fs.readFileSync(path.join(ROOT, "02_identidad-visual/color.md"), "utf8");
+  const block = cm.split("dataviz.ramp.*) -->")[1] || "";
+  const rampOf = (n) => Object.keys(T.leaves).filter((k) => k.startsWith("dataviz.ramp." + n + "."))
+    .sort((a, b) => parseInt(a.split(".").pop()) - parseInt(b.split(".").pop()))
+    .map((k) => String(T.resolve(T.leaves[k])).toUpperCase());
+  for (const pair of [["Naranja —", "naranja"], ["Verde —", "verde"], ["Neutral —", "neutral"]]) {
+    const label = pair[0], name = pair[1];
+    const row = block.split("\n").find((l) => l.trim().startsWith("| " + label));
+    if (!row) { issues.push("color.md: fila de rampa \"" + label + "\" no hallada"); continue; }
+    tablesChecked++;
+    const cells = row.split("|").slice(2, 9).map((c) => c.trim().toUpperCase());
+    if (cells.join(",") !== rampOf(name).join(",")) issues.push("color.md: rampa " + name + " no coincide con dataviz.ramp." + name);
+    else rowsChecked += 7;
+  }
+  return { issues, tablesChecked, rowsChecked };
 }
 
+/* ===================== [A] emitir el paquete dist/skill =================== */
+function section(md, title) { // extrae "## title" hasta el próximo "## "
+  const re = new RegExp("(^|\\n)## " + title + "[^\\n]*\\n([\\s\\S]*?)(?=\\n## |$)");
+  const m = md.match(re);
+  return m ? m[2].trim() : "";
+}
+function emitBundle() {
+  fs.mkdirSync(OUT, { recursive: true });
+  const meta = T.meta || {};
+
+  const flatResolved = {};
+  for (const k of Object.keys(T.flat)) flatResolved[k] = deep(T.flat[k]);
+  fs.writeFileSync(path.join(OUT, "tokens.flat.json"), JSON.stringify(flatResolved, null, 2) + "\n");
+  fs.writeFileSync(path.join(OUT, "brand-constants.json"), JSON.stringify(buildBrandConstants(), null, 2) + "\n");
+
+  const cssVar = (name, val) => "  --fucai-" + name + ": " + css(val) + ";";
+  const pick = (pre) => Object.keys(T.flat).filter((k) => k.startsWith(pre));
+  const colorVars = pick("color.").map((k) => cssVar("color-" + k.split(".")[1], T.flat[k]));
+  const rampVars = pick("dataviz.ramp.").map((k) => { const s = k.split("."); return cssVar("ramp-" + s[2] + "-" + s[3], T.flat[k]); });
+  const radiusVars = pick("radius.").map((k) => cssVar("radius-" + k.split(".")[1], T.flat[k]));
+  const elevVars = pick("elevation.").map((k) => cssVar("elevation-" + k.split(".")[1], T.flat[k]));
+  const motionVars = pick("motion.").map((k) => cssVar(k.replace("motion.", "").replace(".", "-"), T.flat[k]));
+  const fontVars = pick("font.family.").map((k) => cssVar("font-" + k.split(".")[2], T.flat[k]));
+  const spaceVars = pick("space.").map((k) => cssVar("space-" + k.split(".")[1], T.flat[k]));
+  const cssOut = [
+    "/* FUCAI — variables CSS generadas desde 03_tokens/tokens.json. NO editar a mano. */",
+    "/* " + (meta.org || "FUCAI") + " · " + (meta.slogan || "") + " */",
+    ":root {",
+    "  /* Colores */", colorVars.join("\n"),
+    "  /* Rampas de visualización de datos */", rampVars.join("\n"),
+    "  /* Radios */", radiusVars.join("\n"),
+    "  /* Elevación (box-shadow) */", elevVars.join("\n"),
+    "  /* Movimiento */", motionVars.join("\n"),
+    "  /* Tipografía */", fontVars.join("\n"),
+    "  /* Espaciado */", spaceVars.join("\n"),
+    "}", "",
+  ].join("\n");
+  fs.writeFileSync(path.join(OUT, "tokens.css"), cssOut);
+
+  const plat = fs.readFileSync(path.join(ROOT, "01_fundamentos/plataforma-de-marca.md"), "utf8");
+  const platOut = [
+    "# FUCAI — Plataforma de marca (generado)",
+    "> " + (meta.org || "") + " · NIT " + (meta.nit || "") + " · *" + (meta.slogan || "") + "*",
+    "> Extraído de 01_fundamentos/plataforma-de-marca.md por build-skill.js.",
+    "", "## Propósito", section(plat, "Propósito"),
+    "", "## Misión", section(plat, "Misión"),
+    "", "## Visión", section(plat, "Visión"),
+    "", "## Valores", section(plat, "Valores"),
+    "", "## Pilares", section(plat, "Los cuatro pilares"), "",
+  ].join("\n");
+  fs.writeFileSync(path.join(OUT, "brand-platform.md"), platOut);
+
+  fs.writeFileSync(path.join(OUT, "MANIFEST.md"),
+    "# Paquete del skill FUCAI (generado)\n\n" +
+    "- Versión de tokens: " + (meta.version || "?") + "\n- Manual: " + (meta.manual || "?") + "\n" +
+    "- Generado por: scripts/build-skill.js\n- Fuente de verdad: 03_tokens/tokens.json\n\n" +
+    "Contenido: tokens.flat.json (tokens resueltos), brand-constants.json (constantes que " +
+    "embeben los generadores), tokens.css (variables web/AppSheet), brand-platform.md " +
+    "(misión/visión/valores/pilares). Este paquete representa el skill que INCLUYE todo el " +
+    "sistema de diseño. dist/ no se versiona (ver .gitignore).\n");
+
+  return fs.readdirSync(OUT);
+}
+
+/* ================================== main ================================= */
 function main() {
   const brand = buildBrandConstants();
-  console.log("\n=== build-skill (dry-run) — Sistema de Diseño FUCAI ===");
+  console.log("\n=== build-skill — Sistema de Diseño FUCAI ===");
   console.log("Fuente de verdad:", path.relative(ROOT, T.tokensPath));
   console.log("\n[A] Constantes de marca resueltas desde tokens.json:");
   console.log("    color :", JSON.stringify(brand.color));
   console.log("    font  :", JSON.stringify(brand.font));
   console.log("    sizePt:", JSON.stringify(brand.sizePt));
   console.log("    ramp  :", JSON.stringify(brand.ramp));
-  console.log("\n[B] Tablas [GEN] detectadas (se regenerarían desde tokens):");
-  for (const r of findGenTables()) console.log("    -", r.file, "->", r.marcadores, "marcador(es)");
+
+  console.log("\n[B] Verificación de tablas [GEN] vs tokens:");
+  const r = checkGenTables();
+  console.log("    tablas verificadas: " + r.tablesChecked + " | celdas/filas verificadas: " + r.rowsChecked);
+  if (r.issues.length) r.issues.forEach((i) => console.log("    ✗ " + i));
+  else console.log("    ✓ todas las tablas [GEN] coinciden con los tokens");
+
   if (WRITE) {
-    console.log("\n--write: [TODO] materializar dist/ (constantes + tablas [GEN]).");
-    // fs.mkdirSync(path.join(ROOT, "dist"), { recursive: true }); ...
+    const files = emitBundle();
+    console.log("\n[A] dist/skill/ emitido:", files.join(", "));
   } else {
-    console.log("\n(usa --write cuando el compilador esté implementado para escribir dist/)");
+    console.log("\n(usa --write para emitir dist/skill/)");
   }
-  console.log("=== fin dry-run ===\n");
+  console.log("=== fin ===\n");
+  return r.issues.length ? 1 : 0;
 }
 
-if (require.main === module) main();
-module.exports = { buildBrandConstants, findGenTables, regenerateGenTables, GEN_TARGETS, GEN_MARKER };
+if (require.main === module) process.exit(main());
+module.exports = { buildBrandConstants, checkGenTables, emitBundle, GEN_TARGETS };

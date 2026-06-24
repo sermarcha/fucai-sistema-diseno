@@ -15,7 +15,7 @@ tiene colores ni familias tipográficas quemados: todo se lee de los tokens vía
 | `generators/fucai_pptx.js` | Constructores de PowerPoint. **Reutilizado**; adaptado. | Skill (adaptado) |
 | `generators/fucai_xlsx.py` | Estilos de Excel. **Reutilizado**; adaptado. | Skill (adaptado) |
 | `check_fucai.py` | QA objetivo de un `.docx` (fondo blanco, bug `rId0`, paleta, fuentes). **Reutilizado**; adaptado. | Skill (adaptado) |
-| `build-skill.js` | **Esqueleto documentado** del compilador tokens → constantes + tablas `[GEN]`. | Nuevo (stub) |
+| `build-skill.js` | **Compilador**: verifica las tablas `[GEN]` vs tokens y, con `--write`, emite `dist/skill/` (tokens resueltos, CSS, constantes, plataforma de marca). | Nuevo |
 
 ## Uso
 
@@ -23,7 +23,8 @@ tiene colores ni familias tipográficas quemados: todo se lee de los tokens vía
 npm install                         # docx, pptxgenjs
 pip install -r requirements.txt     # openpyxl, (fonttools para fuentes)
 
-node scripts/build-skill.js         # dry-run: imprime valores resueltos y tablas [GEN]
+node scripts/build-skill.js          # verifica tablas [GEN] vs tokens (dry-run)
+node scripts/build-skill.js --write  # emite dist/skill/ (paquete del skill)
 python3 scripts/check_fucai.py <archivo.docx>   # QA de un documento Word
 ```
 

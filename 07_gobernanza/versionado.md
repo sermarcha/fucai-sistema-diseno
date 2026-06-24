@@ -31,5 +31,8 @@ gobernanza).
 - Así, "qué versión del skill estoy usando" siempre corresponde a un Release
   trazable, y `main` queda libre de binarios generados.
 
-> [Pendiente: definir la convención de etiquetas y el flujo de publicación del
-> `.skill` (manual o por CI) cuando el compilador esté completo.]
+El compilador (`scripts/build-skill.js --write`) ya **emite el paquete** en
+`dist/skill/`. Las versiones publicadas se etiquetan: `v1.0.0`–`v1.4.0`.
+
+> [Pendiente: automatizar la publicación del `.skill` por Releases (CI) a partir
+> de `dist/skill/`. El empaquetado ya está; falta solo el disparador de publicación.]
