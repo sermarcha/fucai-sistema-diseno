@@ -20,6 +20,16 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 - Definir el posicionamiento formal y el arquetipo de marca (misión, visión y
   valores ya cargados en v1.1.0).
 
+## [1.3.1] — 2026-06-24
+
+### Añadido
+- `07_gobernanza/verificacion-skill.md` — verificación de cobertura del skill frente
+  al sistema de diseño. Veredicto: el skill es la autoridad de origen (colores,
+  tipografía, voz, componentes) y el sistema de diseño es un **superconjunto**; el
+  skill **no** incluye el sistema de tokens, la Misión/Visión/Valores oficiales, los
+  tokens de radius/elevation/motion, las fuentes ni la gobernanza. Cierre previsto vía
+  `scripts/build-skill.js`.
+
 ## [1.3.0] — 2026-06-24
 
 Tokeniza **forma y movimiento** (web/AppSheet), resolviendo los `[Pendiente]` de
