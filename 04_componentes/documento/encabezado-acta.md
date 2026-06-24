@@ -25,7 +25,8 @@
 ## Reglas técnicas críticas
 
 - **Header de solo texto** (sin imágenes) para evitar el bug `rId0`.
-- **Fondo blanco** y arquitectura de **2 secciones** (portada/cuerpo); el acta es
+- **Fondo blanco** y arquitectura de pocas secciones (**2–3**: portada, cuerpo,
+  contraportada); el acta es
   contenido del cuerpo, no una sección nueva.
 - Centro de costo en **campo de texto abierto**, nunca checkbox fijo.
 

@@ -12,7 +12,10 @@
 *.ttf   filter=lfs diff=lfs merge=lfs -text
 *.woff2 filter=lfs diff=lfs merge=lfs -text
 
-# === Plantillas maestras (assets/templates) ===
-assets/templates/**/*.docx filter=lfs diff=lfs merge=lfs -text
-assets/templates/**/*.xlsx filter=lfs diff=lfs merge=lfs -text
-assets/templates/**/*.pptx filter=lfs diff=lfs merge=lfs -text
+# === Plantillas maestras (.docx .xlsx .pptx) ===
+# En el repo, los binarios de Office son siempre plantillas/fuentes (incluida la
+# copia del skill en skill/fucai-branding/assets/templates/). Se rastrean por LFS
+# en cualquier ubicación.
+*.docx filter=lfs diff=lfs merge=lfs -text
+*.xlsx filter=lfs diff=lfs merge=lfs -text
+*.pptx filter=lfs diff=lfs merge=lfs -text

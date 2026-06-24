@@ -19,6 +19,31 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 - Resolver los marcadores `> [Pendiente: …]` de la capa estratégica (misión,
   visión, valores, arquetipo, posicionamiento formal) con dirección.
 
+## [1.0.0] — 2026-06-24
+
+Primera versión estable. Auditoría completa (Fase 5) del sistema construido en las
+Fases 1–4. Informe íntegro en `07_gobernanza/informe-revision.md`.
+
+### Revisado
+- Lista de verificación de 12 puntos: integridad de tokens, coherencia de valores,
+  reglas duras, léxico ético, referencias/rutas, Git LFS, estructura, skill,
+  configuración, compatibilidad técnica, pendientes y versionado.
+- Resultado: 0 hallazgos críticos; 2 medios y 3 menores; ~35 `[Pendiente]`, todos
+  esperados; 0 omisiones. Generadores corren y `check_fucai.py` da PASS.
+
+### Corregido
+- `.gitattributes`: las reglas de LFS para `*.docx/*.xlsx/*.pptx` ahora cubren las
+  plantillas del skill (antes quedaban fuera de LFS).
+- Coherencia de la regla de secciones de Word: armonizado a **2–3
+  (portada/cuerpo/contraportada)** en `encabezado-acta.md`, `divisor-capitulo.md` y
+  este CHANGELOG (antes algunas fichas decían "2"), alineado con el generador real.
+- `color.md`: marcador `[GEN]` aclarado (HEX desde tokens; RGB/CMYK/Pantone desde
+  Manual) y detector de `build-skill.js` hecho robusto a marcadores con sufijos.
+
+### Añadido
+- `07_gobernanza/informe-revision.md` — informe de revisión por severidad, con
+  correcciones aplicadas y puntos para revisión humana.
+
 ## [0.4.0] — 2026-06-24
 
 ### Añadido
@@ -27,7 +52,7 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   divisor-capitulo), `presentacion/` (portada-titulo, slide-contenido),
   `appsheet/patrones.md`, `social/` (post, story, carrusel) y `web/` (boton, card).
   Las fichas de documento codifican las reglas técnicas críticas (fondo blanco,
-  bug `rId0`, 2 secciones, bandas en `Footer`, `lineRule:"atLeast"`, campos abiertos).
+  bug `rId0`, 2–3 secciones (portada/cuerpo/contraportada), bandas en `Footer`, `lineRule:"atLeast"`, campos abiertos).
 - **Motor (`scripts/`)**: `lib/tokens.js` y `lib/tokens.py` (cargan y resuelven
   `tokens.json`); generadores **reutilizados del skill y adaptados** para leer la
   marca desde tokens (`fucai_docx.js`, `fucai_pptx.js`, `fucai_xlsx.py`,

@@ -21,7 +21,8 @@ blanco o banda arena de acento. Mucho aire alrededor (un solo elemento focal).
 
 - **Se implementa como tabla de ancho completo DENTRO del cuerpo, NO como una
   sección nueva.** Una sección por capítulo genera múltiples footers XML y Word
-  marca el archivo como malformado (arquitectura de **2 secciones**).
+  marca el archivo como malformado (arquitectura de pocas secciones, **2–3**:
+  portada, cuerpo, contraportada).
 - **Fondo blanco**; si se usa color, banda arena de acento, nunca página naranja.
 - Si el título es muy grande (> ~60 pt), usar `lineRule: "atLeast"` para evitar solape.
 

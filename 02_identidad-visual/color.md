@@ -20,7 +20,7 @@ hace una pieza minimalista y sofisticada a la vez (ver `01_fundamentos/principio
 
 ## Paleta de marca
 
-<!-- [GEN] derivado de tokens.json (color.*) -->
+<!-- [GEN] derivado de tokens.json (color.* → HEX); RGB/CMYK/Pantone desde Manual v1.1 -->
 
 | Token | Nombre | HEX | RGB | CMYK | Pantone | Rol |
 |-------|--------|-----|-----|------|---------|-----|

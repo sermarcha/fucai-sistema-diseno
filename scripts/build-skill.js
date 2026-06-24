@@ -76,7 +76,7 @@ function findGenTables() {
   for (const rel of GEN_TARGETS) {
     const p = path.join(ROOT, rel);
     if (!fs.existsSync(p)) { report.push({ file: rel, marcadores: "FALTA ARCHIVO" }); continue; }
-    const n = (fs.readFileSync(p, "utf8").match(/\[GEN\] derivado de tokens\.json/g) || []).length;
+    const n = (fs.readFileSync(p, "utf8").match(/\[GEN\][^\n]*tokens\.json/g) || []).length;
     report.push({ file: rel, marcadores: n });
   }
   return report;
