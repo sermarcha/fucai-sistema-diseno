@@ -20,6 +20,19 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 - Definir el posicionamiento formal y el arquetipo de marca (misión, visión y
   valores ya cargados en v1.1.0).
 
+## [1.5.0] — 2026-06-24
+
+### Añadido
+- **`/DESIGN.md`** en la raíz: fuente de verdad de identidad visual y voz para
+  **Claude Design** (claude.ai/design). Ocho secciones (contexto y personalidad,
+  voz y tono, color, tipografía, logo, espaciado/layout, componentes, accesibilidad),
+  con tokens en **variables CSS** y el *porqué* de cada decisión. Valores extraídos
+  reales de `03_tokens/tokens.json` y del skill; lo ausente queda como `[POR CONFIRMAR]`.
+
+### Verificado
+- Los 21 HEX citados en DESIGN.md coinciden con los primitivos de `tokens.json`
+  (ninguno inventado). 8 marcadores `[POR CONFIRMAR]`.
+
 ## [1.4.0] — 2026-06-24
 
 Completa el compilador `build-skill.js` (vía elegida para cerrar de forma duradera la
