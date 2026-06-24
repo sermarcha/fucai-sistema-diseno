@@ -11,10 +11,27 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 ## [No publicado]
 
 ### Por hacer
-- Poblar las capas 01, 02 (tipografía/iconos), 04, 05, 06 y 07 (fases 2–5).
+- Poblar las capas 02 (tipografía/iconos), 04 (componentes), 06 (accesibilidad) y 07 (gobernanza) (fases 3–5).
 - Implementar los generadores en `scripts/generators/` y el comando `npm run build`.
 - Confirmar contra el Manual de Identidad los valores provisionales de la
   submarca Tienda FUCAI (terracota y ocre) en `03_tokens/temas/tienda-fucai.json`.
+- Resolver los marcadores `> [Pendiente: …]` de la capa estratégica (misión,
+  visión, valores, arquetipo, posicionamiento formal) con dirección.
+
+## [0.2.0] — 2026-06-24
+
+### Añadido
+- **Capa estratégica (`01_fundamentos/`)**: `plataforma-de-marca.md`,
+  `principios-de-diseno.md`, `voz-y-tono.md`, `audiencias.md`.
+- **Capa de contenido y lenguaje (`05_contenido-lenguaje/`)**: `guia-editorial.md`,
+  `microcopy.md`, `lexico-institucional.md`, `localizacion.md`.
+- Cada archivo es una plantilla estructurada con datos reales de FUCAI donde
+  existen y marcadores `> [Pendiente: …]` donde el skill no aporta contenido
+  oficial (no se inventó misión, visión, valores ni arquetipo).
+
+### Cambiado
+- Eliminados los `.gitkeep` de `01_fundamentos/` y `05_contenido-lenguaje/` al
+  quedar pobladas.
 
 ## [0.1.0] — 2026-06-24
 
