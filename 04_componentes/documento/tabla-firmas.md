@@ -33,5 +33,5 @@ firmante: nombre, cargo/rol, organización y espacio de firma. Encabezados en
 ## Tokens y script
 
 `docx.tableHeader.bg`, `text.onColor`, `color.gris-linea` (filete). Builder dedicado:
-> [Pendiente: añadir `signatureTable()` a `fucai_docx.js`. Hoy se arma con las
+> [Pendiente: añadir `signatureTable()` a `scripts/generators/fucai_docx.js`. Hoy se arma con las
 > primitivas de tabla; el skill no trae un builder de firmas.]

@@ -131,3 +131,26 @@ para añadir el `.otf` (`02_identidad-visual/tipografia/FUENTES.md`).
 
 El sistema está **listo como v1.0.0**: íntegro, coherente y con la fuente de verdad
 gobernando los valores. Los pendientes son trabajo de evolución previsto, no defectos.
+
+---
+
+## Adenda — Respuestas de revisión humana (FUCAI, 2026-06-24)
+
+El dueño de marca respondió a los cinco puntos de revisión. Resoluciones aplicadas
+en **v1.1.0**:
+
+1. **Capa estratégica:** se cargaron la **Misión, la Visión y los 12 Valores
+   oficiales** en `01_fundamentos/plataforma-de-marca.md`. Quedan pendientes, por no
+   haberse provisto, el **posicionamiento formal** y el **arquetipo** (más el
+   enunciado de personalidad de una frase, opcional).
+2. **Roles de gobernanza:** **Dueño de marca = Fundación Caminos de Identidad (FUCAI)**
+   (institucional); **Mantenedor = Sergio Martínez**. Registrado en
+   `07_gobernanza/modelo-de-gobernanza.md`. Pendiente solo el canal de issues/PR (URL del remoto).
+3. **Submarca Tienda:** decisión — **usa la misma paleta que FUCAI**. Se descartaron los
+   valores provisionales de terracota y ocre; `03_tokens/temas/tienda-fucai.json` y
+   `03_tokens/taxonomia.md` actualizados.
+4. **Estilo (m2):** aprobado — las referencias a archivos se **normalizaron a rutas
+   repo-relativas** en fichas, identidad visual y gobernanza.
+5. **Hoja de ruta técnica (B):** aprobada — completar `scripts/build-skill.js` y los
+   tokens diferidos (radio/sombra/movimiento, data-viz, H4–H6) queda priorizado para
+   fases futuras.

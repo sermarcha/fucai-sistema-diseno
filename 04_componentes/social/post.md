@@ -7,9 +7,9 @@
 - **A — Dato impactante:** fondo blanco/arena; una cifra grande Space Grotesk
   naranja; caption Calibri corto; logo pequeño; barra naranja con URL.
 - **B — Historia de territorio:** foto de comunidad (80 %); degradado oscuro de
-  abajo arriba; ≤ 2 líneas de texto blanco; `logo_blanco.png` arriba a la izquierda.
+  abajo arriba; ≤ 2 líneas de texto blanco; `02_identidad-visual/logo/logo_blanco.png` arriba a la izquierda.
 - **C — Mensaje institucional:** fondo naranja (o verde para territorio);
-  `logo_blanco.png` centrado; ≤ 3 líneas Space Grotesk; slogan en cursiva blanca.
+  `02_identidad-visual/logo/logo_blanco.png` centrado; ≤ 3 líneas Space Grotesk; slogan en cursiva blanca.
 
 ## Variantes / tamaños
 

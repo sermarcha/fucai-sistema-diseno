@@ -20,28 +20,66 @@ de los pueblos y territorios con los que caminamos.
 
 ## Misión
 
-*Qué hace FUCAI, para quién y cómo, hoy.*
+*Qué hace FUCAI, para quién y cómo, hoy. Declaración oficial (FUCAI, 2026-06).*
 
-> [Pendiente: redactar la declaración formal de misión y validarla con dirección.
-> No existe una versión oficial en el skill `fucai-branding`. El propósito de
-> arriba es el punto de partida disponible.]
+Promover capacidades en poblaciones excluidas, potenciando sus procesos propios de
+desarrollo socioeconómico y ambiental sostenible, político-organizativo y
+familiar-educativo, en el contexto de un Estado social de derechos y una Colombia
+pluriétnica y multicultural. Para lograrlo, brindamos asesoría, prestamos servicios,
+implementamos procesos y proyectos, y generamos recursos, con el objetivo de
+empoderar a estas comunidades y contribuir a su crecimiento y bienestar.
 
 ## Visión
 
-*Qué futuro persigue FUCAI.*
+*Qué futuro persigue FUCAI. Declaración oficial (FUCAI, 2026-06).*
 
-> [Pendiente: redactar la declaración formal de visión y validarla con dirección.
-> No existe una versión oficial en el skill `fucai-branding`.]
+Ser reconocidos por brindar un acompañamiento especializado y diferencial a grupos y
+comunidades, enfocándonos en promover derechos y liderazgo ético, emplear metodologías
+participativas, garantizar derechos y forjar alianzas estratégicas para fomentar el
+desarrollo sostenible.
 
 ## Valores
 
-*Las convicciones que guían cada decisión.*
+*Las convicciones que guían cada decisión. Conjunto oficial (FUCAI, 2026-06).*
 
-> [Pendiente: confirmar la lista oficial de valores institucionales. El skill no
-> declara un set formal. Candidatos coherentes con la voz y el léxico ético
-> documentados (a validar, no oficiales): dignidad y agencia de las comunidades;
-> identidad y saberes ancestrales; Buen Vivir; autonomía y soberanía;
-> diálogo y articulación; sostenibilidad del territorio.]
+1. **Resiliencia al avanzar.** Las situaciones complejas traen grandes desafíos;
+   tenemos la audacia para superar los obstáculos en el camino hacia nuestros objetivos.
+2. **Compromiso que crece.** Desde hace más de tres décadas trabajamos con compromiso y
+   responsabilidad hacia las comunidades y organizaciones con las que colaboramos,
+   desarrollando metodologías que optimizan nuestros procesos y mejoran los resultados.
+3. **Empatía en la colaboración.** Dialogamos con personas diversas y promovemos el
+   respeto y la amabilidad, para lograr cooperaciones enriquecedoras para todos.
+4. **Identidad y diversidad cultural.** Valoramos profundamente la identidad y la
+   diversidad cultural de las comunidades indígenas como motor del cambio y el
+   desarrollo sostenible. Promovemos la preservación y revitalización de sus culturas,
+   para que su sabiduría y tradiciones sean reconocidas y valoradas, fortaleciendo el
+   tejido social y cultural.
+5. **Honestidad y búsqueda de la justicia.** Trabajamos para que las personas vivan
+   dignamente y ejerzan sus derechos, con ética y transparencia, siendo francos sobre
+   quiénes somos, qué hacemos y por qué lo hacemos.
+6. **Diversidad que nos complementa.** Un equipo multidisciplinario y de distintos
+   orígenes nos permite analizar las situaciones desde múltiples perspectivas;
+   buscamos pertenencia con nuestro propósito y equidad en cada acción.
+7. **Innovación social y sostenibilidad.** Somos un laboratorio de innovación social que
+   transforma problemas complejos en soluciones creativas, integrando conocimientos
+   ancestrales con tecnologías modernas y aplicando modelos de desarrollo sostenible que
+   mejoran la calidad de vida y la resiliencia de las comunidades.
+8. **Empoderamiento y autodeterminación comunitaria.** Trabajamos con las comunidades
+   indígenas para que fortalezcan sus capacidades y su autodeterminación, sean
+   protagonistas de su propio desarrollo y lideren sus proyectos, con participación
+   activa y voces en el núcleo de nuestras acciones.
+9. **Conexión y reconciliación.** Actuamos como puente entre la periferia y el centro,
+   promoviendo el diálogo genuino, el orgullo identitario y una sociedad donde la
+   diversidad y la inclusión sean la norma.
+10. **Transparencia y responsabilidad.** Nos comprometemos con la rendición de cuentas y
+    el uso ético y eficiente de los recursos, midiendo y comunicando el impacto de
+    nuestros proyectos con mejora continua.
+11. **Conexión global y local.** Conectamos la acción local con una perspectiva global,
+    abordando desafíos globales con soluciones locales y una red de aliados que comparten
+    nuestro compromiso con la justicia social, la sostenibilidad y la diversidad cultural.
+12. **Honrar la vida.** Proteger y promover la vida está en el corazón de todo lo que
+    hacemos; integramos una visión profunda y espiritual y nos conectamos con lo
+    trascendental para decidir orientados al bien común.
 
 ## Personalidad de marca
 

@@ -6,7 +6,7 @@
 
 ## Forma (radios de borde)
 
-- **Botones: radio 4 px** (skill `references/web.md`). Esquinas levemente
+- **Botones: radio 4 px** (`skill/fucai-branding/references/web.md`). Esquinas levemente
   redondeadas, nunca pastilla completa ni cuadrado duro.
 - Tarjetas/contenedores: redondeo sutil y consistente; mismo criterio que botones.
 

@@ -38,5 +38,5 @@
 ## Tokens y script
 
 `text.heading`, `font.size.h1`/`h2`, `brand.primary` (filete). Builder dedicado:
-> [Pendiente: añadir `actaHeader()` a `fucai_docx.js`. Hoy se compone con
+> [Pendiente: añadir `actaHeader()` a `scripts/generators/fucai_docx.js`. Hoy se compone con
 > `textHeader()` + `h1/h2`; el skill no trae un builder específico de acta.]

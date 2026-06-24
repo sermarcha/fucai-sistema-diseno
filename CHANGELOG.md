@@ -14,10 +14,33 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 - Poblar `02_identidad-visual/iconos/` con los `.svg` y añadir el `.otf` de Space Grotesk.
 - Completar `scripts/build-skill.js` (compilador pleno: regenerar tablas [GEN] y empaquetar el `.skill`).
 - Tokenizar rampas de data-viz, radios/sombras y movimiento (hoy [Pendiente]).
-- Confirmar contra el Manual de Identidad los valores provisionales de la
-  submarca Tienda FUCAI (terracota y ocre) en `03_tokens/temas/tienda-fucai.json`.
-- Resolver los marcadores `> [Pendiente: …]` de la capa estratégica (misión,
-  visión, valores, arquetipo, posicionamiento formal) con dirección.
+- Definir el posicionamiento formal y el arquetipo de marca (misión, visión y
+  valores ya cargados en v1.1.0).
+
+## [1.1.0] — 2026-06-24
+
+Incorpora las respuestas del dueño de marca a los puntos de revisión humana del
+informe v1.0.0 (`07_gobernanza/informe-revision.md`, adenda).
+
+### Añadido
+- **Misión, Visión y 12 Valores oficiales** de FUCAI en
+  `01_fundamentos/plataforma-de-marca.md`.
+- **Asignación de roles** en `07_gobernanza/modelo-de-gobernanza.md`:
+  Dueño de marca = Fundación Caminos de Identidad (FUCAI, institucional);
+  Mantenedor = Sergio Martínez.
+- Adenda de respuestas de revisión humana en `07_gobernanza/informe-revision.md`.
+
+### Cambiado
+- **Submarca Tienda** (`03_tokens/temas/tienda-fucai.json`): por decisión del dueño de
+  marca usa la **paleta FUCAI**; se descartan los provisionales terracota/ocre
+  (`03_tokens/taxonomia.md` actualizado). Los 4 temas siguen con claves idénticas.
+- **Referencias a archivos normalizadas** a rutas repo-relativas en fichas de
+  componente, identidad visual y gobernanza.
+
+### Pendiente (permanece, requiere decisión humana)
+- Posicionamiento formal y arquetipo de marca; enunciado de personalidad (opcional).
+- Canal de issues/PR (URL del remoto en GitHub).
+- Hoja de ruta técnica aprobada: `build-skill.js` pleno y tokens diferidos.
 
 ## [1.0.0] — 2026-06-24
 

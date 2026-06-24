@@ -5,7 +5,7 @@
 
 ## Anatomía
 
-Fondo blanco + barra naranja delgada arriba (`brand.primary`) + `logo_naranja.png`
+Fondo blanco + barra naranja delgada arriba (`brand.primary`) + `02_identidad-visual/logo/logo_naranja.png`
 pequeño arriba a la derecha + título Space Grotesk naranja (26–32 pt) + cuerpo
 Calibri negro + **barra arena al pie** (`surface.section.pptx`) con la firma.
 

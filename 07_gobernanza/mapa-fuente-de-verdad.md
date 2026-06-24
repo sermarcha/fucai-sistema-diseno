@@ -43,7 +43,7 @@ regenera el build.
 ```
 
 Hoy `lib/` resuelve los tokens en vivo y los generadores ya los consumen;
-`build-skill.js` es un **esqueleto documentado** que materializará [A] y [B].
+`scripts/build-skill.js` es un **esqueleto documentado** que materializará [A] y [B].
 
-> [Pendiente: completar `build-skill.js` para que regenere automáticamente las
+> [Pendiente: completar `scripts/build-skill.js` para que regenere automáticamente las
 > tablas `[GEN]` y empaquete el `.skill`. El contrato y el andamiaje ya están.]

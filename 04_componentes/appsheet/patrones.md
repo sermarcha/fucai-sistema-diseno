@@ -13,7 +13,7 @@
 
 ## Anatomía / patrones de vista
 
-- **Barra superior** naranja con `logo_blanco.png`; sobre fondo claro, `logo_naranja.png`.
+- **Barra superior** naranja con `02_identidad-visual/logo/logo_blanco.png`; sobre fondo claro, `02_identidad-visual/logo/logo_naranja.png`.
 - **Tarjetas/tablas:** encabezado naranja con texto blanco; filas/tarjetas alternas
   en arena claro.
 - **Acciones:** primaria naranja; secundaria con contorno naranja sobre fondo claro.

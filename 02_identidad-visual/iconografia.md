@@ -7,7 +7,7 @@
 
 - **Outline (trazo), no relleno.** Líneas geométricas limpias, compatibles con la
   geometría del logo.
-- **Grosor de trazo: 2 px** (skill `references/photography.md`).
+- **Grosor de trazo: 2 px** (`skill/fucai-branding/references/photography.md`).
 - Color: naranja o negro; **verde solo** en íconos de territorio/naturaleza/medio
   ambiente. Nunca mezclar estilos de ilustración/ícono en una misma pieza.
 - Solo colores de la paleta (`color.*`).

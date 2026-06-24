@@ -1,37 +1,37 @@
 {
-  "$description": "Tema TIENDA FUCAI — submarca comercial de productos artesanales. Subpaleta terracota/ocre/verde Amazonas/arena claro sobre la base FUCAI. SOLO materiales de tienda/producto; no mezclar en documentos institucionales. PROVISIONAL: terracota (#B5532E) y ocre (#C8923A) pendientes de confirmar contra el Manual de Identidad.",
-  "$meta": { "theme": "tienda-fucai", "extends": "tokens.json", "default": false, "provisional": ["brand.primary", "brand.secondary", "surface.title", "text.heading"] },
+  "$description": "Tema TIENDA FUCAI — submarca comercial de productos artesanales. Por decisión del dueño de marca (FUCAI, 2026-06) la Tienda usa la MISMA paleta que FUCAI: no introduce subpaleta propia (terracota/ocre quedan descartados). Se conserva como tema independiente por si en el futuro la submarca diverge. Mismas claves que los demás temas.",
+  "$meta": { "theme": "tienda-fucai", "extends": "tokens.json", "default": false, "palette": "FUCAI base" },
   "surface": {
     "$type": "color",
-    "page":    { "$value": "#F6F3E9" },
+    "page":    { "$value": "#FFFFFF" },
     "warmth":  { "$value": "#EDE8D3" },
-    "title":   { "$value": "#B5532E" },
+    "title":   { "$value": "#E94513" },
     "section": { "$value": "#EDE8D3" }
   },
   "brand": {
     "$type": "color",
-    "primary":   { "$value": "#B5532E" },
-    "secondary": { "$value": "#C8923A" },
+    "primary":   { "$value": "#E94513" },
+    "secondary": { "$value": "#EDE8D3" },
     "territory": { "$value": "#2D6A4F" }
   },
   "accent": {
     "$type": "color",
-    "appsheet":      { "$value": "#B5532E" },
-    "soft":          { "$value": "#C8923A" },
+    "appsheet":      { "$value": "#F4A28A" },
+    "soft":          { "$value": "#F4A28A" },
     "territorySoft": { "$value": "#74B597" }
   },
   "text": {
     "$type": "color",
     "body":    { "$value": "#000000" },
     "onColor": { "$value": "#FFFFFF" },
-    "heading": { "$value": "#B5532E" },
+    "heading": { "$value": "#E94513" },
     "caption": { "$value": "#333333" },
     "footer":  { "$value": "#666666" }
   },
   "component": {
     "$type": "color",
-    "docx": { "coverBand": { "$value": "#EDE8D3" }, "tableHeaderBg": { "$value": "#B5532E" } },
-    "pptx": { "titleBg": { "$value": "#B5532E" } },
-    "appsheet": { "primary": { "$value": "#B5532E" } }
+    "docx": { "coverBand": { "$value": "#EDE8D3" }, "tableHeaderBg": { "$value": "#E94513" } },
+    "pptx": { "titleBg": { "$value": "#E94513" } },
+    "appsheet": { "primary": { "$value": "#E94513" } }
   }
 }

@@ -16,7 +16,7 @@ o mensaje institucional sobre fondo de color.
 ## Reglas críticas
 
 - Un elemento focal; texto breve y legible a tamaño móvil.
-- `logo_blanco.png` sobre fondos oscuros/color; contraste ≥ 4.5:1 sobre foto.
+- `02_identidad-visual/logo/logo_blanco.png` sobre fondos oscuros/color; contraste ≥ 4.5:1 sobre foto.
 - Verde solo territorio; consentimiento de imagen obligatorio.
 
 ## Cuándo usar / cuándo no

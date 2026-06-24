@@ -7,7 +7,7 @@
 ## Anatomía
 
 Fondo de color completo (`pptx.titleSlide.bg` → `surface.title.pptx`, naranja por
-defecto; verde para mazos de territorio; negro alternativo) + `logo_blanco.png` +
+defecto; verde para mazos de territorio; negro alternativo) + `02_identidad-visual/logo/logo_blanco.png` +
 título Space Grotesk blanco (36–44 pt) + subtítulo + un pilar en cursiva + URL.
 
 ## Variantes
@@ -22,7 +22,7 @@ título Space Grotesk blanco (36–44 pt) + subtítulo + un pilar en cursiva + U
 ## Reglas técnicas críticas
 
 - Fondo de color **solo en portada/sección/cierre**; las de contenido van blancas.
-- Sobre fondo de color, usar `logo_blanco.png` y texto blanco (`text.onColor`).
+- Sobre fondo de color, usar `02_identidad-visual/logo/logo_blanco.png` y texto blanco (`text.onColor`).
 - Contraste naranja↔blanco válido por ser título grande, no cuerpo.
 
 ## Cuándo usar / cuándo no

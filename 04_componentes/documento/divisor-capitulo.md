@@ -35,5 +35,5 @@ blanco o banda arena de acento. Mucho aire alrededor (un solo elemento focal).
 
 `text.heading`, `surface.warmth.docx` (acento opcional), `font.family.heading`.
 Builder dedicado:
-> [Pendiente: añadir `chapterDivider()` a `fucai_docx.js` que inserte la tabla de
+> [Pendiente: añadir `chapterDivider()` a `scripts/generators/fucai_docx.js` que inserte la tabla de
 > ancho completo en el cuerpo. Hoy se construye a mano siguiendo esta regla.]

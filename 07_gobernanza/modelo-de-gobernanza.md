@@ -36,5 +36,16 @@
 | Corrección de texto / typo / doc | Mantenedor | PATCH |
 | Filosofía / plataforma de marca | Dueño de marca | MAJOR |
 
-> [Pendiente: asignar las personas concretas a cada rol (Dueño de marca,
-> Mantenedores) y el canal de issues/PR del repositorio.]
+## Asignación de roles (FUCAI, 2026-06)
+
+| Rol | Asignado a |
+|-----|-----------|
+| **Dueño de marca (Guardián)** | Fundación Caminos de Identidad — FUCAI (institucional) |
+| **Mantenedor** | Sergio Martínez |
+
+El Dueño de marca recae en la institución (FUCAI); las decisiones de marca y los
+cambios MAJOR se validan a su nombre. Sergio Martínez ejerce como Mantenedor: revisa
+y fusiona los Pull Requests a `main` y custodia la coherencia del repositorio.
+
+> [Pendiente: definir el canal concreto de issues/PR del repositorio (p. ej. la URL
+> del remoto en GitHub) cuando se publique.]

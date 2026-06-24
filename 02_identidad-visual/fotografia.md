@@ -20,7 +20,7 @@
 - **Luz natural, color auténtico:** sin filtros que distorsionen. Tonos
   tierra/verdes/ocres que complementan la paleta (`03_tokens/tokens.json`).
 - **Texto sobre foto** solo con degradado oscuro y contraste ≥ 4.5:1
-  (ver `06_accesibilidad/`). Sobre fondos oscuros, usar `logo_blanco.png`.
+  (ver `06_accesibilidad/`). Sobre fondos oscuros, usar `02_identidad-visual/logo/logo_blanco.png`.
 - **Pies de foto que cuenten algo y con crédito visible:** "Líderes Wayúu durante
   la Escuela de Gobernanza, La Guajira, 2024", no "foto del taller".
 

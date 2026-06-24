@@ -89,15 +89,14 @@ cambian los valores. Permite reusar un mismo componente con distinta piel.
 
 - `claro.json` — tema por defecto; coincide con la paleta institucional base.
 - `oscuro.json` — modo oscuro: fondo negro, texto arena (Manual v1.1).
-- `tienda-fucai.json` — submarca comercial; subpaleta terracota/ocre/verde
-  Amazonas/arena claro. **Solo** materiales de tienda/producto.
+- `tienda-fucai.json` — submarca comercial. Por decisión del dueño de marca
+  (FUCAI, 2026-06) usa la **misma paleta que FUCAI**; no tiene subpaleta propia.
 - `cobranding-naane.json` — proyecto CC217 (AICS/OIKOS): hereda la paleta FUCAI;
   la diferencia es el *lockup* de financiador y los logos (skill `naane-branding`),
   no el color.
 
-> Nota: los valores de terracota y ocre de `tienda-fucai.json` son
-> **provisionales** hasta confirmarlos contra el Manual de Identidad. Ver
-> `CHANGELOG.md` → *Por hacer*.
+> Nota: la submarca Tienda usa la paleta FUCAI por decisión del dueño de marca
+> (FUCAI, 2026-06); se descartaron los valores provisionales de terracota y ocre.
 
 ## Reglas innegociables de la taxonomía
 
