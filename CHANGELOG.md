@@ -11,6 +11,15 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 ## [No publicado]
 
 ### Añadido (sin publicar)
+- **`04_componentes/web/squarespace/`**: se crean los archivos de implementación que
+  la guía referenciaba pero no existían — `fucai-custom.css` (11 bloques comentados:
+  fuentes, header numerado, botones, enlaces, hero, imágenes, aliados, blog,
+  newsletter, footer, accesibilidad) y `bloque-cifras.html` (contadores con
+  IntersectionObserver y `prefers-reduced-motion`).
+- **`04_componentes/web/GUIA-SQUARESPACE.md`** reescrita como guía paso a paso:
+  §0 requisitos y glosario ES/EN de la interfaz, rutas exactas del panel 7.1, valores
+  exactos por campo, punto de verificación («✓ Verifica») por sección y nueva tabla
+  §12 de errores comunes y soluciones.
 - **`04_componentes/cartografia/`** (Borrador): componente que fija las reglas de marca
   para mapas y **delega la implementación** cartográfica (estilos, gradientes por métrica,
   plantillas de impresión, KML) al repo **`fucai-geo`** (`qgis/sistema-diseno-mapas.md`).

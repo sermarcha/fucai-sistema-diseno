@@ -1,0 +1,323 @@
+/* ============================================================
+   FUCAI — CSS personalizado para Squarespace 7.1
+   Sitio: www.fucaicolombia.org
+   Fuente de verdad: 03_tokens/tokens.json (v1.7.0)
+   Pegar COMPLETO en: Sitio web → Herramientas del sitio web →
+   CSS personalizado. Ver GUIA-SQUARESPACE.md §3.
+   ANTES DE PUBLICAR: sustituir HERO_ID y ALIADOS_ID (ver §9).
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   BLOQUE 1 — FUENTES
+   Importa Carlito (sustituto métrico de Calibri, no está en el
+   selector de Squarespace) y ajusta tracking de títulos.
+   ------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body,
+p,
+.sqs-block-content p,
+.sqs-block-html,
+.list-item-content__description,
+.blog-item-content .sqs-block-content {
+  font-family: 'Carlito', 'Calibri', Arial, sans-serif !important;
+}
+
+p, .sqs-block-content p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', 'Arial Black', sans-serif !important;
+}
+
+h1 { letter-spacing: -0.03em; line-height: 1.0; }
+h2 { letter-spacing: -0.03em; line-height: 1.05; }
+h3 { letter-spacing: -0.01em; }
+
+/* Cursiva editorial (citas, firma) también en Carlito */
+em, i, blockquote {
+  font-family: 'Carlito', 'Calibri', Arial, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 2 — HEADER
+   Fondo translúcido con blur, hairline inferior, numeración
+   automática 01–06 del menú (¡no escribir números en el menú!),
+   subrayado naranja animado en hover/activo.
+   ------------------------------------------------------------ */
+#header {
+  background: rgba(255, 255, 255, 0.88) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Numeración del menú de escritorio con contadores CSS */
+.header-nav-list {
+  counter-reset: fucai-nav;
+}
+.header-nav-item {
+  counter-increment: fucai-nav;
+}
+.header-nav-item > a::before {
+  content: counter(fucai-nav, decimal-leading-zero) ' ';
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72em;
+  color: #E94513;
+  font-variant-numeric: tabular-nums;
+  margin-right: 0.35em;
+  vertical-align: 0.08em;
+}
+
+/* Subrayado animado en hover/activo (sustituye el estilo nativo) */
+.header-nav-item > a {
+  position: relative;
+  background-image: none !important;
+}
+.header-nav-item > a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #E94513;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 250ms cubic-bezier(0.2, 0, 0, 1);
+}
+.header-nav-item > a:hover::after,
+.header-nav-item--active > a::after {
+  transform: scaleX(1);
+}
+
+/* Numeración del menú móvil */
+.header-menu-nav-list {
+  counter-reset: fucai-mnav;
+}
+.header-menu-nav-item a[data-folder-id]::before,
+.header-menu-nav-item > a::before {
+  counter-increment: fucai-mnav;
+  content: counter(fucai-mnav, decimal-leading-zero);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.5em;
+  color: #E94513;
+  font-variant-numeric: tabular-nums;
+  margin-right: 0.6em;
+  vertical-align: 0.35em;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 3 — BOTONES
+   Primario: naranja #E94513, radio 4 px, elevación al hover.
+   Secundario: borde naranja, fondo transparente.
+   motion: 150 ms cubic-bezier(0.2,0,0,1)  (motion.duration.fast)
+   ------------------------------------------------------------ */
+.sqs-button-element--primary,
+.sqs-block-button-element--primary,
+.header-actions .btn,
+.newsletter-form-button {
+  background-color: #E94513 !important;
+  color: #FFFFFF !important;
+  border-radius: 4px !important;
+  border: none;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 500;
+  transition: transform 150ms cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 150ms cubic-bezier(0.2, 0, 0, 1),
+              background-color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+.sqs-button-element--primary:hover,
+.sqs-block-button-element--primary:hover,
+.header-actions .btn:hover,
+.newsletter-form-button:hover {
+  background-color: #C13A10 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(233, 69, 19, 0.25);
+}
+
+.sqs-button-element--secondary,
+.sqs-block-button-element--secondary {
+  background: transparent !important;
+  color: #E94513 !important;
+  border: 1.5px solid #E94513 !important;
+  border-radius: 4px !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 500;
+  transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1),
+              color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+.sqs-button-element--secondary:hover,
+.sqs-block-button-element--secondary:hover {
+  background: #E94513 !important;
+  color: #FFFFFF !important;
+}
+
+/* En secciones oscuras el secundario usa borde arena 40% */
+.section-theme--dark .sqs-button-element--secondary,
+[data-section-theme*="dark"] .sqs-block-button-element--secondary {
+  border-color: rgba(237, 232, 211, 0.4) !important;
+  color: #EDE8D3 !important;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 4 — ENLACES
+   Naranja, sin subrayado; subrayado solo al hover.
+   ------------------------------------------------------------ */
+.sqs-block-content p a,
+.sqs-block-content li a {
+  color: #E94513;
+  text-decoration: none;
+  background-image: none !important;
+  transition: color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+.sqs-block-content p a:hover,
+.sqs-block-content li a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 5 — HERO: zoom lento de la imagen de fondo
+   Requiere sustituir HERO_ID por el data-section-id real (§9).
+   Para repetir en otros heros: añade selectores separados
+   por coma con el mismo patrón.
+   ------------------------------------------------------------ */
+@keyframes fucai-hero-zoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1.0); }
+}
+section[data-section-id="HERO_ID"] .section-background img {
+  animation: fucai-hero-zoom 14s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 6 — IMÁGENES: zoom suave al hover en imágenes enlazadas
+   (tarjetas de territorio, galerías, miniaturas de blog).
+   ------------------------------------------------------------ */
+.sqs-block-image .image-block-wrapper,
+.summary-thumbnail,
+.blog-basic-grid .image-wrapper {
+  overflow: hidden;
+  border-radius: 6px;
+}
+.sqs-block-image a img,
+.summary-thumbnail img,
+.blog-basic-grid a .image-wrapper img {
+  transition: transform 450ms cubic-bezier(0.2, 0, 0, 1);
+}
+.sqs-block-image a:hover img,
+.summary-thumbnail:hover img,
+.blog-basic-grid a:hover .image-wrapper img {
+  transform: scale(1.035);
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 7 — ALIADOS: logos en gris, color al hover
+   Requiere sustituir ALIADOS_ID por el data-section-id real (§9).
+   ------------------------------------------------------------ */
+section[data-section-id="ALIADOS_ID"] img {
+  filter: grayscale(1);
+  opacity: 0.65;
+  transition: filter 250ms cubic-bezier(0.2, 0, 0, 1),
+              opacity 250ms cubic-bezier(0.2, 0, 0, 1);
+}
+section[data-section-id="ALIADOS_ID"] img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 8 — BLOG: títulos y metadatos técnicos
+   ------------------------------------------------------------ */
+.summary-title,
+.summary-title a,
+.blog-title,
+.blog-basic-grid .blog-title {
+  font-family: 'Space Grotesk', sans-serif !important;
+  letter-spacing: -0.01em;
+}
+.summary-title a:hover,
+.blog-basic-grid a:hover .blog-title {
+  color: #E94513 !important;
+}
+.summary-metadata-item,
+.summary-metadata-item a,
+.blog-meta-item,
+.blog-meta-item a,
+.blog-categories-list a {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #E94513 !important;
+  font-variant-numeric: tabular-nums;
+}
+/* Cita destacada dentro de una entrada */
+.blog-item-content blockquote {
+  border-left: 3px solid #E94513;
+  padding-left: 24px;
+  font-style: italic;
+  font-size: 1.3em;
+  line-height: 1.45;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 9 — NEWSLETTER (Bloque de boletín)
+   ------------------------------------------------------------ */
+.newsletter-form-field-element {
+  font-family: 'Carlito', 'Calibri', Arial, sans-serif !important;
+  border: 1px solid #CCCCCC !important;
+  border-radius: 4px !important;
+  background: #FFFFFF !important;
+}
+.newsletter-form-field-element:focus {
+  border-color: #E94513 !important;
+  outline: none;
+}
+.newsletter-form-header-title {
+  font-family: 'Space Grotesk', sans-serif !important;
+  letter-spacing: -0.02em;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 10 — FOOTER: hover cálido en enlaces
+   (#F4A28A = color.durazno; nunca naranja puro sobre oscuro)
+   ------------------------------------------------------------ */
+footer a,
+#footer-sections a {
+  transition: color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+footer a:hover,
+#footer-sections a:hover {
+  color: #F4A28A !important;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 11 — ACCESIBILIDAD
+   Anillo de foco visible + respeto a reduced motion.
+   NO ELIMINAR.
+   ------------------------------------------------------------ */
+a:focus-visible,
+button:focus-visible,
+.sqs-button-element--primary:focus-visible,
+input:focus-visible {
+  outline: 2px solid #E94513 !important;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   FIN — FUCAI custom CSS
+   Nuestro centro es la periferia. · www.fucaicolombia.org
+   ============================================================ */
