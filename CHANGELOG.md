@@ -11,6 +11,14 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 ## [No publicado]
 
 ### Añadido (sin publicar)
+- **`07_gobernanza/revision-redes-2026-07.md`**: revisión de los cinco últimos
+  carruseles de redes frente al sistema; define el punto medio (proporción
+  60-25-10-5 a nivel de carrusel, máx. 2 láminas intensas, prohibición de imágenes
+  IA para representar personas/comunidades, texturas culturales con condiciones).
+- **`04_componentes/social/carrusel.md`** reescrito a Borrador avanzado: principio
+  rector, anatomía de 5–9 láminas (gancho → desarrollo → dato héroe → cierre),
+  reglas duras, recursos autorizados con condiciones, 1080×1350 como default y
+  lista de chequeo de 10 puntos.
 - **`04_componentes/web/squarespace/`**: se crean los archivos de implementación que
   la guía referenciaba pero no existían — `fucai-custom.css` (11 bloques comentados:
   fuentes, header numerado, botones, enlaces, hero, imágenes, aliados, blog,
