@@ -1,6 +1,6 @@
 {
   "name": "sistema-diseno-fucai",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "private": true,
   "description": "Sistema de diseño y fuente única de verdad de la marca de la Fundación Caminos de Identidad (FUCAI). NIT 800.173.574-1. Nuestro centro es la periferia.",
   "license": "UNLICENSED",
@@ -11,6 +11,7 @@
     "tokens:check": "node -e \"JSON.parse(require('fs').readFileSync('03_tokens/tokens.json','utf8')); console.log('tokens.json: JSON válido')\"",
     "build:skill": "node scripts/build-skill.js",
     "qa:docx": "python3 scripts/check_fucai.py",
+    "specimen": "node scripts/generators/fucai_specimen.js",
     "package:skill": "node scripts/build-skill.js --package"
   },
   "dependencies": {

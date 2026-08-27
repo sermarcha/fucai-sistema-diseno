@@ -7,7 +7,11 @@
 
 Tabla de una celda, ancho completo, fondo arena (`docx.cover.band` →
 `surface.warmth.docx`), con: fecha, proyecto (texto abierto) y slogan en cursiva
-naranja. Texto en Calibri.
+**gris texto** (`text.caption`). Texto en Calibri.
+
+> Nota de accesibilidad (2026-08): el slogan iba en naranja sobre arena = 3.2:1,
+> insuficiente para texto pequeño (mínimo 4.5:1). Se cambió a gris texto (10.3:1).
+> El naranja sobre arena queda reservado a títulos grandes en negrita.
 
 ## Variantes
 
@@ -33,4 +37,4 @@ el contenido de portada sea corto.
 
 ## Tokens y script
 
-`docx.cover.band`, `surface.warmth.docx`, `brand.primary` (slogan). Producido por `coverFooterBand()`.
+`docx.cover.band`, `surface.warmth.docx`, `text.caption` (slogan). Producido por `coverFooterBand()`.

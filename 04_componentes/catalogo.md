@@ -22,6 +22,7 @@
 | Encabezado de acta | `documento/encabezado-acta.md` | Borrador | `fucai_docx.js → textHeader` + bloque de título |
 | Tabla de firmas | `documento/tabla-firmas.md` | Borrador | primitivas de tabla (sin builder propio) |
 | Divisor de capítulo | `documento/divisor-capitulo.md` | Borrador | tabla de ancho completo en el cuerpo |
+| One-pager de impacto | `documento/one-pager-impacto.md` | Borrador | `textHeader()` + `heroNumber()` + `dataTable()` (sin builder propio) |
 | Portada de presentación | `presentacion/portada-titulo.md` | Estable | `fucai_pptx.js → titleSlide / sectionSlide` |
 | Slide de contenido | `presentacion/slide-contenido.md` | Estable | `fucai_pptx.js → contentSlide` |
 | Patrones de vista AppSheet | `appsheet/patrones.md` | Borrador | tokens `appsheet.*` (sin builder) |
@@ -36,6 +37,9 @@
 | Campaña de mailing | `email/campana-mailing.md` | Borrador | guía de campaña (estrategia) |
 | Botón web | `web/boton.md` | Borrador | HTML/React (tokens) |
 | Card web | `web/card.md` | Borrador | HTML/React (tokens) |
+| Cartografía (mapas) | `cartografia/README.md` | Borrador | reglas de marca; implementación en repo `fucai-geo` |
+| Historia de impacto (formato editorial VJACel) | `../05_contenido-lenguaje/historia-de-impacto.md` | Borrador | formato transversal (carrusel, boletín, informes, web) |
+| Specimen visual del sistema | — | Estable | `scripts/generators/fucai_specimen.js → dist/specimen.html` |
 
 ## Cómo leer una ficha
 

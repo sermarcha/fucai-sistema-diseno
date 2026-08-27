@@ -69,6 +69,7 @@ function buildBrandConstants() {
 
 /* ===================== [B] verificación de tablas [GEN] =================== */
 const GEN_TARGETS = [
+  "GUIA-RAPIDA.md",
   "02_identidad-visual/color.md",
   "02_identidad-visual/tipografia.md",
   "02_identidad-visual/espaciado-y-layout.md",
@@ -119,6 +120,124 @@ function checkGenTables() {
     else rowsChecked += 7;
   }
   return { issues, tablesChecked, rowsChecked };
+}
+
+/* ============ [B2] contraste WCAG calculado desde los tokens ============== */
+// Fórmula WCAG 2.x de luminancia relativa y razón de contraste.
+function relLum(hex) {
+  const h = String(hex).replace("#", "");
+  const ch = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255)
+    .map((c) => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)));
+  return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
+}
+function contrast(hexA, hexB) {
+  const la = relLum(hexA), lb = relLum(hexB);
+  const hi = Math.max(la, lb), lo = Math.min(la, lb);
+  return (hi + 0.05) / (lo + 0.05);
+}
+const fmtRatio = (r) => String(Math.round(r * 10) / 10) + ":1"; // 21:1, 3.9:1…
+
+// Verifica las tablas marcadas "[GEN] contraste calculado desde tokens.json":
+// cada fila con exactamente dos tokens `color.*` debe declarar la razón calculada.
+const CONTRAST_TARGETS = ["GUIA-RAPIDA.md", "02_identidad-visual/color.md", "06_accesibilidad/estandar-accesibilidad.md"];
+const CONTRAST_RE = /\[GEN\]\s*contraste calculado desde tokens\.json/;
+function checkContrastTables() {
+  const issues = [];
+  let tablesChecked = 0, rowsChecked = 0;
+  for (const rel of CONTRAST_TARGETS) {
+    const p = path.join(ROOT, rel);
+    if (!fs.existsSync(p)) { issues.push(rel + ": ARCHIVO FALTANTE"); continue; }
+    let inTable = false, sawRow = false;
+    for (const line of fs.readFileSync(p, "utf8").split("\n")) {
+      if (CONTRAST_RE.test(line)) { inTable = true; sawRow = false; tablesChecked++; continue; }
+      if (!inTable) continue;
+      if (!line.trim().startsWith("|")) { if (sawRow) inTable = false; continue; }
+      sawRow = true;
+      if (/^\|[\s|:-]+\|?\s*$/.test(line)) continue;
+      const refs = [...line.matchAll(/`(color\.[a-z\-]+)`/g)].map((m) => m[1]);
+      const ratio = line.match(/(\d+(?:\.\d+)?):1/);
+      if (refs.length !== 2 || !ratio) continue;
+      for (const ref of refs) if (!(ref in T.flat)) issues.push(rel + ": token inexistente `" + ref + "`");
+      if (refs.every((r) => r in T.flat)) {
+        rowsChecked++;
+        const want = fmtRatio(contrast(T.resolve(T.flat[refs[0]]), T.resolve(T.flat[refs[1]])));
+        if (ratio[0] !== want) issues.push(rel + ": " + refs.join(" ↔ ") + " declara " + ratio[0] + " pero el cálculo WCAG da " + want);
+      }
+    }
+  }
+  return { issues, tablesChecked, rowsChecked };
+}
+
+/* ====== [B3] temas: mismas claves, paleta pura y sin deriva de valores ===== */
+const THEME_DIR = path.join(ROOT, "03_tokens", "temas");
+// Mapa clave-de-tema → token base equivalente (para verificar `claro`, el default).
+const THEME_TO_BASE = {
+  "surface.page": "surface.page.docx", "surface.warmth": "surface.warmth.docx",
+  "surface.title": "surface.title.pptx", "surface.section": "surface.section.pptx",
+  "component.docx.coverBand": "docx.cover.band", "component.docx.tableHeaderBg": "docx.tableHeader.bg",
+  "component.pptx.titleBg": "pptx.titleSlide.bg", "component.appsheet.primary": "appsheet.primary",
+};
+function themeLeaves(obj, prefix, out) {
+  for (const k of Object.keys(obj)) {
+    if (k.startsWith("$")) continue;
+    const v = obj[k];
+    if (v && typeof v === "object" && "$value" in v) out[prefix.concat(k).join(".")] = String(v.$value).toUpperCase();
+    else if (v && typeof v === "object") themeLeaves(v, prefix.concat(k), out);
+  }
+  return out;
+}
+function checkThemes() {
+  const issues = [];
+  const palette = new Set(Object.keys(T.leaves).filter((k) => k.startsWith("color."))
+    .map((k) => String(T.resolve(T.leaves[k])).toUpperCase()));
+  const themes = {};
+  for (const f of fs.readdirSync(THEME_DIR).filter((x) => x.endsWith(".json"))) {
+    themes[f] = themeLeaves(JSON.parse(fs.readFileSync(path.join(THEME_DIR, f), "utf8")), [], {});
+  }
+  const names = Object.keys(themes).sort();
+  if (!names.length) return { issues: ["temas/: sin archivos"], themesChecked: 0 };
+  // 1) mismas claves en todos los temas
+  const refKeys = Object.keys(themes[names[0]]).sort().join("|");
+  for (const n of names) {
+    if (Object.keys(themes[n]).sort().join("|") !== refKeys) issues.push("temas/" + n + ": claves distintas al resto de temas");
+    // 2) todo valor pertenece a la paleta de primitivos
+    for (const [k, v] of Object.entries(themes[n])) if (!palette.has(v)) issues.push("temas/" + n + ": " + k + " = " + v + " no es un primitivo de color.*");
+  }
+  // 3) el tema `claro` (default) coincide con los tokens base resueltos
+  const claro = themes["claro.json"] || {};
+  for (const [k, v] of Object.entries(claro)) {
+    const base = THEME_TO_BASE[k] || k;
+    if (!(base in T.leaves)) { issues.push("temas/claro.json: " + k + " sin token base equivalente (" + base + ")"); continue; }
+    const want = String(T.resolve(T.leaves[base])).toUpperCase();
+    if (v !== want) issues.push("temas/claro.json: " + k + " = " + v + " ≠ token base " + base + " = " + want);
+  }
+  // 4) tienda-fucai y cobranding-naane usan la paleta FUCAI (decisión 2026-06): idénticos a claro
+  for (const n of ["tienda-fucai.json", "cobranding-naane.json"]) {
+    if (!themes[n]) continue;
+    for (const [k, v] of Object.entries(themes[n])) if (claro[k] !== undefined && v !== claro[k]) issues.push("temas/" + n + ": " + k + " = " + v + " difiere de claro (" + claro[k] + ") — la decisión 2026-06 fija paleta FUCAI");
+  }
+  return { issues, themesChecked: names.length };
+}
+
+/* ========= [B4] CSS/HTML de Squarespace: solo hex de la paleta ============ */
+const WEB_IMPL_DIR = path.join(ROOT, "04_componentes", "web", "squarespace");
+function checkWebCss() {
+  const issues = [];
+  let filesChecked = 0, hexChecked = 0;
+  if (!fs.existsSync(WEB_IMPL_DIR)) return { issues, filesChecked, hexChecked };
+  const palette = new Set(Object.keys(T.leaves).filter((k) => k.startsWith("color."))
+    .map((k) => String(T.resolve(T.leaves[k])).toUpperCase()));
+  for (const f of fs.readdirSync(WEB_IMPL_DIR).filter((x) => /\.(css|html)$/.test(x))) {
+    filesChecked++;
+    const src = fs.readFileSync(path.join(WEB_IMPL_DIR, f), "utf8");
+    for (const m of src.matchAll(/#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b/g)) {
+      let hex = m[1].toUpperCase();
+      if (hex.length === 3) hex = hex.split("").map((c) => c + c).join("");
+      hexChecked++;
+      if (!palette.has("#" + hex)) issues.push("web/squarespace/" + f + ": #" + hex + " no es un primitivo de color.* (deriva del CSS frente a los tokens)");
+    }
+  }
+  return { issues, filesChecked, hexChecked };
 }
 
 /* ===================== [A] emitir el paquete dist/skill =================== */
@@ -187,13 +306,29 @@ function emitBundle(outDir) {
 }
 
 /* ============== [A] empaquetar un skill subible a claude.ai ============== */
+// Borrado robusto: en Windows/monturas, un archivo copiado como solo-lectura
+// no se puede desenlazar (EPERM); se le devuelve permiso de escritura antes.
+function rmrf(p) {
+  if (!fs.existsSync(p)) return;
+  for (const e of fs.readdirSync(p, { withFileTypes: true })) {
+    const child = path.join(p, e.name);
+    if (e.isDirectory()) rmrf(child);
+    else { try { fs.chmodSync(child, 0o644); } catch (_) {} try { fs.rmSync(child, { force: true }); } catch (_) {} }
+  }
+  try { fs.rmSync(p, { recursive: true, force: true }); } catch (_) {}
+}
 function packageSkill() {
   const SRC = path.join(ROOT, "skill", "fucai-branding");
   const PKG_ROOT = path.join(ROOT, "dist", "skill-package");
   const PKG = path.join(PKG_ROOT, "fucai-branding");
-  fs.rmSync(PKG_ROOT, { recursive: true, force: true });
+  rmrf(PKG_ROOT);
   fs.mkdirSync(PKG, { recursive: true });
   fs.cpSync(SRC, PKG, { recursive: true }); // copia íntegra del skill (references, scripts, assets, SKILL.md)
+  // la copia puede heredar solo-lectura: devolver escritura para poder regenerar
+  (function chmodAll(p) { for (const e of fs.readdirSync(p, { withFileTypes: true })) {
+    const c = path.join(p, e.name);
+    if (e.isDirectory()) chmodAll(c); else { try { fs.chmodSync(c, 0o644); } catch (_) {} }
+  } })(PKG);
 
   // recursos del sistema de diseño (generados)
   emitBundle(path.join(PKG, "design-system"));
@@ -220,7 +355,9 @@ function packageSkill() {
     "- **Plataforma de marca** (Misión, Visión, Valores, pilares): `design-system/brand-platform.md`.\n" +
     "- **Guía de diseño completa** (color, tipografía, logo, componentes, accesibilidad, voz, modo oscuro): `DESIGN.md`.\n" +
     "- **Fuentes Space Grotesk** (Regular/Medium/Bold): `assets/fonts/`.\n";
-  fs.rmSync(path.join(PKG, "SKILL.md"), { force: true }); // venía de solo-lectura del skill
+  // sobrescribir en el sitio (algunos sistemas/monturas no permiten desenlazar)
+  try { fs.chmodSync(path.join(PKG, "SKILL.md"), 0o644); } catch (_) {}
+  try { fs.rmSync(path.join(PKG, "SKILL.md"), { force: true }); } catch (_) {}
   fs.writeFileSync(path.join(PKG, "SKILL.md"), fm + body + dsSection + "\n");
 
   console.log("desc length:", desc.length, "(<=200:", desc.length <= 200, ")");
@@ -244,6 +381,26 @@ function main() {
   if (r.issues.length) r.issues.forEach((i) => console.log("    ✗ " + i));
   else console.log("    ✓ todas las tablas [GEN] coinciden con los tokens");
 
+  console.log("\n[B2] Contraste WCAG calculado vs tablas de contraste:");
+  const rc = checkContrastTables();
+  console.log("    tablas: " + rc.tablesChecked + " | pares fondo/texto verificados: " + rc.rowsChecked);
+  if (rc.issues.length) rc.issues.forEach((i) => console.log("    ✗ " + i));
+  else console.log("    ✓ todas las razones de contraste declaradas coinciden con el cálculo");
+
+  console.log("\n[B3] Temas (03_tokens/temas/) vs tokens:");
+  const rt = checkThemes();
+  console.log("    temas verificados: " + rt.themesChecked + " (claves idénticas, paleta pura, claro = base, tienda/naane = claro)");
+  if (rt.issues.length) rt.issues.forEach((i) => console.log("    ✗ " + i));
+  else console.log("    ✓ los temas están en sincronía con los tokens");
+
+  console.log("\n[B4] Implementación web (Squarespace) vs paleta:");
+  const rw = checkWebCss();
+  console.log("    archivos: " + rw.filesChecked + " | hex verificados: " + rw.hexChecked);
+  if (rw.issues.length) rw.issues.forEach((i) => console.log("    ✗ " + i));
+  else console.log("    ✓ todos los hex del CSS/HTML pertenecen a la paleta");
+
+  const allIssues = [].concat(r.issues, rc.issues, rt.issues, rw.issues);
+
   if (PACKAGE) {
     const pkg = packageSkill();
     console.log("\n[A] skill empaquetado en:", path.relative(ROOT, pkg));
@@ -254,8 +411,8 @@ function main() {
     console.log("\n(usa --write para emitir dist/skill/ · --package para empaquetar el skill)");
   }
   console.log("=== fin ===\n");
-  return r.issues.length ? 1 : 0;
+  return allIssues.length ? 1 : 0;
 }
 
 if (require.main === module) process.exit(main());
-module.exports = { buildBrandConstants, checkGenTables, emitBundle, GEN_TARGETS };
+module.exports = { buildBrandConstants, checkGenTables, checkContrastTables, checkThemes, checkWebCss, emitBundle, GEN_TARGETS };

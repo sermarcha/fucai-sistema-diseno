@@ -36,10 +36,14 @@ hace una pieza minimalista y sofisticada a la vez (ver `01_fundamentos/principio
 
 | Token | Nombre | HEX | Uso |
 |-------|--------|-----|-----|
-| `color.durazno` | Naranja claro | #F4A28A | Llamadas, hover web, acentos suaves |
+| `color.durazno` | Naranja claro | #F4A28A | **Solo fondo** de llamadas/cajas (texto oscuro encima) o acento sobre oscuro; nunca texto ni hover sobre claro |
 | `color.arena-claro` | Arena claro | #F6F3E9 | Filas alternas, cajas informativas |
-| `color.verde-claro` | Verde claro | #74B597 | Secciones ambientales, badges de territorio |
-| `color.naranja-oscuro` | Naranja oscuro | #C13A10 | Extremo de rampa: hover/sombra/profundidad |
+| `color.verde-claro` | Verde claro | #74B597 | **Solo fondo** de secciones ambientales y badges (texto oscuro encima); nunca color de texto |
+| `color.naranja-oscuro` | Naranja oscuro | #C13A10 | Hover de acciones (`accent.hover`), sombra, profundidad |
+
+**Regla de tintes:** los tintes al 50 % (durazno, verde-claro) rinden ~2:1 contra
+blanco: son **superficies**, no tintas de texto ni de ícono. El hover de acciones
+sobre fondo claro es `accent.hover` (naranja oscuro, 5.4:1 con texto blanco).
 
 ## Grises de soporte (no son color de marca)
 
@@ -55,21 +59,28 @@ hace una pieza minimalista y sofisticada a la vez (ver `01_fundamentos/principio
 
 ## Combinaciones autorizadas y contraste
 
-<!-- [GEN] derivado de tokens.json + tabla de contraste del Manual v1.1 -->
+<!-- [GEN] contraste calculado desde tokens.json (WCAG 2.x) — lo verifica build-skill.js -->
 
 | Fondo | Texto | Contraste | Uso |
 |-------|-------|-----------|-----|
-| Blanco | Negro | 21:1 | Cuerpo de texto |
-| Blanco | Naranja | 3.1:1 | **Solo H1/H2 — nunca cuerpo** |
-| Blanco | Verde | 5.9:1 | Títulos de secciones de territorio |
-| Naranja | Blanco | 3.1:1 | **Solo encabezados grandes / portadas pptx** |
-| Verde | Blanco | 5.9:1 | Secciones de impacto ambiental |
-| Arena | Negro | 10.5:1 | Infografías, banners |
-| Arena claro | Gris texto | 8.5:1 | Filas alternas, cajas |
+| Blanco (`color.blanco`) | Negro (`color.negro`) | 21:1 | Cuerpo de texto |
+| Blanco (`color.blanco`) | Naranja (`color.naranja`) | 3.9:1 | **Solo H1/H2 — nunca cuerpo** |
+| Blanco (`color.blanco`) | Verde (`color.verde`) | 6.4:1 | Títulos de secciones de territorio |
+| Naranja (`color.naranja`) | Blanco (`color.blanco`) | 3.9:1 | **Solo encabezados grandes / portadas pptx** |
+| Naranja oscuro (`color.naranja-oscuro`) | Blanco (`color.blanco`) | 5.4:1 | Hover/activo de acciones |
+| Verde (`color.verde`) | Blanco (`color.blanco`) | 6.4:1 | Secciones de impacto ambiental |
+| Arena (`color.arena`) | Negro (`color.negro`) | 17.1:1 | Infografías, banners |
+| Arena (`color.arena`) | Gris texto (`color.gris-texto`) | 10.3:1 | Texto secundario sobre banda arena |
+| Arena claro (`color.arena-claro`) | Gris texto (`color.gris-texto`) | 11.4:1 | Filas alternas, cajas |
 
 Disciplina (detalle en `06_accesibilidad/estandar-accesibilidad.md`): mínimo 3:1
-para títulos, 4.5:1 para cuerpo. Naranja↔blanco (3.1:1) **solo** en texto grande
-en negrita. Nunca transmitir información solo por color.
+para títulos, 4.5:1 para cuerpo. Naranja↔blanco (3.9:1) y naranja↔arena (3.2:1)
+**solo** en texto grande en negrita — nunca cuerpo ni captions. Nunca transmitir
+información solo por color.
+
+> Nota: estas cifras se calculan con la fórmula WCAG desde los tokens (no se
+> copian del Manual). Si un primitivo cambia, `scripts/build-skill.js` detecta la
+> deriva de esta tabla.
 
 ## Reglas duras de superficie (ya en tokens)
 

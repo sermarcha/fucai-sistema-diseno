@@ -39,7 +39,7 @@ El sitio (www.fucaicolombia.org, en **Squarespace**) es "la casa de FUCAI": ahí
 Fotografía real de comunidades y territorio como protagonista (ver `references/photography.md`); una imagen fuerte por sección, no collages. Texto sobre foto solo con degradado oscuro y contraste ≥4.5:1.
 
 ## Accesibilidad
-Contraste mínimo 3:1 títulos, 4.5:1 cuerpo. Naranja↔blanco (3.1:1) solo en títulos grandes, nunca en cuerpo. Nunca transmitir información solo por color (añade texto/ícono/forma). Foco visible en navegación por teclado.
+Contraste mínimo 3:1 títulos, 4.5:1 cuerpo. Naranja↔blanco (3.9:1) solo en títulos grandes, nunca en cuerpo. Tintes al 50 % (naranja claro/verde claro) solo como fondo con texto oscuro, nunca texto/ícono; hover de acciones = naranja oscuro #C13A10. Nunca transmitir información solo por color (añade texto/ícono/forma). Foco visible en navegación por teclado.
 
 ## Tokens para HTML / React (artefactos y componentes)
 ```css

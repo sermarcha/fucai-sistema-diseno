@@ -35,7 +35,7 @@ Composición de arriba a abajo con aire deliberado:
 4. Título Space Grotesk Bold naranja 28–32 pt, izquierda, leve tracking negativo.
 5. Subtítulo Calibri 14 pt gris texto.
 6. Un pilar de marca en cursiva 12 pt gris medio (la señal de posicionamiento).
-7. Al pie: **banda arena `#EDE8D3`** con fecha + proyecto + slogan en cursiva (la calidez, sin inundar de naranja).
+7. Al pie: **banda arena `#EDE8D3`** con fecha + proyecto + slogan en cursiva gris texto `#333333` — no naranja: 3.2:1 sobre arena es insuficiente para texto pequeño (la calidez, sin inundar de naranja).
 
 Sin relleno naranja. Sin foto en portadas formales (una foto cálida solo en piezas editoriales, en banda, nunca tras el texto).
 

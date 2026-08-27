@@ -6,7 +6,7 @@ description: "Apply FUCAI institutional branding (design philosophy, colors, typ
 # FUCAI Institutional Branding
 
 Single source of truth for everything produced for **Fundación Caminos de Identidad (FUCAI)**, aligned to *Manual de Identidad Visual v1.1 (abril 2026)*.
-**Version 3.1** (modular: lean overview + `references/` + executable `scripts/`; web y AppSheet como referencias propias).
+**Version 3.2** (modular: lean overview + `references/` + executable `scripts/`; web y AppSheet como referencias propias; sincronizado 2026-08 con el sistema de diseño: reglas de redes/carrusel 2026-07, prohibición de IA para personas, contrastes calculados, hover naranja oscuro).
 
 > Firma: *Nuestro centro es la periferia* · www.fucaicolombia.org · comunicaciones@fucaicolombia.org · NIT 800.173.574-1
 
@@ -19,6 +19,9 @@ Single source of truth for everything produced for **Fundación Caminos de Ident
 6. **Slogan en cursiva** en pies/cierres; **www.fucaicolombia.org** en pies y comunicaciones externas.
 7. **Voz:** sin palabras de la lista "evitar"; comunidades como protagonistas; idioma español por defecto.
 8. **Tras generar un .docx, corre `python3 scripts/check_fucai.py <archivo>` y haz QA visual en PDF** antes de entregar.
+9. **Imágenes generadas por IA: PROHIBIDAS para representar personas o comunidades** (solo conceptos abstractos u objetos). Fotos siempre reales, del banco autorizado, con consentimiento y color auténtico (sin duotonos naranjas).
+10. **Redes: carrusel 1080×1350 con máximo 2 láminas intensas** (gancho y cierre); la proporción 60-25-10-5 se mide sobre el carrusel completo (ver `references/canva.md`).
+11. **Tintes al 50 % (naranja claro `#F4A28A`, verde claro `#74B597`) solo como FONDO** con texto oscuro; nunca color de texto/ícono. Hover de acciones = naranja oscuro `#C13A10`.
 
 ## Filosofía de diseño (el lente de toda decisión)
 Cinco atributos a la vez: **minimalista · que refuerza el posicionamiento · sofisticada · clara · cercana.**
@@ -52,7 +55,7 @@ Pilares (uno por sección, en cursiva): *Nuestro camino es la identidad · Nuest
 **Plantillas listas** en `assets/templates/` (abrir y reemplazar textos, sin ejecutar nada): `FUCAI_Informe_Base.docx` (Word) · `FUCAI_Presupuesto_Base.xlsx` (Excel, con fórmulas) · `FUCAI_Presentacion_Base.pptx` (PowerPoint). Se regeneran con los scripts `example_*`.
 
 ## Paleta exprés (detalle en `references/color-system.md`)
-Naranja `#E94513` · Arena `#EDE8D3` · Verde `#2D6A4F` (solo territorio) · Blanco `#FFFFFF` · Negro `#000000`. Tintes: naranja claro `#F4A28A`, arena claro `#F6F3E9`, verde claro `#74B597`. Grises de soporte (no marca): `#333333 #666666 #CCCCCC`. Contraste: naranja↔blanco 3.1:1 solo para títulos grandes, nunca cuerpo.
+Naranja `#E94513` · Arena `#EDE8D3` · Verde `#2D6A4F` (solo territorio) · Blanco `#FFFFFF` · Negro `#000000`. Tintes (solo fondos, texto oscuro encima): naranja claro `#F4A28A`, arena claro `#F6F3E9`, verde claro `#74B597`. Hover de acciones: naranja oscuro `#C13A10` (5.4:1 con blanco). Grises de soporte (no marca): `#333333 #666666 #CCCCCC`. Contraste: naranja↔blanco 3.9:1 solo para títulos grandes, nunca cuerpo.
 
 ## Tipografía exprés (detalle en `references/typography-layout.md`)
 Títulos **Space Grotesk Bold**; cuerpo **Calibri** (Carlito en Canva, Roboto en AppSheet). Escala de espaciado: 4·8·12·16·24·32·48 pt. Un elemento focal por página; márgenes 2.5 cm / 1 in.
@@ -76,7 +79,7 @@ Nuestro centro es la periferia
 
 ## Reglas generales y nombres de archivo
 - Aplica FUCAI por defecto salvo que se pida otra marca; sin azul/gris genérico.
-- Salidas a `/mnt/user-data/outputs/`. Nombre: `FUCAI_TipoDocumento_Tema_AAAA-MM.ext` (ej. `FUCAI_Informe_Amazonas_2025-04.pdf`).
+- Salidas a la carpeta de entregables del entorno (p. ej. `outputs/`). Nombre: `FUCAI_TipoDocumento_Tema_AAAA-MM.ext` (ej. `FUCAI_Informe_Amazonas_2026-06.pdf`). Para CC217: prefijo `CC217_…`.
 - Campos de proyecto/centro de costos: siempre texto abierto (CC216 Manos Unidas · CC217 Naane OIKOS-AICS · CC218 Misereor-KZE).
 
 ## Checklist de entrega

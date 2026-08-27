@@ -38,7 +38,10 @@ regenera el build.
         ├─ [A] EMITE dist/skill/  ──► tokens.flat.json, tokens.css (web/AppSheet),
         │                              brand-constants.json (para los generadores) y
         │                              brand-platform.md (Misión/Visión/Valores).
-        └─ [B] VERIFICA las tablas [GEN] de 02_/06_ contra los tokens (PASS/FAIL).
+        └─ [B] VERIFICA (PASS/FAIL): tablas [GEN] de 02_/06_ · [B2] contraste WCAG
+                calculado vs tablas de contraste · [B3] temas (claves idénticas,
+                paleta pura, claro = base, tienda/naane = claro) · [B4] hex del
+                CSS/HTML de Squarespace ∈ paleta.
         ▼
    dist/  (artefactos; NO versionado — .gitignore)
         ▼

@@ -101,7 +101,7 @@ function coverFooterBand({ date = "", project = "", slogan = "Nuestro centro es 
   const lines = [];
   if (date) lines.push(new Paragraph({ spacing: { after: 50 }, children: [ new TextRun({ text: date, font: FONT.body, size: SZ.body, color: C.grayText }) ] }));
   if (project) lines.push(new Paragraph({ spacing: { after: 50 }, children: [ new TextRun({ text: project, font: FONT.body, size: SZ.body, color: C.grayText }) ] }));
-  lines.push(new Paragraph({ children: [ new TextRun({ text: slogan, font: FONT.body, size: SZ.body, italics: true, color: C.primary }) ] }));
+  lines.push(new Paragraph({ children: [ new TextRun({ text: slogan, font: FONT.body, size: SZ.body, italics: true, color: C.grayText }) ] }));
   return new Footer({ children: [ new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, borders: noB,
     rows: [ new TableRow({ height: { value: 1700, rule: HeightRule.ATLEAST }, children: [ new TableCell({
       shading: { fill: C.arena, type: ShadingType.CLEAR, color: "auto" }, verticalAlign: VerticalAlign.CENTER,

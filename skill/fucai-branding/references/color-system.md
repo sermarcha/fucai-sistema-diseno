@@ -19,9 +19,10 @@ Los tintes se derivan **solo** de los tres colores de marca, nunca de los neutro
 
 | Nombre | Origen | HEX | Uso |
 |--------|--------|-----|-----|
-| Naranja claro | Naranja 50% | `#F4A28A` | Fondos de llamadas, hover web, acentos suaves |
+| Naranja claro | Naranja 50% | `#F4A28A` | **Solo fondo** de llamadas/cajas con texto oscuro, o acento sobre fondo oscuro. Con blanco: 2:1 — nunca texto, ícono ni hover de acción |
+| Naranja oscuro | Extremo de rampa | `#C13A10` | **Hover/activo de acciones** (botones/enlaces; 5.4:1 con blanco), sombra, profundidad |
 | Arena claro | Arena 50% | `#F6F3E9` | Filas alternas, cajas informativas, separadores |
-| Verde claro | Verde 50% | `#74B597` | Fondos de secciones ambientales, etiquetas de territorio, badges |
+| Verde claro | Verde 50% | `#74B597` | **Solo fondo** de secciones ambientales y badges, con texto oscuro. Con blanco: 2.4:1 — nunca color de texto |
 
 ## Grises de soporte tipográfico (NO son colores de marca)
 Funcionales: texto secundario, bordes, separadores. Nunca como acento visual.
@@ -32,19 +33,22 @@ Funcionales: texto secundario, bordes, separadores. Nunca como acento visual.
 
 ## Combinaciones autorizadas fondo/texto
 
-| Fondo | Texto | Contraste | Uso |
+| Fondo | Texto | Contraste (calculado WCAG) | Uso |
 |-------|-------|-----------|-----|
 | Blanco | Negro | 21:1 | Cuerpo de texto |
-| Blanco | Naranja | 3.1:1 | **Solo H1/H2 — nunca cuerpo** |
-| Blanco | Verde | 5.9:1 | Títulos de secciones de territorio/ambiente |
-| Naranja | Blanco | 3.1:1 | **Solo encabezados grandes/portadas — nunca cuerpo** |
-| Verde | Blanco | 5.9:1 | Secciones de impacto ambiental, etiquetas |
-| Arena | Negro | 10.5:1 | Infografías, banners |
-| Arena | Verde | 6.2:1 | Badges sobre fondos cálidos |
+| Blanco | Naranja | 3.9:1 | **Solo H1/H2 — nunca cuerpo** |
+| Blanco | Verde | 6.4:1 | Títulos de secciones de territorio/ambiente |
+| Naranja | Blanco | 3.9:1 | **Solo encabezados grandes/portadas — nunca cuerpo** |
+| Naranja oscuro | Blanco | 5.4:1 | Hover/activo de acciones ✓ |
+| Verde | Blanco | 6.4:1 | Secciones de impacto ambiental, etiquetas |
+| Arena | Negro | 17.1:1 | Infografías, banners |
+| Arena | Gris texto | 10.3:1 | Texto secundario sobre banda arena (slogan) |
+| Arena | Verde | 5.2:1 | Badges sobre fondos cálidos |
+| Arena | Naranja | 3.2:1 | **Solo títulos grandes en negrita — nunca cuerpo/captions** |
 | Negro | Blanco | 21:1 | Alto contraste, pósters |
-| Arena claro | Gris texto | 8.5:1 | Filas alternas, cajas informativas |
+| Arena claro | Gris texto | 11.4:1 | Filas alternas, cajas informativas |
 
-**Disciplina de contraste:** naranja↔blanco es 3.1:1 → pasa WCAG solo para texto grande en negrita. **Nunca** texto blanco tamaño cuerpo sobre naranja, ni naranja tamaño cuerpo sobre blanco. Mínimos: 3:1 títulos, 4.5:1 cuerpo. Nunca solo color para transmitir info (añade ícono/forma).
+**Disciplina de contraste:** naranja↔blanco es 3.9:1 y naranja↔arena 3.2:1 → pasan WCAG solo para texto grande en negrita. **Nunca** texto blanco tamaño cuerpo sobre naranja, ni naranja tamaño cuerpo sobre blanco o arena. Los tintes al 50 % (naranja claro `#F4A28A`, verde claro `#74B597`) son **superficies**: nunca color de texto ni de ícono; el hover de acciones es naranja oscuro `#C13A10`. Mínimos: 3:1 títulos, 4.5:1 cuerpo. Nunca solo color para transmitir info (añade ícono/forma). *(Cifras calculadas con la fórmula WCAG desde los tokens del sistema de diseño, 2026-08; sustituyen a las del Manual.)*
 
 ## Rampas de visualización de datos
 Una serie → rampa naranja. Serie de territorio → rampa verde. Ejes/líneas/etiquetas → neutros. Nunca colores fuera de estas rampas.

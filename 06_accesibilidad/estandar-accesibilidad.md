@@ -18,20 +18,31 @@ los umbrales documentados: 4.5:1 para cuerpo.)
 
 ### Combinaciones de marca y su contraste
 
-<!-- [GEN] derivado de tokens.json + tabla de contraste del Manual v1.1 -->
+<!-- [GEN] contraste calculado desde tokens.json (WCAG 2.x) — lo verifica build-skill.js -->
 
 | Fondo | Texto | Contraste | Veredicto |
 |-------|-------|-----------|-----------|
 | Blanco (`color.blanco`) | Negro (`color.negro`) | 21:1 | ✓ cuerpo |
-| Arena (`color.arena`) | Negro | 10.5:1 | ✓ cuerpo |
-| Arena claro (`color.arena-claro`) | Gris texto (`color.gris-texto`) | 8.5:1 | ✓ cuerpo |
-| Blanco | Verde (`color.verde`) | 5.9:1 | ✓ cuerpo (territorio) |
-| Verde | Blanco | 5.9:1 | ✓ cuerpo |
-| Blanco | Naranja (`color.naranja`) | 3.1:1 | ✕ cuerpo · ✓ solo título grande |
-| Naranja | Blanco | 3.1:1 | ✕ cuerpo · ✓ solo título grande / portada |
+| Arena (`color.arena`) | Negro (`color.negro`) | 17.1:1 | ✓ cuerpo |
+| Arena claro (`color.arena-claro`) | Gris texto (`color.gris-texto`) | 11.4:1 | ✓ cuerpo |
+| Arena (`color.arena`) | Gris texto (`color.gris-texto`) | 10.3:1 | ✓ cuerpo |
+| Blanco (`color.blanco`) | Verde (`color.verde`) | 6.4:1 | ✓ cuerpo (territorio) |
+| Verde (`color.verde`) | Blanco (`color.blanco`) | 6.4:1 | ✓ cuerpo |
+| Naranja oscuro (`color.naranja-oscuro`) | Blanco (`color.blanco`) | 5.4:1 | ✓ cuerpo · hover de acciones |
+| Blanco (`color.blanco`) | Naranja (`color.naranja`) | 3.9:1 | ✕ cuerpo · ✓ solo título grande |
+| Naranja (`color.naranja`) | Blanco (`color.blanco`) | 3.9:1 | ✕ cuerpo · ✓ solo título grande / portada |
+| Arena (`color.arena`) | Naranja (`color.naranja`) | 3.2:1 | ✕ cuerpo · ✓ solo título grande en negrita |
+| Blanco (`color.blanco`) | Durazno (`color.durazno`) | 2:1 | ✕ texto/ícono SIEMPRE — durazno es solo fondo |
+| Blanco (`color.blanco`) | Verde claro (`color.verde-claro`) | 2.4:1 | ✕ texto/ícono SIEMPRE — verde claro es solo fondo |
 
-**Regla dura:** naranja↔blanco (3.1:1) **solo** en texto grande en negrita; nunca
-cuerpo. Texto sobre foto: degradado oscuro hasta lograr ≥ 4.5:1.
+Cifras **calculadas** con la fórmula WCAG desde los tokens (no copiadas del
+Manual); `scripts/build-skill.js` verifica esta tabla en cada build/CI.
+
+**Reglas duras:** naranja↔blanco (3.9:1) y naranja↔arena (3.2:1) **solo** en texto
+grande en negrita; nunca cuerpo ni captions. Los tintes al 50 % (durazno, verde
+claro) son **superficies**: nunca color de texto ni de ícono; el hover de acciones
+sobre fondo claro es `accent.hover` (naranja oscuro). Texto sobre foto: degradado
+oscuro hasta lograr ≥ 4.5:1.
 
 ## No solo color
 

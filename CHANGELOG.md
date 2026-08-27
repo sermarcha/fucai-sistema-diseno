@@ -10,7 +10,44 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 
 ## [No publicado]
 
-### Añadido (sin publicar)
+_Nada aún._
+
+## [1.8.0] — 2026-08-26
+
+MINOR: nuevo token `accent.hover`, nuevas verificaciones del build, guía rápida,
+specimen y fichas nuevas. Aplica el plan de la revisión de agosto
+(`07_gobernanza/revision-sistema-2026-08.md`, adenda al final).
+
+### Añadido
+- **Token `accent.hover`** (→ `color.naranja-oscuro`): hover/activo único de
+  acciones sobre fondo claro (5.4:1 con blanco). Añadida la clave `accent.hover`
+  a los 4 temas (oscuro usa durazno, 10.4:1 sobre negro). Resuelve la
+  contradicción durazno vs. naranja-oscuro (H3).
+- **`build-skill.js` — tres verificaciones nuevas que corren en CI**:
+  **[B2]** contraste WCAG **calculado** desde los tokens vs. las tablas marcadas
+  `[GEN] contraste calculado` (25 pares) · **[B3]** temas vs. tokens (claves
+  idénticas, todo valor ∈ primitivos, `claro` = base, tienda/naane = claro por
+  decisión 2026-06) · **[B4]** hex del CSS/HTML de Squarespace ∈ paleta (H6, H7).
+  Empaquetado robusto en Windows/monturas (chmod antes de borrar/sobrescribir).
+- **`GUIA-RAPIDA.md`**: la marca en una página para humanos (8 reglas duras,
+  paleta, contraste esencial, voz, redes exprés, checklist). Sus tablas se
+  verifican en el build como cualquier tabla `[GEN]`.
+- **`scripts/generators/fucai_specimen.js`** (+ `npm run specimen`): genera
+  `dist/specimen.html`, muestrario visual autocontenido desde los tokens
+  (paleta con contraste calculado, rampas, tipografía, botones con hover
+  correcto, tabla, banda arena, espaciado). QA visual de cada cambio de token.
+- **`04_componentes/documento/one-pager-impacto.md`** (Borrador): pieza de una
+  página para financiadores (dato héroe, historia VJACel, tabla de resultados,
+  uso de recursos, aliados). Primer componente propio del Grupo 2 de audiencias.
+- **`05_contenido-lenguaje/historia-de-impacto.md`** (Borrador): formato
+  editorial VJACel reutilizable en carrusel, boletín, informes y web.
+- **`07_gobernanza/revision-sistema-2026-08.md`**: revisión integral de agosto con
+  verificación programática. Hallazgos nuevos: deriva del skill/DESIGN.md frente a
+  las reglas de julio (H1), cifras de contraste documentadas que no coinciden con el
+  cálculo WCAG (H2), hover contradictorio durazno vs. naranja-oscuro con falla de
+  accesibilidad (H3), slogan naranja sobre arena a 3.21:1 (H4), temas y CSS
+  Squarespace sin verificación en CI (H6, H7). Plan priorizado de 12 acciones para
+  comunicación, coherencia e impacto.
 - **`07_gobernanza/revision-redes-2026-07.md`**: revisión de los cinco últimos
   carruseles de redes frente al sistema; define el punto medio (proporción
   60-25-10-5 a nivel de carrusel, máx. 2 láminas intensas, prohibición de imágenes
@@ -48,6 +85,39 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 - `03_tokens/taxonomia.md`: documentados los tokens reservados (sin consumidor aún).
 - `07_gobernanza/analisis-de-vacios.md`: auditoría exhaustiva de vacíos.
 
+### Cambiado
+- **Contrastes recalculados con la fórmula WCAG** (H2) en
+  `02_identidad-visual/color.md`, `06_accesibilidad/estandar-accesibilidad.md`,
+  `DESIGN.md`, `GUIA-RAPIDA.md` y `skill/references/color-system.md`:
+  naranja↔blanco 3.1→**3.9:1**, verde↔blanco 5.9→**6.4:1**, arena↔negro
+  10.5→**17.1:1**, arena claro↔gris 8.5→**11.4:1**; filas nuevas para
+  naranja↔arena (3.2:1, solo títulos grandes), hover (5.4:1) y tintes (✕ texto).
+  Las reglas duras no cambian; ahora las cifras resisten auditoría.
+- **Slogan de la banda arena** (H4): de naranja (3.2:1 en texto pequeño) a
+  **gris texto** (10.3:1) en la ficha, en `scripts/generators/fucai_docx.js →
+  coverFooterBand()` y en el script espejo del skill. Verificado con un .docx
+  de humo (`check_fucai.py` PASS, footer en `#333333`).
+- **Condiciones de uso de los tintes** (H5): durazno y verde claro quedan
+  documentados como **solo fondo** con texto oscuro (tokens `$description`,
+  `color.md`, fichas de botón/card, DESIGN.md y skill).
+- **`DESIGN.md` sincronizado con las reglas de julio** (H1): carrusel 1080×1350
+  con arco y máx. 2 láminas intensas, **prohibición de imágenes IA para
+  personas/comunidades**, secciones nuevas de email y cartografía, contrastes y
+  hover corregidos.
+- **Skill `fucai-branding` → v3.2** (H1): reglas duras 9–11 nuevas (IA prohibida
+  para personas; carrusel; tintes solo fondo + hover naranja oscuro),
+  `references/canva.md` con la sección completa del carrusel,
+  `references/photography.md` con la regla de IA y duotonos,
+  `references/color-system.md` y `web.md`/`docx.md` con contrastes calculados,
+  ruta de salidas generalizada y ejemplo de nombre de archivo unificado.
+  **Pendiente manual: re-subir el paquete (`npm run package:skill`) a claude.ai.**
+- **`README.md`** (H8): estado actualizado a v1.8.0 (decía "v0.1.0 — scaffolding")
+  y sección de build reescrita (el build y el CI ya existen; comandos reales).
+- `CONTRIBUTING.md` y `07_gobernanza/mapa-fuente-de-verdad.md`: documentadas las
+  verificaciones B2/B3/B4 del build.
+- `04_componentes/catalogo.md`: registrados one-pager de impacto, cartografía,
+  historia de impacto y specimen.
+
 ### Por hacer
 - Builders `actaHeader()`, `signatureTable()`, `chapterDivider()` en `fucai_docx.js`;
   verificador de QA para `.pptx` y `.xlsx`.
@@ -58,6 +128,11 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   (narrativa/audiencias) al léxico ético; política de localización; `LICENSE`.
 - Automatizar la publicación del `.skill` por Releases; añadir la URL del repositorio
   (canal de issues/PR) en gobernanza.
+- Del plan de agosto (revision-sistema-2026-08): **re-subir el paquete del skill a
+  claude.ai** (acción manual) · plantillas Canva del carrusel · instrumentos de
+  impacto (banco de fotos, inventario de canales, herramienta de mailing) ·
+  política retroactiva sobre piezas con imágenes IA · semántica de estado
+  unificada (UI/mapas/dataviz) · builder `impactOnePager()` e indicadores estándar.
 
 ## [1.7.0] — 2026-06-24
 

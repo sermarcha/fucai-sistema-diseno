@@ -36,6 +36,8 @@ se escribe a mano en una plantilla, un script o un documento.
 ## Checklist de QA previo a fusionar a `main`
 
 - [ ] `tokens.json` es JSON válido y todas las referencias `{...}` resuelven.
+- [ ] `node scripts/build-skill.js` en verde (verifica tablas [GEN], contraste WCAG
+      calculado, temas en sincronía y hex del CSS de Squarespace; lo corre el CI).
 - [ ] No hay valores numéricos quemados fuera de `03_tokens/`.
 - [ ] Los cuatro temas conservan **exactamente las mismas claves**.
 - [ ] La taxonomía (`taxonomia.md`) está actualizada si cambió la nomenclatura.

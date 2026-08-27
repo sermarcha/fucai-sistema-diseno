@@ -8,3 +8,5 @@
 - **Composición minimalista:** prefiere una imagen fuerte con espacio en blanco sobre collages.
 - **Ilustración/íconos:** líneas geométricas limpias, compatibles con el logo; íconos outline 2 px naranja/negro/verde; solo colores de la paleta; nunca mezclar estilos de ilustración.
 - **Ética fotográfica (obligatoria):** toda imagen con personas identificables —en especial niñez— requiere autorización explícita. Consultar a las comunidades antes de fotografiar rituales/prácticas sagradas. Usar solo el banco de imágenes autorizado de FUCAI en publicaciones institucionales. Ofrecer consentimiento de imagen/voz con opciones de restricción cultural/espiritual en piezas comunitarias.
+- **Imágenes generadas por IA — PROHIBIDAS para representar personas o comunidades** (regla dura, revisión de redes 2026-07). Admisibles solo para conceptos abstractos u objetos; nunca rostros ni escenas comunitarias: las comunidades protagonistas son reales.
+- **Duotonos/teñidos de marca:** no teñir de naranja las fotografías (contradice "color auténtico"); overlay de marca máx. ~30 % de opacidad y solo en gancho/cierre de carruseles.

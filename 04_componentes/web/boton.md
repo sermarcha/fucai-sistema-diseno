@@ -12,15 +12,20 @@
 
 ## Estados
 
-- Normal · hover (naranja claro `accent.soft`/`color.durazno`) · foco (anillo
-  visible, contraste ≥ 3:1) · deshabilitado (gris de soporte).
+- Normal · hover/activo (**naranja oscuro `accent.hover`** — el fondo del primario
+  y el texto/borde del secundario y del enlace pasan a naranja oscuro; **nunca**
+  durazno, que a 2:1 sobre blanco es ilegible) · foco (anillo visible, contraste
+  ≥ 3:1) · deshabilitado (gris de soporte).
+- `accent.soft` (durazno) solo puede aparecer como **fondo suave** de una llamada
+  con texto oscuro; jamás como color del texto o del ícono del botón.
 
 ## Reglas críticas
 
 - Texto de acción con verbo directo ("Conoce nuestro trabajo", "Súmate"), nunca
   "Haz clic aquí" (ver `05_contenido-lenguaje/microcopy.md`).
 - **Foco visible** por teclado; objetivo táctil cómodo (ver `06_accesibilidad/`).
-- Contraste: naranja↔blanco (3.1:1) válido en botón grande/negrita; verificar tamaño.
+- Contraste: naranja↔blanco (3.9:1) válido en botón grande/negrita; verificar
+  tamaño. En hover, naranja oscuro↔blanco (5.4:1) ✓.
 
 ## Cuándo usar / cuándo no
 
@@ -29,6 +34,6 @@
 
 ## Tokens
 
-`brand.primary`, `text.onColor`, `accent.soft`, `radius.sm` (4 px),
+`brand.primary`, `text.onColor`, `accent.hover` (hover/activo), `radius.sm` (4 px),
 `motion.duration.fast` + `motion.easing.standard` (transición de hover/foco).
 Detalle en `02_identidad-visual/forma-y-profundidad.md` y `movimiento.md`.

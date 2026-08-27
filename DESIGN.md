@@ -172,7 +172,7 @@ los neutros).
   --color-primario-oscuro:   #C13A10; /* hover / sombra / profundidad del naranja */
   --color-secundario:        #EDE8D3; /* Arena (Pantone 11-0105 TPG): calidez, bandas */
   --color-secundario-claro:  #F6F3E9; /* Arena claro: filas alternas, cajas, separadores */
-  --color-acento:            #F4A28A; /* Durazno (naranja 50%): hover suave, llamadas */
+  --color-acento:            #F4A28A; /* Durazno (naranja 50%): SOLO fondo suave con texto oscuro; nunca texto ni hover (hover = primario-oscuro) */
   --color-territorio:        #2D6A4F; /* Verde Amazónico (Pantone 18-0135 TCX): SOLO territorio */
   --color-territorio-claro:  #74B597; /* Verde claro: badges/secciones ambientales */
   /* Neutros */
@@ -191,12 +191,12 @@ los neutros).
 | Token semántico | Variable CSS | Hex | Cuándo y por qué |
 |-----------------|--------------|-----|------------------|
 | Primario | `--color-primario` | `#E94513` | Acento principal: encabezados, botones, barras, serie de datos. Es la marca; úsalo con mesura (≈25 %). |
-| Primario oscuro | `--color-primario-oscuro` | `#C13A10` | Estados *hover*/activo y profundidad del naranja. |
+| Primario oscuro | `--color-primario-oscuro` | `#C13A10` | Estados *hover*/activo de acciones (token `accent.hover`) y profundidad del naranja. Con blanco: 5.4:1 ✓. |
 | Secundario (arena) | `--color-secundario` | `#EDE8D3` | **Calidez** en bandas/secciones, no en el fondo general. |
 | Secundario claro | `--color-secundario-claro` | `#F6F3E9` | Filas alternas, cajas informativas, separadores. |
-| Acento (durazno) | `--color-acento` | `#F4A28A` | *Hover* web y llamadas suaves; acento de bajo peso. |
+| Acento (durazno) | `--color-acento` | `#F4A28A` | **Solo fondo** de llamadas suaves con texto oscuro (2:1 con blanco). Nunca color de texto, ícono ni hover de acción. |
 | Territorio (verde) | `--color-territorio` | `#2D6A4F` | **Solo** territorio/naturaleza/ambiente. Narra; no sustituye al naranja. |
-| Territorio claro | `--color-territorio-claro` | `#74B597` | Badges y secciones ambientales sobre fondos cálidos. |
+| Territorio claro | `--color-territorio-claro` | `#74B597` | **Solo fondo** de badges y secciones ambientales, con texto oscuro (2.4:1 con blanco). Nunca color de texto. |
 | Fondo | `--color-fondo` | `#FFFFFF` | Lienzo por defecto: el 60 % que da aire y sofisticación. |
 | Texto | `--color-texto` | `#000000` | Cuerpo sobre fondo claro (21:1). |
 | Texto sobre color | `--color-texto-sobre-color` | `#FFFFFF` | Texto sobre naranja/verde/negro (sobre naranja, solo títulos grandes). |
@@ -206,15 +206,19 @@ los neutros).
 
 ### Combinaciones autorizadas fondo/texto
 
-| Fondo | Texto | Contraste | Uso |
+| Fondo | Texto | Contraste (calculado WCAG) | Uso |
 |-------|-------|-----------|-----|
 | Blanco | Negro | 21:1 | Cuerpo |
-| Arena | Negro | 10.5:1 | Infografías, banners |
-| Arena claro | Gris texto | 8.5:1 | Filas alternas, cajas |
-| Blanco | Verde | 5.9:1 | Títulos de secciones de territorio |
-| Verde | Blanco | 5.9:1 | Secciones de impacto ambiental |
-| Blanco | Naranja | 3.1:1 | **Solo** H1/H2 grandes — nunca cuerpo |
-| Naranja | Blanco | 3.1:1 | **Solo** títulos grandes / portadas — nunca cuerpo |
+| Arena | Negro | 17.1:1 | Infografías, banners |
+| Arena claro | Gris texto | 11.4:1 | Filas alternas, cajas |
+| Arena | Gris texto | 10.3:1 | Texto secundario sobre banda arena (p. ej. slogan) |
+| Blanco | Verde | 6.4:1 | Títulos de secciones de territorio |
+| Verde | Blanco | 6.4:1 | Secciones de impacto ambiental |
+| Naranja oscuro | Blanco | 5.4:1 | Hover/activo de acciones |
+| Blanco | Naranja | 3.9:1 | **Solo** H1/H2 grandes — nunca cuerpo |
+| Naranja | Blanco | 3.9:1 | **Solo** títulos grandes / portadas — nunca cuerpo |
+| Arena | Naranja | 3.2:1 | **Solo** títulos grandes en negrita — nunca cuerpo/captions |
+| Blanco | Durazno o Verde claro | 2:1 · 2.4:1 | ✕ NUNCA como texto o ícono: son solo fondos |
 
 ### Reglas duras de superficie
 
@@ -373,8 +377,9 @@ consistentes: 2.5 cm (A4) / 1 in (Carta).
 ### Web / artefactos
 
 - **Botón primario:** fondo `--color-primario`, texto `--color-texto-sobre-color`,
-  radio `--radio-sm`; *hover* `--color-acento`; transición `--duracion-rapida`
-  `--easing-standard`. Texto con verbo directo. *Por qué:* una acción clara por botón.
+  radio `--radio-sm`; *hover* `--color-primario-oscuro` (nunca durazno: 2:1 con
+  blanco); transición `--duracion-rapida` `--easing-standard`. Texto con verbo
+  directo. *Por qué:* una acción clara por botón.
 - **Botón secundario:** borde naranja, fondo transparente, texto naranja.
 - **Enlaces:** naranja, sin subrayado en normal, subrayado en *hover*.
 - **Tarjeta (card):** fondo `--color-fondo`, redondeo `--radio-sm`/`--radio-md`, un
@@ -386,7 +391,8 @@ consistentes: 2.5 cm (A4) / 1 in (Carta).
 
 - **Portada (blanca):** logo naranja (≈4 cm) arriba a la izquierda · filete naranja ·
   ~⅓ de página en blanco · título 28 pt naranja · subtítulo · un pilar en cursiva · al
-  pie, **banda arena** con fecha/proyecto/slogan. **Sin fondo naranja a sangre.**
+  pie, **banda arena** con fecha/proyecto/slogan (slogan en cursiva **gris texto**,
+  nunca naranja pequeño sobre arena: 3.2:1). **Sin fondo naranja a sangre.**
 - **Cuerpo:** encabezado de **solo texto** (nunca imagen en el header) + filete naranja;
   pie con filete, firma y número de página. Fondo blanco.
 - **Contraportada (blanca):** logo naranja centrado · slogan en cursiva · contacto ·
@@ -400,7 +406,7 @@ Portada (fondo naranja/verde/negro + logo blanco) → contenido (blanco, barra n
 arriba, barra arena al pie, **máx. 6 líneas**) → dato héroe → cita → divisoria de
 sección → cierre.
 
-### Redes sociales (Canva) — tres estructuras y tamaños
+### Redes sociales (Canva) — estructuras, carrusel y tamaños
 
 - **A · Dato impactante:** fondo blanco/arena, una cifra grande Space Grotesk naranja,
   caption corto, logo pequeño, barra naranja con URL.
@@ -408,9 +414,48 @@ sección → cierre.
   líneas blancas, logo blanco arriba a la izquierda.
 - **C · Mensaje institucional:** fondo naranja (o verde para territorio), logo blanco
   centrado, ≤ 3 líneas, slogan en cursiva.
-- **Tamaños:** IG post 1080×1080 · IG Stories/Reels 1080×1920 · LinkedIn post 1200×627
-  · LinkedIn banner 1584×396 · Facebook post 1200×630 · FB cover 820×312 · YouTube
-  thumb 1280×720 · YouTube banner 2560×1440.
+- **Tamaños:** carrusel/post vertical **1080×1350 (4:5, default)** · IG post cuadrado
+  1080×1080 · IG Stories/Reels 1080×1920 · LinkedIn post 1200×627 · LinkedIn banner
+  1584×396 · Facebook post 1200×630 · FB cover 820×312 · YouTube thumb 1280×720 ·
+  YouTube banner 2560×1440.
+
+**Carrusel narrativo (formato principal de redes; reglas de la revisión 2026-07,
+detalle en `04_componentes/social/carrusel.md`):**
+
+- 5–9 láminas 1080×1350 con arco **gancho → desarrollo → dato héroe → cierre CTA**
+  (estructura VJACel). Una idea por lámina, ≤ 40 palabras.
+- La proporción 60-25-10-5 se mide **sobre el carrusel completo**: máximo **2
+  láminas** con fondo a sangre naranja/verde (gancho y cierre); el resto respira en
+  blanco, arena o foto real.
+- Títulos **Space Grotesk Bold**, cuerpo **Carlito**; máximo 2 recursos de énfasis
+  por lámina; subrayado solo para enlaces; un foco por lámina.
+- Fotografía con **color auténtico** (overlay de marca máx. ~30 % y solo en
+  gancho/cierre); texto sobre foto con degradado oscuro hasta ≥ 4.5:1; solo banco
+  autorizado con consentimiento.
+- **PROHIBIDO usar imágenes generadas por IA para representar personas o
+  comunidades** (admisibles solo para conceptos abstractos u objetos). Las
+  comunidades protagonistas son reales.
+- Logo solo como logo (unidad indivisible, nunca trazo decorativo ni textura);
+  paleta estricta sin amarillos/azules; verde solo territorio; texturas culturales
+  (p. ej. kanaas Wayuu) solo si la pieza habla de ese territorio, un patrón por
+  pieza, en tinte de la paleta.
+- Guías por canal (LinkedIn, Instagram, Facebook, X, TikTok) en
+  `04_componentes/social/canales/`.
+
+### Email / mailing
+
+Familia propia en `04_componentes/email/` (plantilla, boletín, guía de campaña).
+Claves: layout con tablas y CSS en línea; ancho máx. **600 px** (`email.maxWidth`);
+un CTA primario (`email.button.*`); fuentes con fallback seguro (Space Grotesk →
+Arial; Calibri → Carlito/Arial); alt en imágenes; enlace de baja y motivo del envío
+obligatorios; léxico ético siempre.
+
+### Cartografía (mapas)
+
+Reglas de marca en `04_componentes/cartografia/`: verde solo territorio/vegetación,
+naranja para dato/intervención, rampas `dataviz.ramp.*`, tipografía de marca en
+títulos/leyendas, contraste ≥ 4.5:1 y nunca información solo por color. La
+implementación técnica (QGIS/GEE) vive en el repo `fucai-geo`.
 
 ### AppSheet
 
@@ -426,19 +471,25 @@ alternas en arena claro; nunca transmitir estado solo por color.
 Objetivo: **WCAG 2.2 nivel AA**. Contraste mínimo **4.5:1 en cuerpo**, **3:1 en
 títulos grandes** y en componentes/foco.
 
-| Fondo | Texto | Contraste | Veredicto |
+| Fondo | Texto | Contraste (calculado WCAG) | Veredicto |
 |-------|-------|-----------|-----------|
 | Blanco | Negro | 21:1 | ✓ cuerpo |
-| Arena `#EDE8D3` | Negro | 10.5:1 | ✓ cuerpo |
-| Arena claro `#F6F3E9` | Gris texto `#333333` | 8.5:1 | ✓ cuerpo |
-| Blanco | Verde `#2D6A4F` | 5.9:1 | ✓ cuerpo (territorio) |
-| Verde | Blanco | 5.9:1 | ✓ cuerpo |
-| Blanco | Naranja `#E94513` | 3.1:1 | ✕ cuerpo · ✓ solo título grande/negrita |
-| Naranja | Blanco | 3.1:1 | ✕ cuerpo · ✓ solo título grande / portada |
+| Arena `#EDE8D3` | Negro | 17.1:1 | ✓ cuerpo |
+| Arena claro `#F6F3E9` | Gris texto `#333333` | 11.4:1 | ✓ cuerpo |
+| Arena | Gris texto `#333333` | 10.3:1 | ✓ cuerpo (slogan de banda arena) |
+| Blanco | Verde `#2D6A4F` | 6.4:1 | ✓ cuerpo (territorio) |
+| Verde | Blanco | 6.4:1 | ✓ cuerpo |
+| Naranja oscuro `#C13A10` | Blanco | 5.4:1 | ✓ hover/activo de acciones |
+| Blanco | Naranja `#E94513` | 3.9:1 | ✕ cuerpo · ✓ solo título grande/negrita |
+| Naranja | Blanco | 3.9:1 | ✕ cuerpo · ✓ solo título grande / portada |
+| Arena | Naranja | 3.2:1 | ✕ cuerpo · ✓ solo título grande en negrita |
+| Blanco | Durazno `#F4A28A` / Verde claro `#74B597` | 2:1 · 2.4:1 | ✕ SIEMPRE como texto/ícono: solo fondos |
 
-**Reglas duras:** naranja↔blanco (3.1:1) **solo** en texto grande en negrita; texto
-sobre foto requiere degradado oscuro hasta ≥ 4.5:1; **nunca** transmitir estado o
-categoría **solo con color** (añade etiqueta, ícono o forma).
+**Reglas duras:** naranja↔blanco (3.9:1) y naranja↔arena (3.2:1) **solo** en texto
+grande en negrita; los tintes al 50 % son superficies, nunca tinta de texto; hover
+de acciones = naranja oscuro; texto sobre foto requiere degradado oscuro hasta
+≥ 4.5:1; **nunca** transmitir estado o categoría **solo con color** (añade
+etiqueta, ícono o forma).
 
 **Interacción y lectura:** foco visible en navegación por teclado; todo lo accionable
 con mouse debe serlo con teclado, en orden lógico; texto alternativo descriptivo en
@@ -473,6 +524,11 @@ La fotografía es protagonista de la calidez de marca (no el color). Dirección 
 rituales o prácticas sagradas y respetar sus restricciones; en piezas institucionales,
 usar solo el banco autorizado de FUCAI. *El banco de fotos no vive en el repo: se
 referencia en Drive con el consentimiento registrado* `[POR CONFIRMAR: enlace a Drive]`.
+
+**Imágenes generadas por IA (regla dura, 2026-07): PROHIBIDAS para representar
+personas o comunidades.** Admisibles solo para conceptos abstractos u objetos, nunca
+rostros ni escenas comunitarias: las comunidades protagonistas son reales
+(autenticidad + consentimiento).
 
 | ✓ Correcto | ✕ Incorrecto |
 |------------|--------------|

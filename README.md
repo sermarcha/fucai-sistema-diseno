@@ -58,19 +58,23 @@ demás capas referencian tokens; nunca redefinen el valor crudo.
 
 ---
 
-## Build previsto
+## Build y verificación (implementados)
 
-Los entregables NO se versionan: el repositorio guarda *fuentes*. El build los
-genera bajo `dist/` (ignorado por git) consumiendo `03_tokens/tokens.json` y el
-tema activo.
+Los entregables NO se versionan: el repositorio guarda *fuentes*. El build genera
+todo bajo `dist/` (ignorado por git) consumiendo `03_tokens/tokens.json` y el tema
+activo, y **verifica** la sincronía del sistema (lo mismo corre el CI en cada PR).
 
 ```bash
 # Dependencias
 npm install            # generadores Node (docx, pptx)
 pip install -r requirements.txt   # generadores Python (xlsx)
 
-# Build (previsto para fases posteriores)
-npm run build          # resuelve tokens -> scripts/generators/* -> dist/
+npm run build:skill    # verifica: tablas [GEN], contraste WCAG calculado,
+                       # temas vs tokens y hex del CSS de Squarespace
+npm run build          # además emite dist/skill/ (tokens resueltos, CSS, constantes)
+npm run package:skill  # ensambla el paquete del skill subible a claude.ai
+npm run specimen       # genera dist/specimen.html (muestrario visual desde tokens)
+npm run qa:docx -- <archivo>      # QA de un .docx generado
 ```
 
 `dist/` se crea en tiempo de ejecución y está en `.gitignore`; nunca se commitea.
@@ -79,6 +83,8 @@ npm run build          # resuelve tokens -> scripts/generators/* -> dist/
 
 ## Estado
 
-`v0.1.0` — scaffolding inicial. La fuente de verdad (`03_tokens/`) está poblada;
-las demás capas son andamiaje ordenado que se llenará en fases posteriores. Ver
-`CHANGELOG.md`.
+`v1.8.0` — sistema en operación: fuente de verdad poblada y verificada por CI,
+capa estratégica oficial completa, generadores token-driven (docx/pptx/xlsx),
+componentes de documento/presentación/redes/email/web/cartografía, skill
+empaquetable y guía rápida (`GUIA-RAPIDA.md`). Pendientes y decisiones abiertas:
+ver `07_gobernanza/analisis-de-vacios.md` y `CHANGELOG.md`.
