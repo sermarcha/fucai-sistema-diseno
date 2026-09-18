@@ -1,0 +1,354 @@
+/* ============================================================
+   FUCAI — Hoja de estilo para exportar Markdown a PDF
+   Extensión: yzane.markdown-pdf (VS Code)
+   Fuente de verdad: 03_tokens/tokens.json (v1.8.0)
+   Manual de Identidad Visual v1.1 (abril 2026)
+
+   Instalación y ajustes: ver README.md de esta carpeta.
+   IMPORTANTE: requiere "markdown-pdf.includeDefaultStyles": false,
+   o los estilos de GitHub pisan estos.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   BLOQUE 1 — FUENTES
+   Space Grotesk para títulos, Carlito (sustituto métrico de
+   Calibri) para cuerpo. Si el PDF se genera sin red, instala
+   las dos familias en el sistema: los fallback entran solos.
+   ------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  /* Paleta — primitivos, los únicos valores literales */
+  --fucai-naranja: #E94513;
+  --fucai-naranja-oscuro: #C13A10;
+  --fucai-naranja-claro: #F4A28A;
+  --fucai-arena: #EDE8D3;
+  --fucai-arena-claro: #F6F3E9;
+  --fucai-verde: #2D6A4F;
+  --fucai-verde-claro: #74B597;
+  --fucai-negro: #000000;
+  --fucai-gris-fuerte: #333333;
+  --fucai-gris: #666666;
+  --fucai-gris-suave: #CCCCCC;
+
+  /* Tipografía */
+  --fucai-titulos: 'Space Grotesk', 'Arial Black', sans-serif;
+  --fucai-cuerpo: 'Calibri', 'Carlito', Arial, sans-serif;
+  --fucai-mono: 'Consolas', 'Courier New', monospace;
+  --fucai-emoji: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji';
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 2 — PÁGINA Y CUERPO
+   Regla dura: fondo de página BLANCO siempre. Los márgenes
+   reales los fija markdown-pdf en settings.json; el @page sirve
+   para cualquier otro motor de impresión.
+   ------------------------------------------------------------ */
+@page {
+  size: A4;
+  margin: 2.5cm;
+}
+
+body {
+  background: #FFFFFF;
+  color: var(--fucai-negro);
+  font-family: var(--fucai-cuerpo), var(--fucai-emoji);
+  font-size: 11pt;
+  line-height: 1.3;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+p {
+  margin: 0 0 12pt 0;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 3 — TÍTULOS
+   Escala Word/PDF de tokens.json: 28 · 22 · 16 · 13 pt.
+   Space Grotesk SOLO aquí: nunca en cuerpo, tablas, captions
+   ni pies. Se agrupa con aire, no con cajas ni bordes.
+   ------------------------------------------------------------ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fucai-titulos), var(--fucai-emoji);
+  font-weight: 700;
+  line-height: 1.15;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* El primer H1 del archivo es el título del documento */
+body > h1:first-child {
+  font-size: 28pt;
+  color: var(--fucai-naranja);
+  letter-spacing: -0.02em;
+  margin: 0 0 24pt 0;
+}
+
+h1 {
+  font-size: 22pt;
+  color: var(--fucai-naranja);
+  letter-spacing: -0.02em;
+  margin: 32pt 0 12pt 0;
+}
+
+h2 {
+  font-size: 16pt;
+  color: var(--fucai-naranja);
+  margin: 24pt 0 12pt 0;
+}
+
+h3 {
+  font-size: 13pt;
+  color: var(--fucai-negro);
+  margin: 16pt 0 8pt 0;
+}
+
+h4, h5, h6 {
+  font-size: 11pt;
+  color: var(--fucai-negro);
+  margin: 16pt 0 4pt 0;
+}
+
+/* Subtítulo institucional: el párrafo que sigue al título */
+body > h1:first-child + p {
+  font-size: 11pt;
+  color: var(--fucai-gris-fuerte);
+  margin-bottom: 24pt;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 4 — TEXTO CORRIDO
+   Cursiva reservada a citas, nombres científicos, lenguas
+   indígenas y pilares; no se toca su estilo.
+   ------------------------------------------------------------ */
+strong, b {
+  font-weight: 700;
+  color: var(--fucai-negro);
+}
+
+em, i {
+  font-style: italic;
+}
+
+a {
+  color: var(--fucai-naranja);
+  text-decoration: underline;
+}
+
+/* Sin subrayado en cuerpo: solo los enlaces lo llevan */
+u {
+  text-decoration: none;
+}
+
+ul, ol {
+  margin: 0 0 12pt 0;
+  padding-left: 20pt;
+}
+
+li {
+  margin-bottom: 4pt;
+}
+
+li > ul, li > ol {
+  margin-top: 4pt;
+  margin-bottom: 0;
+}
+
+/* Viñeta naranja: el único ornamento de la lista */
+ul > li::marker {
+  color: var(--fucai-naranja);
+}
+
+ol > li::marker {
+  color: var(--fucai-naranja);
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 5 — CITA (componente «Voz de la comunidad»)
+   Filete naranja a la izquierda y cursiva. Sin caja, sin fondo:
+   el agrupamiento lo hace el aire.
+   ------------------------------------------------------------ */
+blockquote {
+  margin: 16pt 0;
+  padding: 0 0 0 16pt;
+  border-left: 2pt solid var(--fucai-naranja);
+  font-style: italic;
+  color: var(--fucai-negro);
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Atribución: la última línea de la cita si empieza por guion */
+blockquote p + p {
+  font-style: normal;
+  font-size: 9pt;
+  color: var(--fucai-gris-fuerte);
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 6 — TABLAS
+   Encabezado blanco sobre naranja; filetes HORIZONTALES
+   solamente, nunca cuadrícula completa.
+   ------------------------------------------------------------ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12pt 0 16pt 0;
+  font-family: var(--fucai-cuerpo), var(--fucai-emoji);
+  font-size: 10pt;
+  page-break-inside: auto;
+}
+
+thead {
+  display: table-header-group; /* repite el encabezado al cambiar de página */
+}
+
+th {
+  background: var(--fucai-naranja);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 10pt;
+  text-align: left;
+  padding: 6pt 8pt;
+  border: none;
+}
+
+td {
+  color: var(--fucai-negro);
+  padding: 6pt 8pt;
+  border: none;
+  border-bottom: 0.5pt solid var(--fucai-gris-suave);
+  vertical-align: top;
+}
+
+tr {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0.75pt solid var(--fucai-gris-fuerte);
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 7 — CÓDIGO Y DATOS
+   Para rutas, nombres de archivo, códigos hex y marcadores
+   como (completar). Tinte arena, nunca gris de sistema.
+   ------------------------------------------------------------ */
+code {
+  font-family: var(--fucai-mono);
+  font-size: 9.5pt;
+  background: var(--fucai-arena-claro);
+  color: var(--fucai-gris-fuerte);
+  padding: 1pt 3pt;
+  border-radius: 2pt;
+}
+
+pre {
+  background: var(--fucai-arena-claro);
+  border-left: 2pt solid var(--fucai-arena);
+  padding: 8pt 12pt;
+  margin: 12pt 0;
+  overflow-x: auto;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 9pt;
+  line-height: 1.4;
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 8 — SEPARADORES, IMÁGENES Y PIES
+   ------------------------------------------------------------ */
+hr {
+  border: none;
+  border-top: 0.5pt solid var(--fucai-arena);
+  margin: 24pt 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Caption: el párrafo en cursiva que sigue a una imagen */
+p > img + em,
+p:has(> img) + p > em {
+  font-size: 9pt;
+  color: var(--fucai-gris-fuerte);
+}
+
+/* Pie del documento: el último párrafo en cursiva —el slogan
+   y la URL— se imprime como firma discreta */
+body > p:last-child > em {
+  font-size: 8pt;
+  color: var(--fucai-gris);
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 9 — CLASES OPCIONALES
+   Se usan escribiendo HTML suelto dentro del Markdown.
+   ------------------------------------------------------------ */
+
+/* Salto de página forzado: <div class="salto"></div> */
+.salto {
+  page-break-after: always;
+  break-after: page;
+}
+
+/* Dato héroe: <p class="dato">172 publicaciones</p> */
+.dato {
+  font-family: var(--fucai-titulos);
+  font-size: 36pt;
+  font-weight: 700;
+  color: var(--fucai-naranja);
+  line-height: 1;
+  margin: 24pt 0 4pt 0;
+}
+
+/* Pilar o slogan como firma: <p class="pilar">Nuestro centro…</p> */
+.pilar {
+  font-style: italic;
+  color: var(--fucai-gris-fuerte);
+  margin-bottom: 24pt;
+}
+
+/* Banda arena para aperturas: <div class="banda">…</div> */
+.banda {
+  background: var(--fucai-arena);
+  padding: 16pt;
+  margin: 16pt 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Territorio: el verde solo se usa marcando explícitamente
+   <span class="territorio">…</span>, nunca por defecto */
+.territorio {
+  color: var(--fucai-verde);
+}
+
+/* ------------------------------------------------------------
+   BLOQUE 10 — UN H1 POR PÁGINA (desactivado)
+   Descomenta para que cada capítulo abra en página nueva.
+   Útil en compilados largos; estorba en documentos de una pieza.
+   ------------------------------------------------------------ */
+/*
+h1 { page-break-before: always; break-before: page; }
+body > h1:first-child { page-break-before: avoid; break-before: avoid; }
+*/

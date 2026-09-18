@@ -10,7 +10,18 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 
 ## [No publicado]
 
-_Nada aún._
+### Añadido
+- **Componente `documento/markdown-pdf/`** — hoja de estilo
+  `fucai-markdown-pdf.css` para exportar cualquier `.md` a PDF con marca desde
+  VS Code, con la extensión `yzane.markdown-pdf`. Cubre el hueco entre el `.md`
+  fuente y el `.docx` de entregable: hasta ahora no había forma de sacar un PDF
+  con identidad de un archivo Markdown sin pasar por Word.
+  Aplica la escala `font.size.*` (28/22/16/13/11/9/8 pt), la paleta de
+  `tokens.json` v1.8.0, encabezado de tabla blanco sobre naranja con **filetes
+  horizontales solamente**, cita con filete naranja sin caja, y fondo de página
+  blanco siempre. El verde **no se aplica solo**: hay que marcarlo con
+  `.territorio`, para que siga siendo color de territorio y no de decoración.
+  Registrado en `04_componentes/catalogo.md`.
 
 ## [1.8.0] — 2026-08-26
 

@@ -23,6 +23,7 @@
 | Tabla de firmas | `documento/tabla-firmas.md` | Borrador | primitivas de tabla (sin builder propio) |
 | Divisor de capítulo | `documento/divisor-capitulo.md` | Borrador | tabla de ancho completo en el cuerpo |
 | One-pager de impacto | `documento/one-pager-impacto.md` | Borrador | `textHeader()` + `heroNumber()` + `dataTable()` (sin builder propio) |
+| Markdown → PDF con marca | `documento/markdown-pdf/` | Estable | `fucai-markdown-pdf.css` + extensión `yzane.markdown-pdf` en VS Code |
 | Portada de presentación | `presentacion/portada-titulo.md` | Estable | `fucai_pptx.js → titleSlide / sectionSlide` |
 | Slide de contenido | `presentacion/slide-contenido.md` | Estable | `fucai_pptx.js → contentSlide` |
 | Patrones de vista AppSheet | `appsheet/patrones.md` | Borrador | tokens `appsheet.*` (sin builder) |
