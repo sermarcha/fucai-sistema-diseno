@@ -49,14 +49,19 @@ de FUCAI) · **deuda** (técnica, implementable).
 
 - **(M · deuda)** **Logo:** falta la **versión monocromática (negra)**, el **tamaño
   mínimo** (mm/px) y el **formato vectorial (SVG)** — hoy solo hay PNG.
-- **(M · deuda)** **Iconografía:** la carpeta `iconos/` está **vacía** (solo `.gitkeep`);
-  faltan la **grilla de construcción**, los tamaños estándar y la **librería de `.svg`**.
+- **(M · deuda)** **Iconografía de interfaz:** la carpeta `iconos/` está **vacía**
+  (solo `.gitkeep`); faltan la **grilla de construcción**, los tamaños estándar y la
+  **librería de `.svg`** outline. *(2026-09: el **ícono de aplicación** sí quedó
+  resuelto — estilo Cristal FUCAI en `prompts-cristal.md`. El vacío que queda es el
+  set plano de interfaz.)*
 - **(M · decisión)** **Colores de estado** (éxito/error/alerta): sin definir como tokens;
   la paleta excluye rojo/azul genéricos, así que requiere decisión + tokenización.
 - **(M · deuda)** **Tipografía web:** faltan **H4–H6** y la conversión de la escala (pt)
   a **rem/px** para web.
 - **(M · deuda)** **Grilla de columnas y breakpoints** responsive (web/AppSheet): no tokenizados.
-- **(B · decisión)** **Ilustración:** sin set propio definido (`ilustracion.md`).
+- **(B · decisión)** **Ilustración:** sin set ilustrativo propio definido
+  (`ilustracion.md`). *(2026-09: el estilo **generativo** sí está fijado —
+  Cristal FUCAI, con ADN, plantilla de prompt y bloques por formato.)*
 - **(B · decisión)** **Fotografía:** falta el **enlace al banco autorizado en Drive** y
   el formato de registro de consentimiento (`fotografia.md`).
 - **(B · deuda)** **Modo oscuro:** las rampas de **visualización de datos** no se
@@ -67,7 +72,8 @@ de FUCAI) · **deuda** (técnica, implementable).
 - **(B · deuda)** **Tokens sin consumidor**: `accent.territorySoft`, `text.footer`,
   `docx.tableHeader.text`, `pptx.titleSlide.text`, `appsheet.accent` están definidos
   pero ningún generador ni documento los referencia. → conectarlos al motor o
-  documentarlos como "reservados".
+  documentarlos como "reservados". *(2026-09: el capítulo de correo ya consume el
+  grupo `email.*` ampliado, y su tabla de paleta está bajo verificación `[GEN]`.)*
 - **Aclaración (no es vacío):** las 21 entradas `dataviz.ramp.*` y los primitivos de
   paso de rampa (`naranja-medio`, `verde-oscuro`, etc.) **sí se consumen**
   programáticamente (vía `lib/tokens` → `RAMP_*` y `tokens.css`); no son huérfanos.

@@ -6,7 +6,7 @@ description: "Apply FUCAI institutional branding (design philosophy, colors, typ
 # FUCAI Institutional Branding
 
 Single source of truth for everything produced for **Fundación Caminos de Identidad (FUCAI)**, aligned to *Manual de Identidad Visual v1.1 (abril 2026)*.
-**Version 3.2** (modular: lean overview + `references/` + executable `scripts/`; web y AppSheet como referencias propias; sincronizado 2026-08 con el sistema de diseño: reglas de redes/carrusel 2026-07, prohibición de IA para personas, contrastes calculados, hover naranja oscuro).
+**Version 3.2** (modular: lean overview + `references/` + executable `scripts/`; web, AppSheet y correo como referencias propias; sincronizado 2026-09 con el sistema de diseño: reglas de redes/carrusel 2026-07, prohibición de IA para personas, contrastes calculados, hover naranja oscuro).
 
 > Firma: *Nuestro centro es la periferia* · www.fucaicolombia.org · comunicaciones@fucaicolombia.org · NIT 800.173.574-1
 
@@ -43,6 +43,7 @@ Pilares (uno por sección, en cursiva): *Nuestro camino es la identidad · Nuest
 | Diseño en Canva | `references/canva.md` | (brand kit `kAGulOuplLw`) |
 | Páginas del sitio web (Squarespace) · HTML/React | `references/web.md` | — |
 | Aplicaciones AppSheet | `references/appsheet.md` | (fórmulas: skill `appsheet-fundacion-caminos-de-identidad`) |
+| Correo: notificación, boletín o firma | `references/email.md` | (notificaciones AppSheet: `04_componentes/appsheet/notificaciones-correo.md`) |
 | Google Docs/Slides/Sheets | `references/gworkspace.md` | — |
 | Detalle de color (tintes, rampas, combinaciones) | `references/color-system.md` | — |
 | Tipografía y espaciado | `references/typography-layout.md` | — |
@@ -70,12 +71,9 @@ Tono: sencillo, concreto, entusiasta, empoderador, realista, cercano. Voz activa
 `voiceQuote()` Voz de la comunidad · `h1(texto, pilar)` apertura con pilar · `heroNumber()` dato héroe · banda arena de portada · barra naranja de contraportada.
 
 ## Firma de email
-```
-Nombre Apellido
-Cargo | Fundación Caminos de Identidad — FUCAI
-www.fucaicolombia.org
-Nuestro centro es la periferia
-```
+Borde izquierdo naranja de 3 px, 13 px de separación, 420 px de ancho máximo, y cuatro líneas: **Nombre Apellido** (14 px negrita) · **CARGO · FUCAI** (10 px, mayúsculas, naranja) · teléfono y `fucaicolombia.org` (12 px gris, URL en naranja) · *Nuestro centro es la periferia* (11 px cursiva).
+
+**Sin logo en imagen ni banners:** el filete naranja es la marca. En respuestas y reenvíos, firma corta. El HTML listo para pegar en Gmail está en `references/email.md`.
 
 ## Reglas generales y nombres de archivo
 - Aplica FUCAI por defecto salvo que se pida otra marca; sin azul/gris genérico.

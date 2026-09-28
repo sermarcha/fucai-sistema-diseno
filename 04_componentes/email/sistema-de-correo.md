@@ -42,16 +42,18 @@ Revisamos las notificaciones que ya envían Fucai Campo y Bancabundancia, el Bol
 
 Proporción **60-25-10-5** adaptada al correo: el lienzo y la tarjeta ocupan casi todo; el naranja aparece en 3–5 puntos, nunca como fondo de bloque.
 
+<!-- [GEN] derivado de tokens.json (email.*) — lo verifica build-skill.js -->
+
 | Token | Hex | Uso en correo | Nunca |
 |---|---|---|---|
-| `lienzo` (arena claro) | `#F6F3E9` | Fondo exterior, chip de estado, caja de acción | Texto |
-| `tarjeta` (blanco) | `#FFFFFF` | Fondo del contenido | — |
-| `acento` (naranja) | `#E94513` | Filete superior 3 px, dato héroe, enlaces, borde izquierdo de chip/caja, cabecera de tabla, total | Párrafos de cuerpo; fondos grandes |
-| `territorio` (verde) | `#2D6A4F` | Solo contenidos de territorio/naturaleza (boletín, monitoreo ambiental) | Estados de "aprobado"; notificaciones financieras |
-| `titulo` (negro) | `#000000` | Número del registro, títulos de sección | — |
-| `texto` | `#333333` | Cuerpo y valores | — |
-| `secundario` | `#666666` | Etiquetas, sistema, pie | Texto largo |
-| `filete` | `#CCCCCC` | Líneas de tabla y separador del pie | — |
+| `email.surface.canvas` | `#F6F3E9` | Fondo exterior, chip de estado, caja de acción | Texto |
+| `email.surface.card` | `#FFFFFF` | Fondo del contenido | — |
+| `email.accent` | `#E94513` | Filete superior 3 px, dato héroe, enlaces, borde izquierdo de chip/caja, cabecera de tabla, total | Párrafos de cuerpo; fondos grandes |
+| `email.territory` | `#2D6A4F` | Solo contenidos de territorio/naturaleza (boletín, monitoreo ambiental) | Estados de "aprobado"; notificaciones financieras |
+| `email.text.title` | `#000000` | Número del registro, títulos de sección | — |
+| `email.text.body` | `#333333` | Cuerpo y valores | — |
+| `email.text.muted` | `#666666` | Etiquetas, sistema, pie | Texto largo |
+| `email.rule` | `#CCCCCC` | Líneas de tabla y separador del pie | — |
 
 **Contraste:** naranja sobre blanco (3.1:1) solo en textos ≥ 18 px o negrita ≥ 14 px. Enlaces naranjas siempre subrayados en el cuerpo para que no dependan del color.
 
@@ -237,7 +239,7 @@ No se crean paletas por app. Si una submarca necesita identificarse más, se añ
 ▌+57 601 249 7984  ·  fucaicolombia.org           (12 px · #666666 · URL en naranja)
 ▌Nuestro centro es la periferia                   (11 px · cursiva · #666666)
 ```
-Borde izquierdo naranja 3 px, `padding-left` 13 px, ancho máximo 420 px, pila `Calibri, Carlito, Arial, sans-serif`.
+Borde izquierdo naranja `email.signature.border` (3 px), `padding-left` `email.signature.padding` (13 px), ancho máximo `email.signature.maxWidth` (420 px), pila `Calibri, Carlito, Arial, sans-serif`.
 
 ### 10.2 Reglas
 - **Sin logo en imagen** ni banners: muchos clientes bloquean imágenes y los adjuntos inflan los hilos. El filete naranja es la marca.

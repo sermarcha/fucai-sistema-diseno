@@ -22,6 +22,84 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   blanco siempre. El verde **no se aplica solo**: hay que marcarlo con
   `.territorio`, para que siga siendo color de territorio y no de decoración.
   Registrado en `04_componentes/catalogo.md`.
+- **Referencia `references/email.md` en el skill** — el ruteo del skill no tenía
+  fila para correo, pese a que ya existían el capítulo del medio y las directrices
+  de notificaciones. Destila ambos en formato operativo: reglas duras, paleta,
+  tipografía, anatomía, notificaciones de AppSheet, firma del personal y
+  accesibilidad.
+- **Tokens `email.*` de superficie, texto, filete y firma** — `email.surface.canvas`
+  y `email.surface.card`; `email.accent`, `email.territory` y `email.rule`;
+  `email.text.title`, `email.text.body` y `email.text.muted`; y el trío
+  `email.signature.border` / `padding` / `maxWidth` (3 / 13 / 420 px). Cierran el
+  hueco entre el grupo `email.*` previo (solo ancho, botón y fuentes) y los valores
+  que el capítulo de correo usaba escritos a mano.
+
+- **Registro de "Cristal FUCAI" en la capa de identidad** — el estilo generativo de
+  imagen de la casa no aparecía en ninguna parte del repositorio fuera de su propia
+  guía. Ahora `iconografia.md` distingue los **dos registros de ícono** (interfaz en
+  outline 2 px · aplicación en Cristal), `ilustracion.md` lo recoge como estilo
+  generativo con su límite —objetos y símbolos, nunca personas ni comunidades— y
+  `references/photography.md` lo pone al alcance del agente.
+- **Sección "Dos registros de escritura"** en `07_gobernanza/mapa-fuente-de-verdad.md`
+  — distingue el **capítulo** (para una persona que decide: narra y explica el porqué)
+  de la **directriz** (para un agente que construye: reglas duras, esqueleto literal,
+  checklist). La directriz no sustituye al capítulo, lo ejecuta.
+
+- **Componente `documento/libro-y-cartilla.md`** — cómo se arma una publicación
+  larga de FUCAI. Separa de forma explícita **lo fijo** (blanco de fondo, paleta y
+  60-25-10-5, Space Grotesk/Calibri, voz, aparato mínimo, ética) de **lo libre**
+  (metáfora estructurante, formato y retícula, escala tipográfica, familias de
+  ilustración, recursos de navegación), para que innovar no cueste identidad.
+  Recoge el aparato editorial por sus tres funciones —situar, acreditar, cuidar—,
+  la retícula de 170 × 240 con franja de margen, el **sistema de marcadores de
+  diagramación** que viaja dentro del `.md` y no se imprime, y la regla de que el
+  libro **se genera, no se maqueta a mano**.
+- **`02_identidad-visual/ilustracion-editorial.md`** — el estilo de acuarela cálida
+  para libros y cartillas, con su método de serie: bloque de estilo idéntico en
+  todos los prompts, familias de pieza con sus tamaños de producción, las dos vías
+  (describir o partir de fotografía), parámetros por herramienta, trazabilidad de
+  prompt y semilla, reglas éticas y los ocho «no» del control de calidad.
+  El aprendizaje central queda escrito: **la fuerza de transformación se invierte**
+  —media (0,50–0,65) en el retrato, que existe para *conservar* a la persona; alta
+  (0,70–0,85) en la escena, que existe para *disolverla*—.
+  Destilados de la producción de *35 Voces, 35 Caminos de Identidad* en
+  `fucai-knowledge`.
+
+### Cambiado
+- **La casa tiene dos estilos generativos, no uno** — al documentar el estilo del
+  libro quedó claro que «Cristal FUCAI» (objetos, íconos de aplicación, redes) y
+  «acuarela cálida» (libros y cartillas) conviven y no se mezclan en una misma
+  pieza. `ilustracion.md` pasa a declarar **tres registros** —infografía y diagrama,
+  Cristal, acuarela— y `references/photography.md` corrige haber presentado Cristal
+  como el único.
+- **La firma de correo deja de tener dos fuentes de verdad** — `SKILL.md` traía una
+  firma en texto plano, sin filete ni jerarquía, que contradecía la del capítulo de
+  correo. Como el skill es lo que consume un agente, toda firma generada salía con
+  la versión pobre. Ahora `SKILL.md` describe la firma real y remite a
+  `references/email.md` para el HTML.
+- **Verificación `[GEN]` ampliada a la capa 04 y al skill** — `build-skill.js`
+  reconoce el prefijo `email.*` y vigila las tablas de paleta de
+  `04_componentes/email/sistema-de-correo.md` y `references/email.md`. La
+  verificación pasa de 17 a 19 tablas y de 69 a 85 celdas.
+- **Mapa de fuente de verdad y registro de vacíos al día** — tres filas nuevas en
+  "Qué manda sobre qué" (correo, notificaciones de AppSheet, estilo Cristal); el
+  diagrama de compilación ya refleja que `[GEN]` cubre 02_/04_/06_ y el skill; y
+  `analisis-de-vacios.md` anota qué cerró cada documento: el ícono **de aplicación**
+  queda resuelto y el vacío restante es el set plano **de interfaz**.
+- **Catálogo:** la firma de correo del personal queda registrada apuntando al §10 del
+  capítulo, sin crear una ficha que duplicara la especificación.
+- **`README.md`:** la lista de familias de `04_componentes/` omitía `email/` y
+  `cartografia/`, que ya existían.
+- **Ubicación de los tres capítulos de septiembre** — estaban sueltos en la raíz
+  de `04_componentes/`, fuera de su familia y con nombre `FUCAI_…_2026-09.md`.
+  Se movieron con `git mv` y se renombraron a minúscula-con-guion, según la
+  convención del repositorio:
+  - `FUCAI_SistemaDiseno_Correo_2026-09.md` → `04_componentes/email/sistema-de-correo.md`
+  - `FUCAI_Directrices_Claude_Notificaciones_AppSheet_2026-09.md` → `04_componentes/appsheet/notificaciones-correo.md`
+  - `FUCAI_Guia_Prompts_Cristal_2026-09.md` → `02_identidad-visual/prompts-cristal.md`
+
+  Se actualizaron el catálogo de componentes, el README de la familia email y la
+  referencia cruzada entre el capítulo de correo y las directrices de AppSheet.
 
 ## [1.8.0] — 2026-08-26
 

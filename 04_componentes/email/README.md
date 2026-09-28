@@ -16,9 +16,15 @@ Por eso email tiene reglas técnicas propias y, idealmente, **tokens propios**
 
 | Ficha | Qué es |
 |-------|--------|
+| `sistema-de-correo.md` | **Capítulo del medio**: paleta, tipografía y anatomía común de los tres tipos de correo (notificación, boletín, firma). |
 | `plantilla.md` | Estructura base de un correo FUCAI (cabecera, cuerpo, pie, firma). |
 | `boletin.md` | Boletín periódico: varios bloques de contenido en una sola pieza. |
 | `campana-mailing.md` | Guía de campaña: segmentación, asunto, preheader, CTA, frecuencia, métricas y cumplimiento. |
+
+> **Cómo se construyen las notificaciones.** Este capítulo dice *cómo se ve* el
+> correo. Las reglas de implementación en AppSheet —columnas de formato,
+> esqueleto HTML, biblioteca de bloques y configuración del bot— están en
+> `../appsheet/notificaciones-correo.md`.
 
 ## Qué referencia esta familia (no lo redefine)
 
@@ -44,6 +50,18 @@ Para no escribir medidas a mano, el grupo de componente `email.*` vive en
   (Space Grotesk → Arial Black/Arial; Calibri → Carlito/Arial), así que no se
   duplican: el correo reusa las fuentes de marca con su degradado.
 - `email.button.bg` → `{brand.primary}` · `email.button.text` → `{text.onColor}`.
+- `email.surface.canvas` → `{color.arena-claro}` (lienzo exterior) ·
+  `email.surface.card` → `{color.blanco}` (tarjeta del contenido).
+- `email.accent` → `{brand.primary}` (filete de 3 px, dato héroe, enlaces) ·
+  `email.territory` → `{brand.territory}`, **solo** boletín y contenidos de
+  territorio, nunca en notificaciones · `email.rule` → `{color.gris-linea}`.
+- `email.text.title` / `email.text.body` / `email.text.muted` → negro, gris de
+  texto y gris de soporte.
+- `email.signature.border` **3 px**, `email.signature.padding` **13 px** y
+  `email.signature.maxWidth` **420 px** — la firma del personal.
+
+La tabla de paleta de `sistema-de-correo.md` está marcada `[GEN]`: `build-skill.js`
+verifica en cada build que sus hex sigan coincidiendo con estos tokens.
 
 > [Pendiente: elegir la herramienta de envío oficial (p. ej. Mailchimp, Brevo,
 > Acumbamail) y validar el texto legal de tratamiento de datos antes de pasar

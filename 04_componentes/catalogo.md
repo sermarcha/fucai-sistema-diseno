@@ -23,19 +23,23 @@
 | Tabla de firmas | `documento/tabla-firmas.md` | Borrador | primitivas de tabla (sin builder propio) |
 | Divisor de capítulo | `documento/divisor-capitulo.md` | Borrador | tabla de ancho completo en el cuerpo |
 | One-pager de impacto | `documento/one-pager-impacto.md` | Borrador | `textHeader()` + `heroNumber()` + `dataTable()` (sin builder propio) |
+| Libro y cartilla | `documento/libro-y-cartilla.md` | Borrador | aparato editorial, retícula y marcadores de diagramación |
 | Markdown → PDF con marca | `documento/markdown-pdf/` | Estable | `fucai-markdown-pdf.css` + extensión `yzane.markdown-pdf` en VS Code |
 | Portada de presentación | `presentacion/portada-titulo.md` | Estable | `fucai_pptx.js → titleSlide / sectionSlide` |
 | Slide de contenido | `presentacion/slide-contenido.md` | Estable | `fucai_pptx.js → contentSlide` |
 | Patrones de vista AppSheet | `appsheet/patrones.md` | Borrador | tokens `appsheet.*` (sin builder) |
+| Notificaciones por correo (AppSheet) | `appsheet/notificaciones-correo.md` | Borrador | directrices de construcción (sin builder) |
 | Post de redes | `social/post.md` | Borrador | Canva (brand kit) |
 | Story de redes | `social/story.md` | Borrador | Canva (brand kit) |
 | Carrusel de redes | `social/carrusel.md` | Borrador | Canva (brand kit) |
 | Guías por canal social | `social/canales/` | Borrador | estrategia por red (LinkedIn, Instagram, Facebook, X, TikTok) |
 | Community management y gobernanza | `social/canales/community-management.md` | Borrador | marco de interacción, escalamiento y crisis |
 | Inventario de canales y métricas | `social/canales/inventario.md` | Plantilla | a llenar por comunicaciones |
+| Sistema de correo (capítulo del medio) | `email/sistema-de-correo.md` | Borrador | paleta, tipografía y anatomía común |
 | Plantilla de email | `email/plantilla.md` | Borrador | HTML email / herramienta de envío |
 | Boletín | `email/boletin.md` | Borrador | sobre `email/plantilla.md` |
 | Campaña de mailing | `email/campana-mailing.md` | Borrador | guía de campaña (estrategia) |
+| Firma de correo del personal | `email/sistema-de-correo.md` §10 | Borrador | HTML para Gmail; tokens `email.signature.*` |
 | Botón web | `web/boton.md` | Borrador | HTML/React (tokens) |
 | Card web | `web/card.md` | Borrador | HTML/React (tokens) |
 | Cartografía (mapas) | `cartografia/README.md` | Borrador | reglas de marca; implementación en repo `fucai-geo` |

@@ -9,7 +9,7 @@
  *       que embeben los generadores y la plataforma de marca (Misión/Visión/Valores).
  *       Así, el "skill" que se distribuye INCLUYE todo el sistema de diseño.
  *
- *   [B] VERIFICAR que las tablas marcadas <!-- [GEN] ... --> de la capa 02/06 sigan
+ *   [B] VERIFICAR que las tablas marcadas <!-- [GEN] ... --> de las capas 02/04/06 sigan
  *       coincidiendo con los tokens (detección de deriva). Es la forma segura e
  *       idempotente de "mantener generadas" esas tablas.
  *
@@ -76,9 +76,11 @@ const GEN_TARGETS = [
   "02_identidad-visual/forma-y-profundidad.md",
   "02_identidad-visual/movimiento.md",
   "06_accesibilidad/estandar-accesibilidad.md",
+  "04_componentes/email/sistema-de-correo.md",
+  "skill/fucai-branding/references/email.md",
 ];
 const GEN_RE = /\[GEN\][^\n]*tokens\.json/;
-const TOKEN_REF = /`((?:color|surface|brand|accent|text|font|space|layout|docx|pptx|appsheet|dataviz|radius|elevation|motion)\.[A-Za-z0-9_.\-]+)`/g;
+const TOKEN_REF = /`((?:color|surface|brand|accent|text|font|space|layout|docx|pptx|appsheet|email|dataviz|radius|elevation|motion)\.[A-Za-z0-9_.\-]+)`/g;
 
 function checkGenTables() {
   const issues = [];

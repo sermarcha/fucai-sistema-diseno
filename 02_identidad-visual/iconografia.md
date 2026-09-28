@@ -12,6 +12,19 @@
   ambiente. Nunca mezclar estilos de ilustración/ícono en una misma pieza.
 - Solo colores de la paleta (`color.*`).
 
+## Dos registros que no se mezclan
+
+El sistema tiene **dos** familias de ícono, con reglas distintas:
+
+| Registro | Para qué | Estilo |
+|---|---|---|
+| **Ícono de interfaz** | Dentro de una app, documento o web: acompaña etiquetas y acciones | Outline 2 px, plano, naranja/negro (verde solo territorio) — lo de arriba |
+| **Ícono de aplicación** | Lanzador de las apps, portadas, redes, presentaciones | **Cristal FUCAI**: objeto de cristal mate naranja sobre fondo arena, volumétrico |
+
+El estilo Cristal —su ADN, la plantilla de prompt y los bloques por formato— está
+en `prompts-cristal.md`. **No se usa para íconos de interfaz**: ahí el trazo plano
+sigue mandando.
+
 ## Grilla y tamaños
 
 > [Pendiente: definir la grilla de construcción (p. ej. lienzo 24×24, área viva,
