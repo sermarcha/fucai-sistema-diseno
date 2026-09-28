@@ -32,6 +32,7 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   vivía solo en la referencia de AppSheet. Ahora está en `references/voice-tone.md`,
   con la precisión de que **el testimonio es intocable** —la lista se aplica al marco
   editorial, nunca a lo que dijo una persona—.
+<!-- paleta-libre: esta entrada nombra el valor derivado para poder describirlo. -->
 - **`#E4DFCD` de la guía de Squarespace queda marcado como deriva**, no escondido:
   lleva el escape con motivo y está registrado como pendiente de decidir entre
   tokenizarlo o reemplazarlo por arena.
