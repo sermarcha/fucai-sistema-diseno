@@ -87,8 +87,12 @@ de FUCAI) · **deuda** (técnica, implementable).
 
 - **(M · deuda)** **Builders documentados pero no implementados** en `fucai_docx.js`:
   `actaHeader()`, `signatureTable()`, `chapterDivider()` (hoy se arman a mano).
-- **(M · deuda)** **QA parcial:** `check_fucai.py` solo valida `.docx`; **no hay
-  verificador** para `.pptx` ni `.xlsx`.
+- **~~QA parcial~~ — RESUELTO (2026-09).** `check_fucai.py` cubre ya los tres formatos
+  OOXML, sin dependencias externas: comprueba que **todo color explícito del artefacto
+  sea un token**. En `.xlsx` solo se revisan `<fonts>`, `<fills>` y `<borders>` —el
+  bloque `<indexedColors>` es la tabla heredada que Excel escribe en todo archivo y
+  daba 40 falsos positivos—. Probado contra las tres plantillas de `assets/templates/`
+  y verificado inyectando deriva a propósito.
 - **(B · deuda)** **Publicación del `.skill`** por Releases/CI desde `dist/skill/`:
   el empaquetado existe (`build-skill --package`), falta el disparador automático.
 

@@ -290,21 +290,21 @@ capítulo; lo que era **decisión abierta** quedó en el registro de vacíos.
 
 | § | Aprendizaje | Dónde quedó |
 |---|---|---|
-| 1 | Principios de diseño (flujo, lista/detalle, un toque menos, estado visible) | **Integrado** en `references/appsheet.md` § Cómo se arma la app |
+| 1 | Principios de diseño (flujo, lista/detalle, un toque menos, estado visible) | **Integrado** en `skill/fucai-branding/references/appsheet.md` § Cómo se arma la app |
 | 2 | Tokens de marca en AppSheet | Ya era norma en `patrones.md`. Confirmado |
-| 3 | Navegación, inicio numerado, paneles con tabla de accesos | **Integrado** en `references/appsheet.md` |
-| 4–5 | Detalle por secciones, tarjeta de dos datos | **Integrado** en `references/appsheet.md` |
+| 3 | Navegación, inicio numerado, paneles con tabla de accesos | **Integrado** en `skill/fucai-branding/references/appsheet.md` |
+| 4–5 | Detalle por secciones, tarjeta de dos datos | **Integrado** en `skill/fucai-branding/references/appsheet.md` |
 | 6 | Estados: color + ícono + texto, un `FR_` por estado | **Integrado**; el semáforo con **azul y rojo** queda como decisión abierta |
 | 6 | **Azul y rojo fuera de la paleta FUCAI** | `analisis-de-vacios.md` §3 — **subido a prioridad alta**: ya no es hipotético, está en producción |
 | 6 | Orden de estados alfabético vs. flujo | `analisis-de-vacios.md` §10 |
 | 7 | Lenguaje de servicio, no de propiedad | **Integrado** en `05_contenido-lenguaje/lexico-institucional.md`, tabla sí/no |
 | 7 | Etiquetas: pregunta vs. sustantivo, mayúscula inicial, opcional explícito | **Integrado** en `05_contenido-lenguaje/microcopy.md` § Reglas de etiqueta |
-| 8 | Formularios por pasos, `Editable_If` por estado y dueño | **Integrado** (resumen) en `references/appsheet.md` |
-| 9 | Visibilidad por alcance y rol | **Integrado** (resumen) en `references/appsheet.md`, con el aviso de cruzar audiencias |
-| 10 | Convenciones de nombres | **Integrado** en `references/appsheet.md` § Nombres |
+| 8 | Formularios por pasos, `Editable_If` por estado y dueño | **Integrado** (resumen) en `skill/fucai-branding/references/appsheet.md` |
+| 9 | Visibilidad por alcance y rol | **Integrado** (resumen) en `skill/fucai-branding/references/appsheet.md`, con el aviso de cruzar audiencias |
+| 10 | Convenciones de nombres | **Integrado** en `skill/fucai-branding/references/appsheet.md` § Nombres |
 | 10 | Vistas con nombre técnico visible | `analisis-de-vacios.md` §10 |
 | 11 | Trampas técnicas | Quedan aquí: son propias de AppSheet, no del sistema de diseño |
-| 12 | Checklist de «hecho» | **Integrado** en `references/appsheet.md` § Checklist de vista nueva |
+| 12 | Checklist de «hecho» | **Integrado** en `skill/fucai-branding/references/appsheet.md` § Checklist de vista nueva |
 | 13 | Backlog de FucaiCampo | Propio de la app: pertenece a `fucai-appsheet`, no al sistema. El punto 8 —llevar el estándar a las demás apps— sí quedó en `analisis-de-vacios.md` §10 |
 
 ---

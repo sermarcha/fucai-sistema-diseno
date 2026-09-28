@@ -24,6 +24,10 @@ Un correo FUCAI debe reconocerse **antes de leerlo**: lienzo arena claro, tarjet
 
 ## 2. Qué encontramos (auditoría de septiembre 2026)
 
+<!-- paleta-libre: esta sección cita a propósito valores ajenos a la paleta —la
+     submarca Bancabundancia y los grises de firma que hay que corregir—. Son
+     contraejemplos, no valores de uso. -->
+
 Revisamos las notificaciones que ya envían Fucai Campo y Bancabundancia, el Boletín Informativo N.º 23–24 y las firmas actuales. El diseño de **Fucai Campo** (avances, legalizaciones y pasajes) es la referencia: ya aplica la paleta, la jerarquía y el pie de marca. Lo que hay que alinear:
 
 | Hallazgo | Dónde | Corrección |
@@ -194,7 +198,7 @@ El chip de estado es **siempre neutro** (arena + borde naranja). El color no com
 
 ## 7. Voz en los correos
 
-Basada en `references/voice-tone.md`.
+Basada en `skill/fucai-branding/references/voice-tone.md`.
 - **Tuteo cercano**, voz activa, oraciones de 25 palabras o menos.
 - Apertura de notificación: "Hola." + qué pasó con sujeto y verbo. Apertura de boletín o correo personal: "Hola, [nombre]:".
 - Cierre de notificación: `— {Sistema}` (ej. *— Fucai Campo*). Cierre de correo personal o boletín: *Seguimos caminando juntos. Un abrazo desde la periferia.*
@@ -242,7 +246,7 @@ Todas las apps de FUCAI usan **el mismo esqueleto y la misma paleta**. Lo único
 2. La firma del cierre (`— Bancabundancia`).
 3. La frase de "por qué recibes este correo".
 
-No se crean paletas por app. Si una submarca necesita identificarse más, se añade su nombre como sobretítulo, nunca otro color de acento. Co-branding con financiadores (Naane/CC217, Tienda FUCAI) sigue `references/subbrands.md`.
+No se crean paletas por app. Si una submarca necesita identificarse más, se añade su nombre como sobretítulo, nunca otro color de acento. Co-branding con financiadores (Naane/CC217, Tienda FUCAI) sigue `skill/fucai-branding/references/subbrands.md`.
 
 ---
 

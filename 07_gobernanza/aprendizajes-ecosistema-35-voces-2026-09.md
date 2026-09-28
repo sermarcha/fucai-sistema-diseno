@@ -140,13 +140,13 @@ el registro de vacíos, para que no se pierda ni se invente por la puerta de atr
 |---|---|---|
 | 1.1 | Paleta de campaña cerrada, sin azules | Ya era norma (regla dura 4 del skill · `02_identidad-visual/color.md`). Confirmado, sin cambio |
 | 1.2 | Enlaces por defecto salen azules | `analisis-de-vacios.md` §9 — **no aplicado**: un `a { }` general puede pisar la navegación del sitio en vivo |
-| 1.3 | Contraste naranja↔blanco 3.1 → **3.9:1** | **Corregido** en `04_componentes/email/sistema-de-correo.md` §11 y `references/email.md`, con los umbrales WCAG de texto grande bien puestos |
+| 1.3 | Contraste naranja↔blanco 3.1 → **3.9:1** | **Corregido** en `04_componentes/email/sistema-de-correo.md` §11 y `skill/fucai-branding/references/email.md`, con los umbrales WCAG de texto grande bien puestos |
 | 2.1 | Una campaña hereda la tipografía de su canal | **Integrado** en `02_identidad-visual/tipografia.md` § Campañas |
 | 2.2 | Cursivas cuando todo el texto es una cita | **Integrado** en `05_contenido-lenguaje/guia-editorial.md` § Cursivas |
 | 3.1 | El testimonio es intocable | **Integrado** en `05_contenido-lenguaje/lexico-institucional.md` |
 | 3.2 | Estado «en preparación» · prohibido el *lorem ipsum* | `analisis-de-vacios.md` §9 |
 | 3.3 | Ficha de relato como esquema de contenido | `analisis-de-vacios.md` §9 |
-| 4.1 | Ilustración de autor | **Integrado** en `02_identidad-visual/fotografia.md` y `references/photography.md`, con la tabla de **las cuatro vías de imagen** |
+| 4.1 | Ilustración de autor | **Integrado** en `02_identidad-visual/fotografia.md` y `skill/fucai-branding/references/photography.md`, con la tabla de **las cuatro vías de imagen** |
 | 4.2 | Reutilizar una ilustración en varios relatos | **Integrado** en `fotografia.md` § Ilustración de autor |
 | 4.3 | Contenedor de espera en vez de imagen rota | **Integrado** en `fotografia.md` § Ilustración de autor |
 | 5 | Seis componentes de campaña nacidos en el proyecto | `analisis-de-vacios.md` §9 |

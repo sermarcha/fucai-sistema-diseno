@@ -30,6 +30,9 @@ Articular · Potenciar · Acompañar · Fortalecer · Territorio · Comunidad ·
 - ✕ "Víctimas" → personas que enfrentan, comunidades resilientes
 - ✕ "Poblaciones vulnerables" → nombra a las comunidades por sus propios nombres
 - ✕ Nunca: "tercer mundo", "subdesarrollado", "primitivo", "atrasado", "salvar", "civilizar"
+- ✕ **Lenguaje de propiedad** sobre proyectos o comunidades: "mis proyectos", "mi comunidad" → "proyectos coordinados", "comunidades acompañadas". Los proyectos son de la fundación y de las comunidades; quien los coordina no los posee. Vale en apps, tableros, informes y piezas públicas.
+
+**El testimonio es intocable.** Esta lista se aplica al **marco editorial** —títulos, SEO, asuntos, llamados, pies—, nunca a lo que dijo una persona. Un relato se publica como lo entregó: si alguien dijo "beneficiarios", se queda; lo que no puede decirlo es FUCAI al escribir alrededor.
 
 ## Microcopy (cercano)
 - Apertura de email: "Hola, [nombre]: te escribimos desde el equipo de FUCAI para…" (no "Estimado señor:")

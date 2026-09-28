@@ -68,7 +68,7 @@ septiembre de 2026:
    tiene convenciones de lectura propias.
 4. **`#161310` pasa a ser `color.negro-calido`** y el tema oscuro lo adopta.
 
-### C. Citación ambigua de las referencias del skill · **abierto**
+### C. Citación ambigua de las referencias del skill · **corregido**
 
 14 documentos fuera del skill citan `references/X.md` —ruta relativa al paquete—,
 que no resuelve desde la raíz. Conviven dos convenciones.
@@ -78,11 +78,12 @@ que no resuelve desde la raíz. Conviven dos convenciones.
 `CHANGELOG.md` citaba `skill/references/color-system.md`, sin el segmento
 `fucai-branding/`.
 
-### E. Una regla general en un lugar particular · **abierto**
+### E. Una regla general en un lugar particular · **corregido**
 
 «Lenguaje de servicio, no de propiedad» entró al skill solo dentro de
-`references/appsheet.md`, siendo una regla de léxico que aplica a informes y
-tableros.
+`skill/fucai-branding/references/appsheet.md`, siendo una regla de léxico que aplica a
+informes y tableros. **Corregido:** vive ya en `references/voice-tone.md`, junto al resto
+de la lista de palabras evitadas y con la precisión de que el testimonio es intocable.
 
 ## 3. Completitud
 
@@ -103,6 +104,13 @@ borrador**.
 **Deuda declarada:** 41 `[Pendiente]`, 18 `[POR CONFIRMAR]`, 2 `[●]`. Concentrada en
 gobernanza (12), identidad visual (10) y componentes (10).
 
+**Sobre la madurez (oportunidad 7).** Al revisarla, solo **un** borrador merecía subir:
+«Encabezado de acta», que sí tiene generador (`fucai_docx.js → textHeader`) y ahora QA.
+El resto de los borradores no lo son por falta de documentación sino por **falta de
+generador** —se arman a mano, en Canva o en HTML—, así que promoverlos habría sido
+maquillar el inventario. El camino real para bajar del 72 % es implementar los builders
+pendientes (`actaHeader`, `signatureTable`, `chapterDivider`), no reetiquetar.
+
 **160 líneas de CHANGELOG sin publicar** desde 1.8.0 (26 de agosto). **Cerrado como
 1.9.0** el 28 de septiembre.
 
@@ -118,10 +126,10 @@ distribuye por ahí— nunca se ha publicado así. Queda anotado en `versionado.
 | 1 | Meter `DESIGN.md` bajo `[GEN]` | **Hecho** en esta auditoría |
 | 2 | **Resolver la paleta de estados de una vez** — destraba apps, cartografía y el oscuro de la web | **Hecho** (2026-09-28) |
 | 3 | Publicar 1.9.0: el trabajo de un mes está sin etiquetar | **Hecho** — versión cerrada; falta el `git tag` tras fusionar |
-| 4 | Extender la verificación de «hex ∈ paleta» del CSS de Squarespace a todos los `.md` | Abierto |
-| 5 | QA para `pptx` y `xlsx`, como el que ya tiene `docx` | Abierto |
-| 6 | Unificar la convención de citas a rutas desde la raíz | Abierto |
-| 7 | Subir a estable los componentes con builder y uso real | Abierto |
+| 4 | Extender la verificación de «hex ∈ paleta» del CSS de Squarespace a todos los `.md` | **Hecho** — `[B5]`: 486 hex en 94 archivos |
+| 5 | QA para `pptx` y `xlsx`, como el que ya tiene `docx` | **Hecho** — `check_fucai.py` cubre los tres |
+| 6 | Unificar la convención de citas a rutas desde la raíz | **Hecho** — 26 citas en 6 archivos |
+| 7 | Subir a estable los componentes con builder y uso real | **Revisado** — solo uno lo merecía; ver nota |
 
 ## 5. Mejora de la maquinaria hecha aquí
 

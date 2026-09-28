@@ -18,7 +18,7 @@ Single source of truth for everything produced for **Fundación Caminos de Ident
 5. **Space Grotesk solo para títulos; Calibri (Carlito) para cuerpo.**
 6. **Slogan en cursiva** en pies/cierres; **www.fucaicolombia.org** en pies y comunicaciones externas.
 7. **Voz:** sin palabras de la lista "evitar"; comunidades como protagonistas; idioma español por defecto.
-8. **Tras generar un .docx, corre `python3 scripts/check_fucai.py <archivo>` y haz QA visual en PDF** antes de entregar.
+8. **Tras generar un `.docx`, `.pptx` o `.xlsx`, corre `python3 scripts/check_fucai.py <archivo>` y haz QA visual** antes de entregar. El verificador comprueba que todo color explícito del artefacto sea un token.
 9. **Imágenes generadas por IA: PROHIBIDO fabricar personas o comunidades.** No se inventan rostros ni escenas comunitarias: las comunidades protagonistas son reales. Fotos siempre reales, del banco autorizado, con consentimiento y color auténtico (sin duotonos naranjas). **Única excepción — el retrato ilustrado de una publicación:** parte de una fotografía real que la persona entregó, no altera sus rasgos, la persona lo aprueba antes de publicarse y se declara en el índice de ilustraciones (ver `references/libro-cartilla.md`).
 10. **Redes: carrusel 1080×1350 con máximo 2 láminas intensas** (gancho y cierre); la proporción 60-25-10-5 se mide sobre el carrusel completo (ver `references/canva.md`).
 11. **Tintes al 50 % (naranja claro `#F4A28A`, verde claro `#74B597`) solo como FONDO** con texto oscuro; nunca color de texto/ícono. Hover de acciones = naranja oscuro `#C13A10`.
@@ -38,8 +38,8 @@ Pilares (uno por sección, en cursiva): *Nuestro camino es la identidad · Nuest
 | Tarea | Referencia | Script ejecutable |
 |-------|-----------|-------------------|
 | Documento Word (.docx) | `references/docx.md` | `scripts/fucai_docx.js` · ejemplo `scripts/example_informe.js` · QA `scripts/check_fucai.py` |
-| Presentación (.pptx) | `references/pptx.md` | `scripts/fucai_pptx.js` · ejemplo `scripts/example_presentacion.js` |
-| Hoja de cálculo (.xlsx) | `references/xlsx.md` | `scripts/fucai_xlsx.py` · ejemplo `scripts/example_presupuesto.py` |
+| Presentación (.pptx) | `references/pptx.md` | `scripts/fucai_pptx.js` · ejemplo `scripts/example_presentacion.js` · QA `scripts/check_fucai.py` |
+| Hoja de cálculo (.xlsx) | `references/xlsx.md` | `scripts/fucai_xlsx.py` · ejemplo `scripts/example_presupuesto.py` · QA `scripts/check_fucai.py` |
 | Diseño en Canva | `references/canva.md` | (brand kit `kAGulOuplLw`) |
 | Páginas del sitio web (Squarespace) · HTML/React | `references/web.md` | — |
 | Aplicaciones AppSheet | `references/appsheet.md` | (fórmulas: skill `appsheet-fundacion-caminos-de-identidad`) |

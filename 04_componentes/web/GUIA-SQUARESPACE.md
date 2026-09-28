@@ -289,6 +289,7 @@ Estos cinco patrones construyen **todas** las páginas. Los pasos son de Fluid E
 5. El zoom al hover y las esquinas 6 px los pone el CSS (bloque 6). No añadas sombras.
 
 ### 6.4 Lista índice (líneas de enfoque)
+<!-- paleta-libre: #E4DFCD es DERIVA del sitio en vivo, no un token. Registrada en 07_gobernanza/analisis-de-vacios.md; pendiente de decidir si se tokeniza o se reemplaza por arena #EDE8D3. -->
 1. Por cada fila: **Bloque de línea** fino (color `#E4DFCD`) + fila con 3 bloques de texto:
    `01` (gris `#666666`, tabular) · nombre (H4, Space Grotesk Bold) · descripción (Carlito 17 px, gris `#333333`).
 2. Enlaza nombre (y opcionalmente toda la fila) a su página.
@@ -324,6 +325,7 @@ Cada sección indica su tema entre paréntesis. Construye siempre con los patron
 3. **01 Cómo caminamos aquí** (Claro 1): encabezado técnico verde + lead 20–25 px + 1–2 párrafos + pilar en cursiva verde.
 4. **Cita:** blockquote (botón de cita del editor de texto) — el CSS le pone filete izquierdo; para páginas de territorio cámbialo a verde seleccionando el texto y coloreándolo, o deja el filete naranja global si la cita no es ambiental.
 5. **Galería** (fondo `#1B4032`): mosaico de 5 fotos (1 vertical dominante + 4).
+<!-- paleta-libre: #E4DFCD es DERIVA del sitio en vivo, no un token. Registrada en 07_gobernanza/analisis-de-vacios.md; pendiente de decidir si se tokeniza o se reemplaza por arena #EDE8D3. -->
 6. **02 Líneas activas aquí** (Claro 1): encabezado técnico + tarjetas con borde `#E4DFCD`, número verde.
 7. **Artículos relacionados** (Claro 2): **Bloque de resumen** filtrado por la etiqueta del territorio, 2 elementos.
 8. **CTA** (fondo `#1B4032`): H2 centrado + Donar/Aliarse.

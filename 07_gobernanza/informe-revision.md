@@ -55,7 +55,7 @@ contando 4 tablas en color.md).
 
 **m2 — Referencias por nombre de archivo en vez de ruta repo-relativa.** `archivos:
 varias fichas de 04, onboarding.md, CHANGELOG.md` — se citan archivos por su nombre
-(p. ej. `fucai_docx.js`, `references/web.md`) en lugar de su ruta completa. **No son
+(p. ej. `fucai_docx.js`, `skill/fucai-branding/references/web.md`) en lugar de su ruta completa. **No son
 enlaces rotos**: todos los archivos existen y el contexto los identifica.
 → **Revisión humana (opcional, estilístico).** No corregido: alto volumen de cambios
 y ningún destino inexistente. Recomendación: en futuras ediciones, usar rutas

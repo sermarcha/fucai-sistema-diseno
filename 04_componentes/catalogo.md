@@ -8,6 +8,9 @@
 ## Estados de madurez
 
 - **Estable** — probado y producido por un generador en `scripts/`. Úsese.
+  «Probado» significa que pasa `scripts/check_fucai.py`, que desde 2026-09 cubre
+  `.docx`, `.pptx` y `.xlsx`. Los borradores que dicen «sin builder propio» no pueden
+  ser estables todavía: les falta el generador, no la documentación.
 - **Borrador** — definido, pero sin generador propio (se arma con primitivas o a
   mano). Úsese con cuidado.
 - **Deprecado** — no usar; se conserva por historia.
@@ -19,7 +22,7 @@
 | Portada de documento | `documento/portada.md` | Estable | `fucai_docx.js → buildCover` |
 | Banda arena (portada) | `documento/banda-arena.md` | Estable | `fucai_docx.js → coverFooterBand` |
 | Pie naranja (contraportada) | `documento/pie-naranja.md` | Estable | `fucai_docx.js → backFooterBar` |
-| Encabezado de acta | `documento/encabezado-acta.md` | Borrador | `fucai_docx.js → textHeader` + bloque de título |
+| Encabezado de acta | `documento/encabezado-acta.md` | Estable | `fucai_docx.js → textHeader` + bloque de título · QA `check_fucai.py` |
 | Tabla de firmas | `documento/tabla-firmas.md` | Borrador | primitivas de tabla (sin builder propio) |
 | Divisor de capítulo | `documento/divisor-capitulo.md` | Borrador | tabla de ancho completo en el cuerpo |
 | One-pager de impacto | `documento/one-pager-impacto.md` | Borrador | `textHeader()` + `heroNumber()` + `dataTable()` (sin builder propio) |

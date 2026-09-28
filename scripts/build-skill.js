@@ -246,6 +246,41 @@ function checkWebCss() {
   return { issues, filesChecked, hexChecked };
 }
 
+/* ====== [B5] documentación: todo hex escrito a mano ∈ tokens ============== */
+// Un `.md` puede citar un color ajeno (una submarca, un contraejemplo, un valor que
+// se está corrigiendo). Para eso existe el escape explícito, que vale hasta el
+// siguiente titular:  <!-- paleta-libre: motivo -->
+const LIBRE_RE = /<!--\s*paleta-libre:/;
+function checkDocHex() {
+  const issues = [];
+  let filesChecked = 0, hexChecked = 0, exentos = 0;
+  const palette = new Set(Object.keys(T.leaves)
+    .map((k) => T.resolve(T.leaves[k]))
+    .filter((v) => typeof v === "string" && /^#[0-9a-fA-F]{6}$/.test(v))
+    .map((v) => v.toUpperCase()));
+  const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const full = path.join(dir, e.name);
+    if (e.isDirectory()) return /node_modules|^dist$|^\.git$/.test(e.name) ? [] : walk(full);
+    return e.name.endsWith(".md") ? [full] : [];
+  });
+  for (const full of walk(ROOT)) {
+    const rel = path.relative(ROOT, full);
+    filesChecked++;
+    let libre = false;
+    for (const line of fs.readFileSync(full, "utf8").split("\n")) {
+      if (LIBRE_RE.test(line)) { libre = true; continue; }
+      if (/^#{1,6}\s/.test(line)) { libre = false; }
+      for (const m of line.matchAll(/#([0-9a-fA-F]{6})\b/g)) {
+        const hex = "#" + m[1].toUpperCase();
+        if (libre) { exentos++; continue; }
+        hexChecked++;
+        if (!palette.has(hex)) issues.push(rel + ": " + hex + " no corresponde a ningún token (¿deriva, o falta el escape `paleta-libre`?)");
+      }
+    }
+  }
+  return { issues, filesChecked, hexChecked, exentos };
+}
+
 /* ===================== [A] emitir el paquete dist/skill =================== */
 function section(md, title) { // extrae "## title" hasta el próximo "## "
   const re = new RegExp("(^|\\n)## " + title + "[^\\n]*\\n([\\s\\S]*?)(?=\\n## |$)");
@@ -405,7 +440,14 @@ function main() {
   if (rw.issues.length) rw.issues.forEach((i) => console.log("    ✗ " + i));
   else console.log("    ✓ todos los hex del CSS/HTML pertenecen a la paleta");
 
-  const allIssues = [].concat(r.issues, rc.issues, rt.issues, rw.issues);
+  console.log("\n[B5] Documentación (.md) vs tokens — todo hex escrito a mano:");
+  const rd = checkDocHex();
+  console.log("    archivos: " + rd.filesChecked + " | hex verificados: " + rd.hexChecked +
+              " | exentos con `paleta-libre`: " + rd.exentos);
+  if (rd.issues.length) rd.issues.forEach((i) => console.log("    ✗ " + i));
+  else console.log("    ✓ todo hex de la documentación corresponde a un token");
+
+  const allIssues = [].concat(r.issues, rc.issues, rt.issues, rw.issues, rd.issues);
 
   if (PACKAGE) {
     const pkg = packageSkill();
@@ -421,4 +463,4 @@ function main() {
 }
 
 if (require.main === module) process.exit(main());
-module.exports = { buildBrandConstants, checkGenTables, checkContrastTables, checkThemes, checkWebCss, emitBundle, GEN_TARGETS };
+module.exports = { buildBrandConstants, checkGenTables, checkDocHex, checkContrastTables, checkThemes, checkWebCss, emitBundle, GEN_TARGETS };

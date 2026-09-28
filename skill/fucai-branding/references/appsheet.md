@@ -46,7 +46,7 @@ Son **funcionales, no de marca**: nunca en piezas públicas ni documentos, y nun
 
 ## Microcopy en la app
 
-Campos que se diligencian, **en forma de pregunta** («¿Qué se va a comprar?»); campos de lectura, con sustantivo corto («Solicitante»). Mayúscula solo al inicio, sin dos puntos finales, lo opcional se dice. **Nada de lenguaje de propiedad:** «Proyectos coordinados», no «Mis proyectos». El Display Name de una columna es **de la tabla** y se propaga a todas las vistas: escríbelo para el contexto más general.
+Campos que se diligencian, **en forma de pregunta** («¿Qué se va a comprar?»); campos de lectura, con sustantivo corto («Solicitante»). Mayúscula solo al inicio, sin dos puntos finales, lo opcional se dice. **Nada de lenguaje de propiedad:** «Proyectos coordinados», no «Mis proyectos» (regla general, en `references/voice-tone.md`). El Display Name de una columna es **de la tabla** y se propaga a todas las vistas: escríbelo para el contexto más general.
 
 ## Nombres
 
