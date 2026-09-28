@@ -70,6 +70,7 @@ function buildBrandConstants() {
 /* ===================== [B] verificación de tablas [GEN] =================== */
 const GEN_TARGETS = [
   "GUIA-RAPIDA.md",
+  "DESIGN.md",
   "02_identidad-visual/color.md",
   "02_identidad-visual/tipografia.md",
   "02_identidad-visual/espaciado-y-layout.md",
@@ -93,6 +94,7 @@ function checkGenTables() {
     let marker = null;
     for (const line of lines) {
       if (GEN_RE.test(line)) { marker = (/[Cc]ontraste|Manual/.test(line)) ? null : line; if (marker) tablesChecked++; continue; }
+      if (/^#{1,6}\s/.test(line)) { marker = null; continue; } // el marcador no cruza titulares
       if (!marker) continue;
       if (!line.trim().startsWith("|") || /^\|[\s|:-]+\|?\s*$/.test(line)) continue; // no fila / separador
       const refs = [...line.matchAll(TOKEN_REF)].map((m) => m[1].replace(/\.$/, ""));
@@ -142,7 +144,7 @@ const fmtRatio = (r) => String(Math.round(r * 10) / 10) + ":1"; // 21:1, 3.9:1�
 
 // Verifica las tablas marcadas "[GEN] contraste calculado desde tokens.json":
 // cada fila con exactamente dos tokens `color.*` debe declarar la razón calculada.
-const CONTRAST_TARGETS = ["GUIA-RAPIDA.md", "02_identidad-visual/color.md", "06_accesibilidad/estandar-accesibilidad.md"];
+const CONTRAST_TARGETS = ["GUIA-RAPIDA.md", "DESIGN.md", "02_identidad-visual/color.md", "06_accesibilidad/estandar-accesibilidad.md"];
 const CONTRAST_RE = /\[GEN\]\s*contraste calculado desde tokens\.json/;
 function checkContrastTables() {
   const issues = [];

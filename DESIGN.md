@@ -188,37 +188,41 @@ los neutros).
 }
 ```
 
-| Token semántico | Variable CSS | Hex | Cuándo y por qué |
-|-----------------|--------------|-----|------------------|
-| Primario | `--color-primario` | `#E94513` | Acento principal: encabezados, botones, barras, serie de datos. Es la marca; úsalo con mesura (≈25 %). |
-| Primario oscuro | `--color-primario-oscuro` | `#C13A10` | Estados *hover*/activo de acciones (token `accent.hover`) y profundidad del naranja. Con blanco: 5.4:1 ✓. |
-| Secundario (arena) | `--color-secundario` | `#EDE8D3` | **Calidez** en bandas/secciones, no en el fondo general. |
-| Secundario claro | `--color-secundario-claro` | `#F6F3E9` | Filas alternas, cajas informativas, separadores. |
-| Acento (durazno) | `--color-acento` | `#F4A28A` | **Solo fondo** de llamadas suaves con texto oscuro (2:1 con blanco). Nunca color de texto, ícono ni hover de acción. |
-| Territorio (verde) | `--color-territorio` | `#2D6A4F` | **Solo** territorio/naturaleza/ambiente. Narra; no sustituye al naranja. |
-| Territorio claro | `--color-territorio-claro` | `#74B597` | **Solo fondo** de badges y secciones ambientales, con texto oscuro (2.4:1 con blanco). Nunca color de texto. |
-| Fondo | `--color-fondo` | `#FFFFFF` | Lienzo por defecto: el 60 % que da aire y sofisticación. |
-| Texto | `--color-texto` | `#000000` | Cuerpo sobre fondo claro (21:1). |
-| Texto sobre color | `--color-texto-sobre-color` | `#FFFFFF` | Texto sobre naranja/verde/negro (sobre naranja, solo títulos grandes). |
-| Texto secundario | `--color-texto-secundario` | `#333333` | Captions, pies, notas. |
-| Borde | `--color-borde` | `#666666` | Bordes y separadores funcionales. |
-| Línea | `--color-linea` | `#CCCCCC` | Líneas muy sutiles; atenuar datos. |
+<!-- [GEN] derivado de tokens.json — lo verifica build-skill.js -->
+
+| Token | Variable CSS | Hex | Cuándo y por qué |
+|-------|--------------|-----|------------------|
+| `brand.primary` | `--color-primario` | `#E94513` | Acento principal: encabezados, botones, barras, serie de datos. Es la marca; úsalo con mesura (≈25 %). |
+| `accent.hover` | `--color-primario-oscuro` | `#C13A10` | Estados *hover*/activo de acciones (token `accent.hover`) y profundidad del naranja. Con blanco: 5.4:1 ✓. |
+| `brand.secondary` | `--color-secundario` | `#EDE8D3` | **Calidez** en bandas/secciones, no en el fondo general. |
+| `color.arena-claro` | `--color-secundario-claro` | `#F6F3E9` | Filas alternas, cajas informativas, separadores. |
+| `accent.soft` | `--color-acento` | `#F4A28A` | **Solo fondo** de llamadas suaves con texto oscuro (2:1 con blanco). Nunca color de texto, ícono ni hover de acción. |
+| `brand.territory` | `--color-territorio` | `#2D6A4F` | **Solo** territorio/naturaleza/ambiente. Narra; no sustituye al naranja. |
+| `accent.territorySoft` | `--color-territorio-claro` | `#74B597` | **Solo fondo** de badges y secciones ambientales, con texto oscuro (2.4:1 con blanco). Nunca color de texto. |
+| `color.blanco` | `--color-fondo` | `#FFFFFF` | Lienzo por defecto: el 60 % que da aire y sofisticación. |
+| `text.body` | `--color-texto` | `#000000` | Cuerpo sobre fondo claro (21:1). |
+| `text.onColor` | `--color-texto-sobre-color` | `#FFFFFF` | Texto sobre naranja/verde/negro (sobre naranja, solo títulos grandes). |
+| `text.caption` | `--color-texto-secundario` | `#333333` | Captions, pies, notas. |
+| `color.gris-borde` | `--color-borde` | `#666666` | Bordes y separadores funcionales. |
+| `color.gris-linea` | `--color-linea` | `#CCCCCC` | Líneas muy sutiles; atenuar datos. |
 
 ### Combinaciones autorizadas fondo/texto
 
+<!-- [GEN] contraste calculado desde tokens.json — lo verifica build-skill.js -->
+
 | Fondo | Texto | Contraste (calculado WCAG) | Uso |
 |-------|-------|-----------|-----|
-| Blanco | Negro | 21:1 | Cuerpo |
-| Arena | Negro | 17.1:1 | Infografías, banners |
-| Arena claro | Gris texto | 11.4:1 | Filas alternas, cajas |
-| Arena | Gris texto | 10.3:1 | Texto secundario sobre banda arena (p. ej. slogan) |
-| Blanco | Verde | 6.4:1 | Títulos de secciones de territorio |
-| Verde | Blanco | 6.4:1 | Secciones de impacto ambiental |
-| Naranja oscuro | Blanco | 5.4:1 | Hover/activo de acciones |
-| Blanco | Naranja | 3.9:1 | **Solo** H1/H2 grandes — nunca cuerpo |
-| Naranja | Blanco | 3.9:1 | **Solo** títulos grandes / portadas — nunca cuerpo |
-| Arena | Naranja | 3.2:1 | **Solo** títulos grandes en negrita — nunca cuerpo/captions |
-| Blanco | Durazno o Verde claro | 2:1 · 2.4:1 | ✕ NUNCA como texto o ícono: son solo fondos |
+| `color.blanco` | `color.negro` | 21:1 | Cuerpo |
+| `color.arena` | `color.negro` | 17.1:1 | Infografías, banners |
+| `color.arena-claro` | `color.gris-texto` | 11.4:1 | Filas alternas, cajas |
+| `color.arena` | `color.gris-texto` | 10.3:1 | Texto secundario sobre banda arena (p. ej. slogan) |
+| `color.blanco` | `color.verde` | 6.4:1 | Títulos de secciones de territorio |
+| `color.verde` | `color.blanco` | 6.4:1 | Secciones de impacto ambiental |
+| `color.naranja-oscuro` | `color.blanco` | 5.4:1 | Hover/activo de acciones |
+| `color.blanco` | `color.naranja` | 3.9:1 | **Solo** H1/H2 grandes — nunca cuerpo |
+| `color.naranja` | `color.blanco` | 3.9:1 | **Solo** títulos grandes / portadas — nunca cuerpo |
+| `color.arena` | `color.naranja` | 3.2:1 | **Solo** títulos grandes en negrita — nunca cuerpo/captions |
+| `color.blanco` | Durazno o Verde claro | 2:1 · 2.4:1 | ✕ NUNCA como texto o ícono: son solo fondos |
 
 ### Reglas duras de superficie
 
@@ -471,19 +475,21 @@ alternas en arena claro; nunca transmitir estado solo por color.
 Objetivo: **WCAG 2.2 nivel AA**. Contraste mínimo **4.5:1 en cuerpo**, **3:1 en
 títulos grandes** y en componentes/foco.
 
+<!-- [GEN] contraste calculado desde tokens.json — lo verifica build-skill.js -->
+
 | Fondo | Texto | Contraste (calculado WCAG) | Veredicto |
 |-------|-------|-----------|-----------|
-| Blanco | Negro | 21:1 | ✓ cuerpo |
-| Arena `#EDE8D3` | Negro | 17.1:1 | ✓ cuerpo |
-| Arena claro `#F6F3E9` | Gris texto `#333333` | 11.4:1 | ✓ cuerpo |
-| Arena | Gris texto `#333333` | 10.3:1 | ✓ cuerpo (slogan de banda arena) |
-| Blanco | Verde `#2D6A4F` | 6.4:1 | ✓ cuerpo (territorio) |
-| Verde | Blanco | 6.4:1 | ✓ cuerpo |
-| Naranja oscuro `#C13A10` | Blanco | 5.4:1 | ✓ hover/activo de acciones |
-| Blanco | Naranja `#E94513` | 3.9:1 | ✕ cuerpo · ✓ solo título grande/negrita |
-| Naranja | Blanco | 3.9:1 | ✕ cuerpo · ✓ solo título grande / portada |
-| Arena | Naranja | 3.2:1 | ✕ cuerpo · ✓ solo título grande en negrita |
-| Blanco | Durazno `#F4A28A` / Verde claro `#74B597` | 2:1 · 2.4:1 | ✕ SIEMPRE como texto/ícono: solo fondos |
+| `color.blanco` | `color.negro` | 21:1 | ✓ cuerpo |
+| `color.arena` `#EDE8D3` | `color.negro` | 17.1:1 | ✓ cuerpo |
+| `color.arena-claro` `#F6F3E9` | `color.gris-texto` `#333333` | 11.4:1 | ✓ cuerpo |
+| `color.arena` | `color.gris-texto` `#333333` | 10.3:1 | ✓ cuerpo (slogan de banda arena) |
+| `color.blanco` | `color.verde` `#2D6A4F` | 6.4:1 | ✓ cuerpo (territorio) |
+| `color.verde` | `color.blanco` | 6.4:1 | ✓ cuerpo |
+| `color.naranja-oscuro` `#C13A10` | `color.blanco` | 5.4:1 | ✓ hover/activo de acciones |
+| `color.blanco` | `color.naranja` `#E94513` | 3.9:1 | ✕ cuerpo · ✓ solo título grande/negrita |
+| `color.naranja` | `color.blanco` | 3.9:1 | ✕ cuerpo · ✓ solo título grande / portada |
+| `color.arena` | `color.naranja` | 3.2:1 | ✕ cuerpo · ✓ solo título grande en negrita |
+| `color.blanco` | `color.durazno` `#F4A28A` / Verde claro `#74B597` | 2:1 · 2.4:1 | ✕ SIEMPRE como texto/ícono: solo fondos |
 
 **Reglas duras:** naranja↔blanco (3.9:1) y naranja↔arena (3.2:1) **solo** en texto
 grande en negrita; los tintes al 50 % son superficies, nunca tinta de texto; hover

@@ -108,7 +108,26 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   nombra lo que solo lee; mayúscula solo al inicio; lo opcional se dice; pasos por
   encima de ocho campos.
 
+- **`07_gobernanza/auditoria-sistema-2026-09.md`** — auditoría completa de coherencia
+  y completitud: 93 archivos, 116 tokens, la maquinaria de verificación y los tres
+  destilados. Registra lo sano, los cinco hallazgos de coherencia, el estado de
+  madurez (72 % en borrador) y siete oportunidades por retorno.
+
 ### Cambiado
+- **`DESIGN.md` entra bajo verificación** — era el mayor riesgo de deriva del repo:
+  625 líneas y 69 hex escritos a mano, **copiado al paquete que se distribuye** y
+  anunciado como «guía de diseño completa», pero fuera de `GEN_TARGETS`, del mapa de
+  fuente de verdad y del README. Su tabla de color y sus **dos** tablas de contraste
+  quedan enlazadas a tokens. La verificación sube de 20 a 21 tablas, de 97 a 111
+  celdas y de 25 a 46 pares de contraste. Los 10 contrastes que declaraba eran
+  correctos; solo estaban sin vigilar.
+- **El marcador `[GEN]` ya no cruza titulares** — se extendía hasta el final del
+  archivo, de modo que cualquier tabla posterior entraba en la verificación sin
+  quererlo. Impedía usarlo con confianza en documentos largos. Se comprobó que
+  ninguna tabla existente dependía de esa fuga.
+- **`mapa-fuente-de-verdad.md`:** `DESIGN.md` queda registrado como destilado espejo
+  y el diagrama refleja la cobertura real de `[GEN]`.
+- **Enlace roto en el CHANGELOG** a `color-system.md`, sin el segmento `fucai-branding/`.
 - **«Lenguaje de servicio, no de propiedad» entra en la tabla sí/no** del léxico:
   «proyectos coordinados», no «mis proyectos». Los proyectos son de la fundación y
   de las comunidades; quien los coordina no los posee.
@@ -244,7 +263,7 @@ specimen y fichas nuevas. Aplica el plan de la revisión de agosto
 ### Cambiado
 - **Contrastes recalculados con la fórmula WCAG** (H2) en
   `02_identidad-visual/color.md`, `06_accesibilidad/estandar-accesibilidad.md`,
-  `DESIGN.md`, `GUIA-RAPIDA.md` y `skill/references/color-system.md`:
+  `DESIGN.md`, `GUIA-RAPIDA.md` y `skill/fucai-branding/references/color-system.md`:
   naranja↔blanco 3.1→**3.9:1**, verde↔blanco 5.9→**6.4:1**, arena↔negro
   10.5→**17.1:1**, arena claro↔gris 8.5→**11.4:1**; filas nuevas para
   naranja↔arena (3.2:1, solo títulos grandes), hover (5.4:1) y tintes (✕ texto).

@@ -27,6 +27,7 @@
 | Implementación cartográfica (estilos, gradientes, plantillas, KML) | repo externo **`fucai-geo`** → `qgis/sistema-diseno-mapas.md` |
 | Lógica de generación | `scripts/` |
 | Autoridad de marca de referencia (espejo) | `skill/fucai-branding/` |
+| Destilado para Claude Design y agentes externos (espejo) | `DESIGN.md` |
 
 Regla: los `.md` **narran y referencian** tokens; **no redefinen** valores. Las
 tablas de valores se marcan `<!-- [GEN] derivado de tokens.json -->` y las
@@ -62,7 +63,8 @@ demás.
         ├─ [A] EMITE dist/skill/  ──► tokens.flat.json, tokens.css (web/AppSheet),
         │                              brand-constants.json (para los generadores) y
         │                              brand-platform.md (Misión/Visión/Valores).
-        └─ [B] VERIFICA (PASS/FAIL): tablas [GEN] de 02_/04_/06_ y del skill · [B2] contraste WCAG
+        └─ [B] VERIFICA (PASS/FAIL): tablas [GEN] de 02_/04_/06_, DESIGN.md y el skill ·
+                [B2] contraste WCAG
                 calculado vs tablas de contraste · [B3] temas (claves idénticas,
                 paleta pura, claro = base, tienda/naane = claro) · [B4] hex del
                 CSS/HTML de Squarespace ∈ paleta.
