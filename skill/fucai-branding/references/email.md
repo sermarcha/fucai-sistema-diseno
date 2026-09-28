@@ -84,7 +84,7 @@ Estructura, de arriba abajo, con **borde izquierdo naranja de 3 px**, 13 px de s
 Como administrador de Google Workspace se puede desplegar centralizadamente para todo el dominio `fucaicolombia.org`.
 
 ## Accesibilidad y entregabilidad
-- Contraste mínimo 4.5:1 en cuerpo; el naranja sobre blanco solo en texto grande.
+- Contraste mínimo 4.5:1 en cuerpo. El naranja sobre blanco da **3.9:1**: solo texto grande (≥ 24 px, o ≥ 18.66 px en negrita). Cuerpo en negro o gris oscuro.
 - Nunca transmitas estado solo por color: acompáñalo con etiqueta de texto.
 - Toda imagen lleva `alt`; el correo debe entenderse con las imágenes bloqueadas.
 - Enlaces con texto descriptivo, nunca "haz clic aquí".

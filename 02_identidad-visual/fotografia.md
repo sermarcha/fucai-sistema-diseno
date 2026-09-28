@@ -24,6 +24,32 @@
 - **Pies de foto que cuenten algo y con crédito visible:** "Líderes Wayúu durante
   la Escuela de Gobernanza, La Guajira, 2024", no "foto del taller".
 
+## Ilustración de autor
+
+No toda imagen de una persona tiene que ser una fotografía. Hay relatos —los
+íntimos, los de niñez, los de memoria y duelo— donde **la ilustración de autor
+protege mejor que la foto** y dice lo mismo. Es una vía legítima y de primera
+clase, no un sustituto de emergencia.
+
+- **La hace una persona**, no un generador. La prohibición de fabricar rostros con
+  IA no se sortea encargando «una ilustración» a una herramienta.
+- **Procedencia y crédito obligatorios**, igual que en fotografía: quién la hizo y
+  para qué encargo.
+- **Se asigna por contenido, no por orden.** Una ilustración acompaña al relato con
+  el que coincide la escena. Puede acompañar a más de uno, pero **nunca dos veces
+  seguidas** en el mismo canal ni en el mismo envío.
+- **Mientras llega el archivo definitivo**, el hueco se reserva con un contenedor
+  de fondo arena y proporción fija, nunca con un ícono de imagen rota.
+
+### Las cuatro vías de imagen, y cuándo vale cada una
+
+| Vía | Cuándo | Quién la hace |
+|---|---|---|
+| **Fotografía real** | Regla por defecto para personas y comunidades | Cámara, con consentimiento |
+| **Ilustración de autor** | Relato íntimo, niñez, memoria; cuando la foto expone | Una persona ilustradora |
+| **Retrato ilustrado desde foto** | Ficha de una voz en una publicación | IA sobre foto entregada, aprobado por la persona |
+| **Imagen generada** | Objetos y símbolos, **nunca personas** | IA (`prompts-cristal.md` · `ilustracion-editorial.md`) |
+
 ## Consentimiento (obligatorio)
 
 - Toda imagen con personas identificables —**en especial niñez**— requiere

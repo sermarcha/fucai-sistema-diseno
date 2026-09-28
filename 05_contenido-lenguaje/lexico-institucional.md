@@ -10,6 +10,14 @@ Antes de usar una palabra, pregunta: *¿reconoce la agencia y dignidad de las
 comunidades? ¿Habla desde la fuerza o desde la carencia?* Si es desde la
 carencia, se reescribe.
 
+## El testimonio es intocable
+
+La regla de oro y la tabla de abajo se aplican al **marco editorial** —títulos,
+subtítulos, SEO, asuntos de correo, llamados a la acción, pies de publicación—,
+**nunca al testimonio**. Un relato se publica como lo entregó la persona: solo se
+corrige formato. Si alguien dijo «beneficiarios», se queda «beneficiarios»; lo que
+no puede decirlo es FUCAI cuando escribe alrededor.
+
 ## Tabla sí / no (no negociable)
 
 | ✕ No usamos | ✓ Usamos | Por qué |

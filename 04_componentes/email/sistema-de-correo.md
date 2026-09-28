@@ -55,7 +55,7 @@ Proporción **60-25-10-5** adaptada al correo: el lienzo y la tarjeta ocupan cas
 | `email.text.muted` | `#666666` | Etiquetas, sistema, pie | Texto largo |
 | `email.rule` | `#CCCCCC` | Líneas de tabla y separador del pie | — |
 
-**Contraste:** naranja sobre blanco (3.1:1) solo en textos ≥ 18 px o negrita ≥ 14 px. Enlaces naranjas siempre subrayados en el cuerpo para que no dependan del color.
+**Contraste:** naranja sobre blanco es **3.9:1** — no alcanza el 4.5:1 del texto de cuerpo. Se usa solo en **texto grande**: ≥ 24 px (18 pt), o ≥ 18.66 px (14 pt) en negrita. El cuerpo va siempre en negro o gris oscuro. Enlaces naranjas siempre subrayados en el cuerpo para que no dependan del color.
 
 ---
 
@@ -216,6 +216,22 @@ Mismo esqueleto de §5, con estas variaciones:
 - **Verde territorio** permitido aquí para sobretítulos de secciones de territorio y naturaleza; nunca junto a naranja en el mismo bloque.
 - **Pie:** firma de marca + dirección (Calle 54 N.º 10-81, Bogotá) + redes en texto o íconos monocromos `#666666` + *Darse de baja*. Reemplaza el pie genérico de la plataforma cuando la herramienta lo permita.
 - **Frecuencia y extensión:** un tema central por edición; ≤ 350 palabras de texto visible antes de los enlaces.
+
+### 8.1 Boletín de serie
+
+Cuando el boletín no informa sino que **entrega una serie por entregas** —un relato
+por envío a lo largo de una campaña— se comporta como una familia propia, distinta
+de las notificaciones de sistema. Lo verificó la campaña de 35 años con 46 envíos:
+35 relatos, 7 aperturas de temporada y 4 transversales (bienvenida, libro, cierre).
+
+- **Una sola anatomía para toda la serie.** Lo que cambia entre envíos son los
+  datos, no la estructura; es lo que hace que la serie se reconozca.
+- **Cada envío se define una vez** con asunto, preheader, ficha y fecha de
+  calendario, y de ahí lo consumen todos los canales.
+- **Asunto:** ≤ 50 caracteres, con **la voz o la comunidad como sujeto** —«Lo que
+  enseña la abuela…» funciona mejor que «FUCAI presenta…»—. Sin mayúsculas
+  sostenidas y sin emoji. El **preheader completa** el asunto; no lo repite.
+- **Contador de serie** (n.º / total) visible: ubica a quien llega tarde.
 
 ---
 

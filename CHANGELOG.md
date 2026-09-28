@@ -72,7 +72,32 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   la fuerza entre retrato y escena, la ética de imagen y el checklist de imprenta.
   Se añaden «libro», «cartilla» y «publicación» a los disparadores del skill.
 
+- **`07_gobernanza/aprendizajes-ecosistema-35-voces-2026-09.md`** — aprendizajes del
+  proyecto del ecosistema digital de la campaña de 35 años (landing, blog, carrusel,
+  home y boletín). Se ubicó en gobernanza junto a las otras revisiones y se
+  incorporó a los capítulos: cierra con una tabla que dice dónde quedó cada uno de
+  los 18 aprendizajes.
+- **Sección «Ilustración de autor»** en `02_identidad-visual/fotografia.md`, con la
+  tabla de **las cuatro vías de imagen** —foto real, ilustración de autor, retrato
+  ilustrado desde foto, imagen generada de objetos— y cuándo vale cada una. La
+  ilustración hecha por una persona es vía de primera clase en relatos íntimos, de
+  niñez y de memoria, no un sustituto de emergencia.
+- **§8.1 «Boletín de serie»** en el capítulo de correo: la familia del boletín que
+  entrega una serie por entregas, distinta de las notificaciones de sistema.
+  Verificada con 46 envíos. Incluye la regla de asunto (≤ 50 caracteres, la voz
+  como sujeto) y el contador de serie.
+- **Carrusel testimonial de 6 láminas** en `04_componentes/social/carrusel.md`.
+- **Regla de campaña en tipografía:** una campaña hereda la tipografía de su canal;
+  no se introducen familias nuevas por campaña.
+- **«El testimonio es intocable»** en `lexico-institucional.md`: la regla de oro y
+  la tabla sí/no se aplican al marco editorial, nunca al testimonio.
+- **Cursivas cuando todo el texto es una cita** en la guía editorial.
+
 ### Cambiado
+- **Contraste naranja↔blanco corregido: 3.1 → 3.9:1** — el capítulo de correo citaba
+  un valor que no era el que calcula el propio build. Corregido tambien en
+  `references/email.md`, junto con los umbrales WCAG de texto grande, que
+  confundian px con pt (≥ 24 px / 18 pt, o ≥ 18.66 px / 14 pt en negrita).
 - **Regla dura 9 precisada: prohibido *fabricar* personas, no ilustrarlas** — tal
   como estaba («IA prohibida para representar personas o comunidades») prohibía los
   retratos que el propio sistema documenta. Ahora distingue fabricar un rostro

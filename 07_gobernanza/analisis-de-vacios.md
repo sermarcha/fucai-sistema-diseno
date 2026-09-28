@@ -112,6 +112,39 @@ subpaleta propia es una **decisión registrada**, no un hueco.
 
 ---
 
+## 9. Campañas y ecosistema digital (aprendizajes 2026-09)
+
+Abiertos por el proyecto *Ecosistema 35 Voces*; el detalle y la propuesta de cada
+uno están en `aprendizajes-ecosistema-35-voces-2026-09.md`.
+
+- **(M · deuda)** **Enlaces fuera de `.sqs-block-content`:** el CSS de Squarespace
+  solo pinta de naranja los enlaces de párrafo y lista. Cualquier `<a>` fuera de
+  esos selectores sale azul de navegador y rompe la paleta cerrada. Falta un
+  fallback; no se añadió aquí porque un `a { }` general puede pisar la navegación
+  del sitio en vivo y merece probarse.
+- **(M · deuda)** **Componentes web de campaña sin ficha:** tarjeta de relato,
+  filtro por tag/territorio con estado en texto y filete (no solo color), contador
+  de serie como variante de dato héroe, hero de «objeto ancla», bloque de sección
+  de campaña en home y plantilla de artículo testimonial. Nacieron en el proyecto y
+  funcionan; falta ficharlos.
+- **(M · deuda)** **Estado «en preparación»:** patrón para contenido que aún no
+  llega —tarjeta en arena claro y etiqueta de **texto**, no solo color—. Con una
+  regla dura asociada: **prohibido el *lorem ipsum*** en piezas que se muestran a
+  comunidades o aliados.
+- **(M · decisión)** **Ficha de relato como esquema de contenido:** `slug`, fecha,
+  voz, pueblo/territorio, tags, ilustración, título SEO y llamado. Definida una vez
+  y consumida por blog, landing, carrusel, home y boletín. Falta publicarla como
+  componente reutilizable por cualquier campaña narrativa.
+- **(M · deuda)** **Plantilla HTML de envío del boletín de serie:** la maqueta está
+  definida (§8.1 del capítulo de correo); falta el HTML real con tablas y estilos
+  en línea, probado en Gmail y Outlook.
+- **(B · decisión)** **Modelo «campaña = datos + plantillas por canal»:** una sola
+  fuente de datos y cinco salidas. Funcionó; falta documentarlo como método.
+- **(B · decisión)** **Set de íconos:** sigue `[POR CONFIRMAR]` (Lucide recoloreado
+  o set propio). Es el mismo vacío del apartado 3, visto desde el lado digital.
+
+---
+
 ## Resumen por prioridad
 
 | Prioridad | Vacíos |

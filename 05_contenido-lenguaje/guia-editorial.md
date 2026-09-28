@@ -27,6 +27,11 @@
 Solo para: citas, nombres científicos, palabras en lenguas indígenas (en su
 primera mención), y los pilares/slogan. No para enfatizar opiniones.
 
+**Cuando todo el texto es una cita** —un relato testimonial en primera persona—
+**no se pone en cursiva completo**: se vuelve ilegible y pierde la jerarquía. Se
+respeta la cursiva interna del original (lenguas propias, citas dentro de la cita)
+y el marco —voz, pueblo, territorio— va en redonda.
+
 ## Negritas (real)
 
 Solo para datos clave o conceptos definidos por primera vez. No para enfatizar
