@@ -114,10 +114,15 @@ pendientes (`actaHeader`, `signatureTable`, `chapterDivider`), no reetiquetar.
 **160 líneas de CHANGELOG sin publicar** desde 1.8.0 (26 de agosto). **Cerrado como
 1.9.0** el 28 de septiembre.
 
-**Hallazgo añadido al publicar:** `versionado.md` daba por etiquetadas las versiones
-`v1.0.0`–`v1.4.0`, pero **el repositorio no tiene ningún tag**, ni local ni remoto.
-Por lo tanto tampoco hay Releases, y el paquete `.skill` —que la política dice que se
-distribuye por ahí— nunca se ha publicado así. Queda anotado en `versionado.md`.
+**Hallazgo añadido al publicar, ya resuelto:** `versionado.md` daba por etiquetadas
+versiones que **no tenían ningún tag**. Se etiquetaron las doce sobre sus commits de
+publicación, con la fecha original de cada uno. Falta aún crear los **Releases** y
+adjuntar el paquete `.skill`, que es la vía que la política declara para distribuirlo.
+
+**Segundo hallazgo de proceso:** el `CONTRIBUTING.md` declara `main` protegida y todo
+entrando por PR revisado, pero **el remoto no tiene esa protección activa**: el push
+directo a `main` pasó sin objeción. O se activa la protección en GitHub, o se ajusta
+el documento a cómo se trabaja de verdad.
 
 ## 4. Oportunidades, por retorno
 
@@ -125,7 +130,7 @@ distribuye por ahí— nunca se ha publicado así. Queda anotado en `versionado.
 |---|---|---|
 | 1 | Meter `DESIGN.md` bajo `[GEN]` | **Hecho** en esta auditoría |
 | 2 | **Resolver la paleta de estados de una vez** — destraba apps, cartografía y el oscuro de la web | **Hecho** (2026-09-28) |
-| 3 | Publicar 1.9.0: el trabajo de un mes está sin etiquetar | **Hecho** — versión cerrada; falta el `git tag` tras fusionar |
+| 3 | Publicar 1.9.0: el trabajo de un mes está sin etiquetar | **Hecho** — fusionado y etiquetado, más 11 tags retroactivos |
 | 4 | Extender la verificación de «hex ∈ paleta» del CSS de Squarespace a todos los `.md` | **Hecho** — `[B5]`: 486 hex en 94 archivos |
 | 5 | QA para `pptx` y `xlsx`, como el que ya tiene `docx` | **Hecho** — `check_fucai.py` cubre los tres |
 | 6 | Unificar la convención de citas a rutas desde la raíz | **Hecho** — 26 citas en 6 archivos |

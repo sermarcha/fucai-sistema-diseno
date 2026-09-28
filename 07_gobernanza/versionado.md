@@ -34,12 +34,16 @@ gobernanza).
 El compilador (`scripts/build-skill.js --write`) ya **emite el paquete** en
 `dist/skill/`.
 
-> **[● Deuda de proceso, detectada en la auditoría 2026-09]** Este documento daba por
-> etiquetadas las versiones `v1.0.0`–`v1.4.0`, pero **el repositorio no tiene ningún
-> tag**, ni local ni remoto. Por lo tanto tampoco hay Releases y el paquete `.skill`
-> nunca se ha distribuido por ahí. Al publicar 1.9.0 hay que crear el tag —y, si se
-> quiere historia completa, etiquetar retroactivamente las versiones anteriores sobre
-> los commits que les corresponden.
+**Historial etiquetado (2026-09-28).** La auditoría encontró que este documento daba
+por etiquetadas versiones que **no tenían ningún tag**, ni local ni remoto. Se
+subsanó: las doce versiones están ahora etiquetadas sobre sus commits de publicación,
+con la fecha original de cada uno.
+
+`v0.1.0` · `v1.0.0` · `v1.1.0` · `v1.2.0` · `v1.3.0` · `v1.3.1` · `v1.4.0` · `v1.5.0`
+· `v1.6.0` · `v1.7.0` · `v1.8.0` · `v1.9.0`
+
+> [Pendiente: crear los **Releases** en GitHub a partir de estos tags y adjuntar el
+> paquete `.skill` de cada uno. Los tags ya existen; falta la publicación.]
 
 > [Pendiente: automatizar la publicación del `.skill` por Releases (CI) a partir
 > de `dist/skill/`. El empaquetado ya está; falta solo el disparador de publicación.]
