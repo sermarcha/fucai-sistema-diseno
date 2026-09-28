@@ -10,6 +10,13 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 
 ## [No publicado]
 
+## [1.9.0] — 2026-09-28
+
+MINOR: capa funcional `state.*` y extensión `carto.*`, el medio correo cerrado de punta
+a punta, publicaciones (libro y cartilla) y el estándar de apps AppSheet como capítulos
+propios, `DESIGN.md` bajo verificación y una auditoría completa del sistema. La
+verificación pasa de 17 a 24 tablas y de 69 a 125 celdas.
+
 ### Añadido
 - **Componente `documento/markdown-pdf/`** — hoja de estilo
   `fucai-markdown-pdf.css` para exportar cualquier `.md` a PDF con marca desde

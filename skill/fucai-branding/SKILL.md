@@ -6,7 +6,7 @@ description: "Apply FUCAI institutional branding (design philosophy, colors, typ
 # FUCAI Institutional Branding
 
 Single source of truth for everything produced for **Fundación Caminos de Identidad (FUCAI)**, aligned to *Manual de Identidad Visual v1.1 (abril 2026)*.
-**Version 3.2** (modular: lean overview + `references/` + executable `scripts/`; web, AppSheet, correo y publicaciones como referencias propias; sincronizado 2026-09 con el sistema de diseño: reglas de redes/carrusel 2026-07, prohibición de IA para personas, contrastes calculados, hover naranja oscuro).
+**Version 3.3** (modular: lean overview + `references/` + executable `scripts/`; web, AppSheet, correo y publicaciones como referencias propias; sincronizado 2026-09 con el sistema de diseño: reglas de redes/carrusel 2026-07, prohibición de IA para personas, contrastes calculados, hover naranja oscuro).
 
 > Firma: *Nuestro centro es la periferia* · www.fucaicolombia.org · comunicaciones@fucaicolombia.org · NIT 800.173.574-1
 

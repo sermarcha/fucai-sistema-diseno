@@ -83,8 +83,10 @@ npm run qa:docx -- <archivo>      # QA de un .docx generado
 
 ## Estado
 
-`v1.8.0` — sistema en operación: fuente de verdad poblada y verificada por CI,
-capa estratégica oficial completa, generadores token-driven (docx/pptx/xlsx),
-componentes de documento/presentación/redes/email/web/cartografía, skill
-empaquetable y guía rápida (`GUIA-RAPIDA.md`). Pendientes y decisiones abiertas:
+`v1.9.0` — sistema en operación: fuente de verdad poblada y verificada (24 tablas
+`[GEN]`, 125 celdas, contraste WCAG calculado, temas y CSS web), capa estratégica
+completa, generadores token-driven (docx/pptx/xlsx), componentes de
+documento/presentación/redes/correo/web/cartografía/AppSheet/publicaciones,
+**capa funcional `state.*`** para interfaces y **extensión `carto.*`** para mapas,
+skill empaquetable y guía rápida (`GUIA-RAPIDA.md`). Pendientes y decisiones abiertas:
 ver `07_gobernanza/analisis-de-vacios.md` y `CHANGELOG.md`.

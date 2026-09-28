@@ -32,7 +32,14 @@ gobernanza).
   trazable, y `main` queda libre de binarios generados.
 
 El compilador (`scripts/build-skill.js --write`) ya **emite el paquete** en
-`dist/skill/`. Las versiones publicadas se etiquetan: `v1.0.0`–`v1.4.0`.
+`dist/skill/`.
+
+> **[● Deuda de proceso, detectada en la auditoría 2026-09]** Este documento daba por
+> etiquetadas las versiones `v1.0.0`–`v1.4.0`, pero **el repositorio no tiene ningún
+> tag**, ni local ni remoto. Por lo tanto tampoco hay Releases y el paquete `.skill`
+> nunca se ha distribuido por ahí. Al publicar 1.9.0 hay que crear el tag —y, si se
+> quiere historia completa, etiquetar retroactivamente las versiones anteriores sobre
+> los commits que les corresponden.
 
 > [Pendiente: automatizar la publicación del `.skill` por Releases (CI) a partir
 > de `dist/skill/`. El empaquetado ya está; falta solo el disparador de publicación.]

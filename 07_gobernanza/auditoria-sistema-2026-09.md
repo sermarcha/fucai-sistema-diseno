@@ -103,7 +103,13 @@ borrador**.
 **Deuda declarada:** 41 `[Pendiente]`, 18 `[POR CONFIRMAR]`, 2 `[●]`. Concentrada en
 gobernanza (12), identidad visual (10) y componentes (10).
 
-**160 líneas de CHANGELOG sin publicar** desde 1.8.0 (26 de agosto).
+**160 líneas de CHANGELOG sin publicar** desde 1.8.0 (26 de agosto). **Cerrado como
+1.9.0** el 28 de septiembre.
+
+**Hallazgo añadido al publicar:** `versionado.md` daba por etiquetadas las versiones
+`v1.0.0`–`v1.4.0`, pero **el repositorio no tiene ningún tag**, ni local ni remoto.
+Por lo tanto tampoco hay Releases, y el paquete `.skill` —que la política dice que se
+distribuye por ahí— nunca se ha publicado así. Queda anotado en `versionado.md`.
 
 ## 4. Oportunidades, por retorno
 
@@ -111,7 +117,7 @@ gobernanza (12), identidad visual (10) y componentes (10).
 |---|---|---|
 | 1 | Meter `DESIGN.md` bajo `[GEN]` | **Hecho** en esta auditoría |
 | 2 | **Resolver la paleta de estados de una vez** — destraba apps, cartografía y el oscuro de la web | **Hecho** (2026-09-28) |
-| 3 | Publicar 1.9.0: el trabajo de un mes está sin etiquetar | Abierto |
+| 3 | Publicar 1.9.0: el trabajo de un mes está sin etiquetar | **Hecho** — versión cerrada; falta el `git tag` tras fusionar |
 | 4 | Extender la verificación de «hex ∈ paleta» del CSS de Squarespace a todos los `.md` | Abierto |
 | 5 | QA para `pptx` y `xlsx`, como el que ya tiene `docx` | Abierto |
 | 6 | Unificar la convención de citas a rutas desde la raíz | Abierto |

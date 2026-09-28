@@ -2,7 +2,7 @@
 
 Componente de documento. Convierte cualquier `.md` de los repositorios en un PDF con la identidad FUCAI, sin salir de VS Code y sin instalar LaTeX, pandoc ni nada más.
 
-`fucai-markdown-pdf.css` es la hoja de estilo; se alimenta de `03_tokens/tokens.json` v1.8.0 y del *Manual de Identidad Visual v1.1*.
+`fucai-markdown-pdf.css` es la hoja de estilo; se alimenta de `03_tokens/tokens.json` v1.9.0 y del *Manual de Identidad Visual v1.1*.
 
 ---
 
