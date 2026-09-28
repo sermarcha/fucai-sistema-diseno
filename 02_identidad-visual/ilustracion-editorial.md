@@ -33,13 +33,17 @@ tinta.**
 
 **Paleta cerrada**, sin ningún color fuera de esta lista:
 
-| Color | Hex | Dónde |
+<!-- [GEN] derivado de tokens.json (color.*) — lo verifica build-skill.js -->
+
+| Token | Hex | Dónde |
 |---|---|---|
-| Naranja terracota | `#E94513` (+ `#C13A10`, `#F06A3E`, `#F4A28A`) | Único acento cálido dominante: tierra, fuego, ropa, techos de barro, luz del atardecer |
-| Arena / arena claro | `#EDE8D3` · `#F6F3E9` | Base cálida de fondos, suelos áridos, papel tonal |
-| Verde amazónico | `#2D6A4F` (+ `#4E8A6F`, `#74B597`) | **Solo** selva, chagra, agua y territorio vivo |
-| Blanco del papel | `#FFFFFF` | Aire y respiración de la composición |
-| Grises | `#333333` · `#666666` | Solo sombras finas y detalles pequeños |
+| `color.naranja` | `#E94513` | Único acento cálido dominante: tierra, fuego, ropa, techos de barro, luz del atardecer |
+| `color.naranja-oscuro` · `color.naranja-medio` · `color.durazno` | `#C13A10` · `#F06A3E` · `#F4A28A` | Tintes del naranja, para aguadas suaves y capas secundarias |
+| `color.arena` · `color.arena-claro` | `#EDE8D3` · `#F6F3E9` | Base cálida de fondos, suelos áridos, papel tonal |
+| `color.verde` | `#2D6A4F` | **Solo** selva, chagra, agua y territorio vivo |
+| `color.verde-medio` · `color.verde-claro` | `#4E8A6F` · `#74B597` | Tintes del verde, con el mismo alcance |
+| `color.blanco` | `#FFFFFF` | Aire y respiración de la composición |
+| `color.gris-texto` · `color.gris-borde` | `#333333` · `#666666` | Solo sombras finas y detalles pequeños |
 
 **Proporción 60-25-10-5:** 60 % blanco y arena · 25 % naranja terracota · 10 %
 verde · 5 % grises.

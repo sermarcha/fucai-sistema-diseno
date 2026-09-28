@@ -78,6 +78,7 @@ const GEN_TARGETS = [
   "06_accesibilidad/estandar-accesibilidad.md",
   "04_componentes/email/sistema-de-correo.md",
   "skill/fucai-branding/references/email.md",
+  "02_identidad-visual/ilustracion-editorial.md",
 ];
 const GEN_RE = /\[GEN\][^\n]*tokens\.json/;
 const TOKEN_REF = /`((?:color|surface|brand|accent|text|font|space|layout|docx|pptx|appsheet|email|dataviz|radius|elevation|motion)\.[A-Za-z0-9_.\-]+)`/g;

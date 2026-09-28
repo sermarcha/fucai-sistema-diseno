@@ -65,7 +65,24 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   Destilados de la producción de *35 Voces, 35 Caminos de Identidad* en
   `fucai-knowledge`.
 
+- **Referencia `references/libro-cartilla.md` en el skill** — el ruteo no tenía
+  fila para publicaciones largas, así que un agente no podía llegar ni al
+  componente de libro ni al estilo de acuarela. Destila ambos: lo fijo y lo libre,
+  el aparato mínimo, la retícula, los marcadores de diagramación, la inversión de
+  la fuerza entre retrato y escena, la ética de imagen y el checklist de imprenta.
+  Se añaden «libro», «cartilla» y «publicación» a los disparadores del skill.
+
 ### Cambiado
+- **Regla dura 9 precisada: prohibido *fabricar* personas, no ilustrarlas** — tal
+  como estaba («IA prohibida para representar personas o comunidades») prohibía los
+  retratos que el propio sistema documenta. Ahora distingue fabricar un rostro
+  —prohibido— de **el retrato ilustrado de una publicación**, admisible porque parte
+  de una fotografía real que la persona entregó, no altera sus rasgos, la persona lo
+  aprueba antes de publicarse y se declara en el índice de ilustraciones. Corregida
+  también en `references/photography.md`. **[● Confirmar con la Dirección.]**
+- **La paleta de acuarela editorial queda bajo verificación `[GEN]`** — pasa a
+  nombrar tokens `color.*` en vez de hex sueltos. La verificación sube a 20 tablas
+  y 97 celdas.
 - **La casa tiene dos estilos generativos, no uno** — al documentar el estilo del
   libro quedó claro que «Cristal FUCAI» (objetos, íconos de aplicación, redes) y
   «acuarela cálida» (libros y cartillas) conviven y no se mezclan en una misma
