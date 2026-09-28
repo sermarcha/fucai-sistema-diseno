@@ -49,14 +49,24 @@ de FUCAI) · **deuda** (técnica, implementable).
 
 - **(M · deuda)** **Logo:** falta la **versión monocromática (negra)**, el **tamaño
   mínimo** (mm/px) y el **formato vectorial (SVG)** — hoy solo hay PNG.
-- **(M · deuda)** **Iconografía:** la carpeta `iconos/` está **vacía** (solo `.gitkeep`);
-  faltan la **grilla de construcción**, los tamaños estándar y la **librería de `.svg`**.
-- **(M · decisión)** **Colores de estado** (éxito/error/alerta): sin definir como tokens;
-  la paleta excluye rojo/azul genéricos, así que requiere decisión + tokenización.
+- **(M · deuda)** **Iconografía de interfaz:** la carpeta `iconos/` está **vacía**
+  (solo `.gitkeep`); faltan la **grilla de construcción**, los tamaños estándar y la
+  **librería de `.svg`** outline. *(2026-09: el **ícono de aplicación** sí quedó
+  resuelto — estilo Cristal FUCAI en `prompts-cristal.md`. El vacío que queda es el
+  set plano de interfaz.)*
+- **~~Colores de estado~~ — RESUELTO (2026-09).** El sistema define la capa funcional
+  `state.*` (`success` `#0F7B4F`, `danger` `#9B2226`, `info` `#2A6F97`, más `warning` y
+  `neutral` que reusan naranja y gris). Vive **fuera de `color.*`**: la paleta de marca
+  sigue cerrada y estos colores solo existen dentro de interfaces, nunca en piezas
+  públicas ni documentos, y nunca solo color. El verde de «cerrado» es funcional y
+  **no** es `brand.territory`, que sigue siendo solo narrativo. Los tres valores nuevos
+  pasan AA sobre blanco y sobre arena claro.
 - **(M · deuda)** **Tipografía web:** faltan **H4–H6** y la conversión de la escala (pt)
   a **rem/px** para web.
 - **(M · deuda)** **Grilla de columnas y breakpoints** responsive (web/AppSheet): no tokenizados.
-- **(B · decisión)** **Ilustración:** sin set propio definido (`ilustracion.md`).
+- **(B · decisión)** **Ilustración:** sin set ilustrativo propio definido
+  (`ilustracion.md`). *(2026-09: el estilo **generativo** sí está fijado —
+  Cristal FUCAI, con ADN, plantilla de prompt y bloques por formato.)*
 - **(B · decisión)** **Fotografía:** falta el **enlace al banco autorizado en Drive** y
   el formato de registro de consentimiento (`fotografia.md`).
 - **(B · deuda)** **Modo oscuro:** las rampas de **visualización de datos** no se
@@ -67,7 +77,8 @@ de FUCAI) · **deuda** (técnica, implementable).
 - **(B · deuda)** **Tokens sin consumidor**: `accent.territorySoft`, `text.footer`,
   `docx.tableHeader.text`, `pptx.titleSlide.text`, `appsheet.accent` están definidos
   pero ningún generador ni documento los referencia. → conectarlos al motor o
-  documentarlos como "reservados".
+  documentarlos como "reservados". *(2026-09: el capítulo de correo ya consume el
+  grupo `email.*` ampliado, y su tabla de paleta está bajo verificación `[GEN]`.)*
 - **Aclaración (no es vacío):** las 21 entradas `dataviz.ramp.*` y los primitivos de
   paso de rampa (`naranja-medio`, `verde-oscuro`, etc.) **sí se consumen**
   programáticamente (vía `lib/tokens` → `RAMP_*` y `tokens.css`); no son huérfanos.
@@ -76,8 +87,12 @@ de FUCAI) · **deuda** (técnica, implementable).
 
 - **(M · deuda)** **Builders documentados pero no implementados** en `fucai_docx.js`:
   `actaHeader()`, `signatureTable()`, `chapterDivider()` (hoy se arman a mano).
-- **(M · deuda)** **QA parcial:** `check_fucai.py` solo valida `.docx`; **no hay
-  verificador** para `.pptx` ni `.xlsx`.
+- **~~QA parcial~~ — RESUELTO (2026-09).** `check_fucai.py` cubre ya los tres formatos
+  OOXML, sin dependencias externas: comprueba que **todo color explícito del artefacto
+  sea un token**. En `.xlsx` solo se revisan `<fonts>`, `<fills>` y `<borders>` —el
+  bloque `<indexedColors>` es la tabla heredada que Excel escribe en todo archivo y
+  daba 40 falsos positivos—. Probado contra las tres plantillas de `assets/templates/`
+  y verificado inyectando deriva a propósito.
 - **(B · deuda)** **Publicación del `.skill`** por Releases/CI desde `dist/skill/`:
   el empaquetado existe (`build-skill --package`), falta el disparador automático.
 
@@ -103,6 +118,62 @@ de FUCAI) · **deuda** (técnica, implementable).
 
 `tienda-fucai.json` usa la paleta FUCAI por decisión del dueño de marca; la ausencia de
 subpaleta propia es una **decisión registrada**, no un hueco.
+
+---
+
+## 9. Campañas y ecosistema digital (aprendizajes 2026-09)
+
+Abiertos por el proyecto *Ecosistema 35 Voces*; el detalle y la propuesta de cada
+uno están en `aprendizajes-ecosistema-35-voces-2026-09.md`.
+
+- **~~Oscuro `#161310` del sitio sin token~~ — RESUELTO (2026-09).** Es ya
+  `color.negro-calido`, y el tema oscuro lo adopta como superficie en vez de `#000000`.
+- **~~Colores de cartografía sin definir~~ — RESUELTO (2026-09).** Son el grupo
+  `carto.*`, extensión válida **solo dentro de un mapa**.
+- **(M · deuda)** **Enlaces fuera de `.sqs-block-content`:** el CSS de Squarespace
+  solo pinta de naranja los enlaces de párrafo y lista. Cualquier `<a>` fuera de
+  esos selectores sale azul de navegador y rompe la paleta cerrada. Falta un
+  fallback; no se añadió aquí porque un `a { }` general puede pisar la navegación
+  del sitio en vivo y merece probarse.
+- **(M · deuda)** **Componentes web de campaña sin ficha:** tarjeta de relato,
+  filtro por tag/territorio con estado en texto y filete (no solo color), contador
+  de serie como variante de dato héroe, hero de «objeto ancla», bloque de sección
+  de campaña en home y plantilla de artículo testimonial. Nacieron en el proyecto y
+  funcionan; falta ficharlos.
+- **(M · deuda)** **Estado «en preparación»:** patrón para contenido que aún no
+  llega —tarjeta en arena claro y etiqueta de **texto**, no solo color—. Con una
+  regla dura asociada: **prohibido el *lorem ipsum*** en piezas que se muestran a
+  comunidades o aliados.
+- **(M · decisión)** **Ficha de relato como esquema de contenido:** `slug`, fecha,
+  voz, pueblo/territorio, tags, ilustración, título SEO y llamado. Definida una vez
+  y consumida por blog, landing, carrusel, home y boletín. Falta publicarla como
+  componente reutilizable por cualquier campaña narrativa.
+- **(M · deuda)** **Plantilla HTML de envío del boletín de serie:** la maqueta está
+  definida (§8.1 del capítulo de correo); falta el HTML real con tablas y estilos
+  en línea, probado en Gmail y Outlook.
+- **(B · decisión)** **Modelo «campaña = datos + plantillas por canal»:** una sola
+  fuente de datos y cinco salidas. Funcionó; falta documentarlo como método.
+- **(B · decisión)** **Set de íconos:** sigue `[POR CONFIRMAR]` (Lucide recoloreado
+  o set propio). Es el mismo vacío del apartado 3, visto desde el lado digital.
+
+## 10. Apps AppSheet (aprendizajes 2026-09)
+
+Abiertos por la revisión de FucaiCampo; el detalle está en
+`04_componentes/appsheet/estandar-de-app.md`.
+
+- **(M · deuda)** **Orden de los estados:** AppSheet agrupa alfabéticamente, no por
+  flujo. La solución estándar es una columna virtual de orden (1 = Borrador …
+  9 = Legalizado); falta aplicarla y fijarla como convención.
+- **(M · deuda)** **Paleta de estados dispersa** entre avances, pasajes y hallazgos:
+  tres conjuntos de Format Rules que deberían ser uno. **Ya no está bloqueada:** con
+  `state.*` resuelto, es trabajo de aplicar los cinco tokens en las apps.
+- **(M · deuda)** **Vistas con nombre técnico visible** (`coord_proyectos_Detail`,
+  `rf_*_Detail`): todo lo que ve la persona necesita Display Name en español.
+- **(M · deuda)** **Set de íconos de estado:** hoy Font Awesome vía Format Rules, sin
+  catálogo fijado. Es el mismo vacío de iconografía del apartado 3, visto desde la app.
+- **(A · decisión)** **Llevar el estándar a las demás apps** del ecosistema (Caminos
+  Artesanos, Activos FUCAI, CRM B2B, Bancabundancia, Catálogo Maderables). Es lo que
+  convierte cinco apps sueltas en una familia.
 
 ---
 

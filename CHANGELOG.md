@@ -11,6 +11,44 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
 ## [No publicado]
 
 ### Añadido
+- **Verificación `[B5]` — toda la documentación contra los tokens.** Hasta ahora solo
+  se comprobaba el CSS de Squarespace; ahora se revisan **486 hex en 94 archivos `.md`**.
+  Un documento puede citar a propósito un color ajeno —una submarca, un contraejemplo,
+  un valor que se está corrigiendo— con el escape explícito `<!-- paleta-libre: motivo -->`,
+  que vale hasta el siguiente titular y se cuenta en el informe. Hoy hay 14 exentos.
+- **QA de `.pptx` y `.xlsx`** en `scripts/check_fucai.py`, que antes solo cubría `.docx`.
+  Los tres formatos son OOXML, así que se revisan sin dependencias externas: todo color
+  explícito del artefacto debe ser un token. Probado contra las tres plantillas de
+  `assets/templates/` y verificado inyectando deriva a propósito.
+- **`PALETTE` en `scripts/lib/tokens.py`** — la paleta completa resuelta (29 colores),
+  compartida por los verificadores.
+
+### Cambiado
+- **Convención de citas unificada:** 26 referencias en 6 archivos citaban
+  `references/X.md`, ruta relativa al paquete del skill que no resuelve desde la raíz.
+  Las referencias rotas bajan de 15 a 4, y las cuatro que quedan son texto ilustrativo
+  o directorios.
+- **La regla de léxico vuelve a su sitio:** «lenguaje de servicio, no de propiedad»
+  vivía solo en la referencia de AppSheet. Ahora está en `references/voice-tone.md`,
+  con la precisión de que **el testimonio es intocable** —la lista se aplica al marco
+  editorial, nunca a lo que dijo una persona—.
+<!-- paleta-libre: esta entrada nombra el valor derivado para poder describirlo. -->
+- **`#E4DFCD` de la guía de Squarespace queda marcado como deriva**, no escondido:
+  lleva el escape con motivo y está registrado como pendiente de decidir entre
+  tokenizarlo o reemplazarlo por arena.
+- **«Encabezado de acta» sube a Estable** — tiene generador y ahora QA. Es la **única**
+  promoción justificada: el resto de borradores no lo son por falta de documentación
+  sino de generador, y reetiquetarlos habría sido maquillar el inventario.
+
+
+## [1.9.0] — 2026-09-28
+
+MINOR: capa funcional `state.*` y extensión `carto.*`, el medio correo cerrado de punta
+a punta, publicaciones (libro y cartilla) y el estándar de apps AppSheet como capítulos
+propios, `DESIGN.md` bajo verificación y una auditoría completa del sistema. La
+verificación pasa de 17 a 24 tablas y de 69 a 125 celdas.
+
+### Añadido
 - **Componente `documento/markdown-pdf/`** — hoja de estilo
   `fucai-markdown-pdf.css` para exportar cualquier `.md` a PDF con marca desde
   VS Code, con la extensión `yzane.markdown-pdf`. Cubre el hueco entre el `.md`
@@ -22,6 +60,196 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   blanco siempre. El verde **no se aplica solo**: hay que marcarlo con
   `.territorio`, para que siga siendo color de territorio y no de decoración.
   Registrado en `04_componentes/catalogo.md`.
+- **Referencia `skill/fucai-branding/references/email.md` en el skill** — el ruteo del skill no tenía
+  fila para correo, pese a que ya existían el capítulo del medio y las directrices
+  de notificaciones. Destila ambos en formato operativo: reglas duras, paleta,
+  tipografía, anatomía, notificaciones de AppSheet, firma del personal y
+  accesibilidad.
+- **Tokens `email.*` de superficie, texto, filete y firma** — `email.surface.canvas`
+  y `email.surface.card`; `email.accent`, `email.territory` y `email.rule`;
+  `email.text.title`, `email.text.body` y `email.text.muted`; y el trío
+  `email.signature.border` / `padding` / `maxWidth` (3 / 13 / 420 px). Cierran el
+  hueco entre el grupo `email.*` previo (solo ancho, botón y fuentes) y los valores
+  que el capítulo de correo usaba escritos a mano.
+
+- **Registro de "Cristal FUCAI" en la capa de identidad** — el estilo generativo de
+  imagen de la casa no aparecía en ninguna parte del repositorio fuera de su propia
+  guía. Ahora `iconografia.md` distingue los **dos registros de ícono** (interfaz en
+  outline 2 px · aplicación en Cristal), `ilustracion.md` lo recoge como estilo
+  generativo con su límite —objetos y símbolos, nunca personas ni comunidades— y
+  `skill/fucai-branding/references/photography.md` lo pone al alcance del agente.
+- **Sección "Dos registros de escritura"** en `07_gobernanza/mapa-fuente-de-verdad.md`
+  — distingue el **capítulo** (para una persona que decide: narra y explica el porqué)
+  de la **directriz** (para un agente que construye: reglas duras, esqueleto literal,
+  checklist). La directriz no sustituye al capítulo, lo ejecuta.
+
+- **Componente `documento/libro-y-cartilla.md`** — cómo se arma una publicación
+  larga de FUCAI. Separa de forma explícita **lo fijo** (blanco de fondo, paleta y
+  60-25-10-5, Space Grotesk/Calibri, voz, aparato mínimo, ética) de **lo libre**
+  (metáfora estructurante, formato y retícula, escala tipográfica, familias de
+  ilustración, recursos de navegación), para que innovar no cueste identidad.
+  Recoge el aparato editorial por sus tres funciones —situar, acreditar, cuidar—,
+  la retícula de 170 × 240 con franja de margen, el **sistema de marcadores de
+  diagramación** que viaja dentro del `.md` y no se imprime, y la regla de que el
+  libro **se genera, no se maqueta a mano**.
+- **`02_identidad-visual/ilustracion-editorial.md`** — el estilo de acuarela cálida
+  para libros y cartillas, con su método de serie: bloque de estilo idéntico en
+  todos los prompts, familias de pieza con sus tamaños de producción, las dos vías
+  (describir o partir de fotografía), parámetros por herramienta, trazabilidad de
+  prompt y semilla, reglas éticas y los ocho «no» del control de calidad.
+  El aprendizaje central queda escrito: **la fuerza de transformación se invierte**
+  —media (0,50–0,65) en el retrato, que existe para *conservar* a la persona; alta
+  (0,70–0,85) en la escena, que existe para *disolverla*—.
+  Destilados de la producción de *35 Voces, 35 Caminos de Identidad* en
+  `fucai-knowledge`.
+
+- **Referencia `skill/fucai-branding/references/libro-cartilla.md` en el skill** — el ruteo no tenía
+  fila para publicaciones largas, así que un agente no podía llegar ni al
+  componente de libro ni al estilo de acuarela. Destila ambos: lo fijo y lo libre,
+  el aparato mínimo, la retícula, los marcadores de diagramación, la inversión de
+  la fuerza entre retrato y escena, la ética de imagen y el checklist de imprenta.
+  Se añaden «libro», «cartilla» y «publicación» a los disparadores del skill.
+
+- **`07_gobernanza/aprendizajes-ecosistema-35-voces-2026-09.md`** — aprendizajes del
+  proyecto del ecosistema digital de la campaña de 35 años (landing, blog, carrusel,
+  home y boletín). Se ubicó en gobernanza junto a las otras revisiones y se
+  incorporó a los capítulos: cierra con una tabla que dice dónde quedó cada uno de
+  los 18 aprendizajes.
+- **Sección «Ilustración de autor»** en `02_identidad-visual/fotografia.md`, con la
+  tabla de **las cuatro vías de imagen** —foto real, ilustración de autor, retrato
+  ilustrado desde foto, imagen generada de objetos— y cuándo vale cada una. La
+  ilustración hecha por una persona es vía de primera clase en relatos íntimos, de
+  niñez y de memoria, no un sustituto de emergencia.
+- **§8.1 «Boletín de serie»** en el capítulo de correo: la familia del boletín que
+  entrega una serie por entregas, distinta de las notificaciones de sistema.
+  Verificada con 46 envíos. Incluye la regla de asunto (≤ 50 caracteres, la voz
+  como sujeto) y el contador de serie.
+- **Carrusel testimonial de 6 láminas** en `04_componentes/social/carrusel.md`.
+- **Regla de campaña en tipografía:** una campaña hereda la tipografía de su canal;
+  no se introducen familias nuevas por campaña.
+- **«El testimonio es intocable»** en `lexico-institucional.md`: la regla de oro y
+  la tabla sí/no se aplican al marco editorial, nunca al testimonio.
+- **Cursivas cuando todo el texto es una cita** en la guía editorial.
+
+- **`04_componentes/appsheet/estandar-de-app.md`** — estándar de construcción de las
+  apps AppSheet, validado en FucaiCampo: principios, navegación con inicio numerado
+  y paneles alimentados por tabla de accesos, vistas de detalle por secciones en
+  orden del flujo, tarjeta de dos datos, estados con Format Rule, formularios por
+  pasos, visibilidad por alcance y rol, convenciones de nombres, trampas técnicas y
+  checklist de «hecho» para cada vista nueva. Cierra el pendiente que `patrones.md`
+  arrastraba —el catálogo de vistas concretas— y trae una tabla de dónde quedó cada
+  aprendizaje.
+- **`skill/fucai-branding/references/appsheet.md` pasa de identidad visual a estándar de app** — el skill
+  solo sabía de color y tipografía; un agente que construyera una vista no tenía
+  navegación, microcopy, nombres ni checklist. Ahora sí.
+- **Reglas de etiqueta en `microcopy.md`** — pregunta lo que la persona diligencia,
+  nombra lo que solo lee; mayúscula solo al inicio; lo opcional se dice; pasos por
+  encima de ocho campos.
+
+- **`07_gobernanza/auditoria-sistema-2026-09.md`** — auditoría completa de coherencia
+  y completitud: 93 archivos, 116 tokens, la maquinaria de verificación y los tres
+  destilados. Registra lo sano, los cinco hallazgos de coherencia, el estado de
+  madurez (72 % en borrador) y siete oportunidades por retorno.
+
+- **Capa funcional `state.*`** — cinco tokens de estado para interfaces: `success`
+  `#0F7B4F`, `danger` `#9B2226`, `info` `#2A6F97`, más `warning` y `neutral` que
+  reusan el naranja de marca y el gris de soporte, sin añadir color. **Viven fuera de
+  `color.*` a propósito:** la paleta de marca sigue cerrada. No se usan en piezas
+  públicas, documentos, portadas ni redes, y nunca solo color — siempre con ícono y
+  etiqueta. Los tres valores nuevos pasan AA sobre blanco y sobre arena claro.
+- **Extensión `carto.*`** — `agua`, `agua-linea`, `chagra` y `curva-nivel`, válidos
+  **únicamente dentro de un mapa**: la cartografía tiene convenciones de lectura
+  propias —el agua se lee azul— y forzarlas a la paleta perjudica la comprensión.
+  Eran «valor propuesto» en el componente de cartografía; ahora son tokens.
+- **`color.negro-calido` `#161310`** — el negro de las bandas oscuras del sitio, que
+  estaba en producción sin token.
+
+### Cambiado
+- **El verde de territorio no significa «éxito»** — el semáforo propuesto para las
+  apps usaba `brand.territory` para «cerrado OK». Se rechazó: el verde narrativo es un
+  activo de marca y diluirlo en un formulario financiero lo desgasta en todas partes.
+  El «cerrado» usa el verde **funcional** `#0F7B4F`, distinto y solo de interfaz.
+- **El tema oscuro adopta `#161310`** en vez de `#000000`, alineándose con el sitio.
+- **El semáforo de las apps queda resuelto** en `estandar-de-app.md` §6 y en
+  `skill/fucai-branding/references/appsheet.md`, que dejan de advertir de un vacío abierto.
+- **Tres vacíos cerrados en el registro:** colores de estado (era prioridad alta),
+  oscuro del sitio sin token y colores de cartografía. La paleta de estados dispersa
+  entre apps deja de estar bloqueada.
+- **Verificación ampliada a 24 tablas y 125 celdas** (desde 21/111): entran las tablas
+  de estado de `DESIGN.md` y `color.md`, y la de cartografía. `TOKEN_REF` reconoce
+  ahora los prefijos `state.` y `carto.`.
+- **`DESIGN.md` entra bajo verificación** — era el mayor riesgo de deriva del repo:
+  625 líneas y 69 hex escritos a mano, **copiado al paquete que se distribuye** y
+  anunciado como «guía de diseño completa», pero fuera de `GEN_TARGETS`, del mapa de
+  fuente de verdad y del README. Su tabla de color y sus **dos** tablas de contraste
+  quedan enlazadas a tokens. La verificación sube de 20 a 21 tablas, de 97 a 111
+  celdas y de 25 a 46 pares de contraste. Los 10 contrastes que declaraba eran
+  correctos; solo estaban sin vigilar.
+- **El marcador `[GEN]` ya no cruza titulares** — se extendía hasta el final del
+  archivo, de modo que cualquier tabla posterior entraba en la verificación sin
+  quererlo. Impedía usarlo con confianza en documentos largos. Se comprobó que
+  ninguna tabla existente dependía de esa fuga.
+- **`mapa-fuente-de-verdad.md`:** `DESIGN.md` queda registrado como destilado espejo
+  y el diagrama refleja la cobertura real de `[GEN]`.
+- **Enlace roto en el CHANGELOG** a `color-system.md`, sin el segmento `fucai-branding/`.
+- **«Lenguaje de servicio, no de propiedad» entra en la tabla sí/no** del léxico:
+  «proyectos coordinados», no «mis proyectos». Los proyectos son de la fundación y
+  de las comunidades; quien los coordina no los posee.
+- **Los colores de estado suben a prioridad alta en el registro de vacíos** — dejó de
+  ser hipotético: las apps en producción usan **azul y rojo** en sus Format Rules y
+  el estándar propone un semáforo con ambos, colores que la paleta FUCAI excluye. O
+  se amplía la paleta con tokens de estado, o se resuelve el semáforo dentro de la
+  paleta cerrada; mientras tanto el sistema no puede decir cuál es el color correcto.
+- **`patrones.md`:** su pendiente de «catálogo de vistas concretas» queda resuelto y
+  apunta al estándar; conserva solo el set de íconos como pendiente.
+- **Contraste naranja↔blanco corregido: 3.1 → 3.9:1** — el capítulo de correo citaba
+  un valor que no era el que calcula el propio build. Corregido tambien en
+  `skill/fucai-branding/references/email.md`, junto con los umbrales WCAG de texto grande, que
+  confundian px con pt (≥ 24 px / 18 pt, o ≥ 18.66 px / 14 pt en negrita).
+- **Regla dura 9 precisada: prohibido *fabricar* personas, no ilustrarlas** — tal
+  como estaba («IA prohibida para representar personas o comunidades») prohibía los
+  retratos que el propio sistema documenta. Ahora distingue fabricar un rostro
+  —prohibido— de **el retrato ilustrado de una publicación**, admisible porque parte
+  de una fotografía real que la persona entregó, no altera sus rasgos, la persona lo
+  aprueba antes de publicarse y se declara en el índice de ilustraciones. Corregida
+  también en `skill/fucai-branding/references/photography.md`. **[● Confirmar con la Dirección.]**
+- **La paleta de acuarela editorial queda bajo verificación `[GEN]`** — pasa a
+  nombrar tokens `color.*` en vez de hex sueltos. La verificación sube a 20 tablas
+  y 97 celdas.
+- **La casa tiene dos estilos generativos, no uno** — al documentar el estilo del
+  libro quedó claro que «Cristal FUCAI» (objetos, íconos de aplicación, redes) y
+  «acuarela cálida» (libros y cartillas) conviven y no se mezclan en una misma
+  pieza. `ilustracion.md` pasa a declarar **tres registros** —infografía y diagrama,
+  Cristal, acuarela— y `skill/fucai-branding/references/photography.md` corrige haber presentado Cristal
+  como el único.
+- **La firma de correo deja de tener dos fuentes de verdad** — `SKILL.md` traía una
+  firma en texto plano, sin filete ni jerarquía, que contradecía la del capítulo de
+  correo. Como el skill es lo que consume un agente, toda firma generada salía con
+  la versión pobre. Ahora `SKILL.md` describe la firma real y remite a
+  `skill/fucai-branding/references/email.md` para el HTML.
+- **Verificación `[GEN]` ampliada a la capa 04 y al skill** — `build-skill.js`
+  reconoce el prefijo `email.*` y vigila las tablas de paleta de
+  `04_componentes/email/sistema-de-correo.md` y `skill/fucai-branding/references/email.md`. La
+  verificación pasa de 17 a 19 tablas y de 69 a 85 celdas.
+- **Mapa de fuente de verdad y registro de vacíos al día** — tres filas nuevas en
+  "Qué manda sobre qué" (correo, notificaciones de AppSheet, estilo Cristal); el
+  diagrama de compilación ya refleja que `[GEN]` cubre 02_/04_/06_ y el skill; y
+  `analisis-de-vacios.md` anota qué cerró cada documento: el ícono **de aplicación**
+  queda resuelto y el vacío restante es el set plano **de interfaz**.
+- **Catálogo:** la firma de correo del personal queda registrada apuntando al §10 del
+  capítulo, sin crear una ficha que duplicara la especificación.
+- **`README.md`:** la lista de familias de `04_componentes/` omitía `email/` y
+  `cartografia/`, que ya existían.
+- **Ubicación de los tres capítulos de septiembre** — estaban sueltos en la raíz
+  de `04_componentes/`, fuera de su familia y con nombre `FUCAI_…_2026-09.md`.
+  Se movieron con `git mv` y se renombraron a minúscula-con-guion, según la
+  convención del repositorio:
+  - `FUCAI_SistemaDiseno_Correo_2026-09.md` → `04_componentes/email/sistema-de-correo.md`
+  - `FUCAI_Directrices_Claude_Notificaciones_AppSheet_2026-09.md` → `04_componentes/appsheet/notificaciones-correo.md`
+  - `FUCAI_Guia_Prompts_Cristal_2026-09.md` → `02_identidad-visual/prompts-cristal.md`
+
+  Se actualizaron el catálogo de componentes, el README de la familia email y la
+  referencia cruzada entre el capítulo de correo y las directrices de AppSheet.
 
 ## [1.8.0] — 2026-08-26
 
@@ -99,7 +327,7 @@ specimen y fichas nuevas. Aplica el plan de la revisión de agosto
 ### Cambiado
 - **Contrastes recalculados con la fórmula WCAG** (H2) en
   `02_identidad-visual/color.md`, `06_accesibilidad/estandar-accesibilidad.md`,
-  `DESIGN.md`, `GUIA-RAPIDA.md` y `skill/references/color-system.md`:
+  `DESIGN.md`, `GUIA-RAPIDA.md` y `skill/fucai-branding/references/color-system.md`:
   naranja↔blanco 3.1→**3.9:1**, verde↔blanco 5.9→**6.4:1**, arena↔negro
   10.5→**17.1:1**, arena claro↔gris 8.5→**11.4:1**; filas nuevas para
   naranja↔arena (3.2:1, solo títulos grandes), hover (5.4:1) y tintes (✕ texto).
@@ -117,9 +345,9 @@ specimen y fichas nuevas. Aplica el plan de la revisión de agosto
   hover corregidos.
 - **Skill `fucai-branding` → v3.2** (H1): reglas duras 9–11 nuevas (IA prohibida
   para personas; carrusel; tintes solo fondo + hover naranja oscuro),
-  `references/canva.md` con la sección completa del carrusel,
-  `references/photography.md` con la regla de IA y duotonos,
-  `references/color-system.md` y `web.md`/`docx.md` con contrastes calculados,
+  `skill/fucai-branding/references/canva.md` con la sección completa del carrusel,
+  `skill/fucai-branding/references/photography.md` con la regla de IA y duotonos,
+  `skill/fucai-branding/references/color-system.md` y `web.md`/`docx.md` con contrastes calculados,
   ruta de salidas generalizada y ejemplo de nombre de archivo unificado.
   **Pendiente manual: re-subir el paquete (`npm run package:skill`) a claude.ai.**
 - **`README.md`** (H8): estado actualizado a v1.8.0 (decía "v0.1.0 — scaffolding")

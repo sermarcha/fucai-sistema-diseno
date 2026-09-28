@@ -24,7 +24,7 @@ versionado de la autoridad de marca.
 | 01 | `01_fundamentos/` | Filosofía de diseño, principios, los cinco atributos y los pilares de marca. |
 | 02 | `02_identidad-visual/` | Activos visuales: `logo/`, `tipografia/`, `iconos/`. |
 | 03 | `03_tokens/` | **El corazón.** `tokens.json` (W3C), `taxonomia.md` y `temas/`. Manda sobre todo valor. |
-| 04 | `04_componentes/` | Patrones reutilizables por plataforma: `documento/`, `presentacion/`, `appsheet/`, `social/`, `web/`. |
+| 04 | `04_componentes/` | Patrones reutilizables por plataforma: `documento/`, `presentacion/`, `appsheet/`, `email/`, `social/`, `web/`, `cartografia/`. |
 | 05 | `05_contenido-lenguaje/` | Voz y tono, lista de palabras a evitar, glosario, plantillas de texto. |
 | 06 | `06_accesibilidad/` | Reglas de contraste, tamaños mínimos, criterios WCAG. |
 | 07 | `07_gobernanza/` | Versionado, roles, proceso de cambio, propiedad de la marca. |
@@ -50,7 +50,7 @@ discrepan, manda esta tabla.
 | Filosofía, atributos y pilares | `01_fundamentos/` | — |
 | Voz, tono y palabras a evitar | `05_contenido-lenguaje/` | — |
 | Reglas de contraste y accesibilidad | `06_accesibilidad/` | — |
-| Patrones por plataforma (docx, pptx, appsheet, social, web) | `04_componentes/` | — |
+| Patrones por plataforma (docx, pptx, appsheet, correo, social, web, mapas) | `04_componentes/` | — |
 | Autoridad de marca de referencia (espejo) | `skill/fucai-branding/` | `SKILL.md` + `references/` |
 
 Regla de oro: **no se queman valores numéricos fuera de `tokens.json`.** Las
@@ -83,8 +83,10 @@ npm run qa:docx -- <archivo>      # QA de un .docx generado
 
 ## Estado
 
-`v1.8.0` — sistema en operación: fuente de verdad poblada y verificada por CI,
-capa estratégica oficial completa, generadores token-driven (docx/pptx/xlsx),
-componentes de documento/presentación/redes/email/web/cartografía, skill
-empaquetable y guía rápida (`GUIA-RAPIDA.md`). Pendientes y decisiones abiertas:
+`v1.9.0` — sistema en operación: fuente de verdad poblada y verificada (24 tablas
+`[GEN]`, 125 celdas, contraste WCAG calculado, temas y CSS web), capa estratégica
+completa, generadores token-driven (docx/pptx/xlsx), componentes de
+documento/presentación/redes/correo/web/cartografía/AppSheet/publicaciones,
+**capa funcional `state.*`** para interfaces y **extensión `carto.*`** para mapas,
+skill empaquetable y guía rápida (`GUIA-RAPIDA.md`). Pendientes y decisiones abiertas:
 ver `07_gobernanza/analisis-de-vacios.md` y `CHANGELOG.md`.

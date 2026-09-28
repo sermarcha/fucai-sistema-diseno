@@ -66,6 +66,11 @@ C = {
     "lightGreen":  _hex("color.verde-claro"),
 }
 
+# Paleta completa: todo valor hex resuelto de tokens.json (color.*, state.*, carto.*).
+# La usan los verificadores de QA para detectar deriva en los artefactos generados.
+PALETTE = {str(_resolve(v)).upper() for v in _leaves.values()
+           if isinstance(_resolve(v), str) and re.fullmatch(r"#[0-9A-Fa-f]{6}", str(_resolve(v)))}
+
 FONT = {"heading": raw("font.family.heading")[0], "body": raw("font.family.body")[0]}
 
 PT = {k: raw("font.size.%s" % k)["value"] for k in

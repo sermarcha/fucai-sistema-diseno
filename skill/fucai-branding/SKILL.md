@@ -1,12 +1,12 @@
 ---
 name: fucai-branding
-description: "Apply FUCAI institutional branding (design philosophy, colors, typography, logo, recurring components, voice & tone) to EVERY document and design. ALWAYS read and follow this skill whenever creating or editing ANY deliverable for FUCAI or Sergio — Word (.docx), Excel (.xlsx), PowerPoint (.pptx), Canva designs, Google Docs/Slides/Sheets, AppSheet apps, HTML/web artifacts, React components, social media graphics, email signatures, and any other professional output. Trigger on: any document or design creation request, any mention of FUCAI, 'colores institucionales', 'marca FUCAI', 'identidad visual', 'logo FUCAI', 'presentación', 'informe', 'acta', 'presupuesto', or when the user asks for any document without specifying a different brand. Also trigger when writing text content for FUCAI to apply voice & tone. If in doubt, apply FUCAI branding — it is the default for ALL outputs."
+description: "Apply FUCAI institutional branding (design philosophy, colors, typography, logo, recurring components, voice & tone) to EVERY document and design. ALWAYS read and follow this skill whenever creating or editing ANY deliverable for FUCAI or Sergio — Word (.docx), Excel (.xlsx), PowerPoint (.pptx), Canva designs, Google Docs/Slides/Sheets, AppSheet apps, HTML/web artifacts, React components, social media graphics, email signatures, books and cartillas (libros, cartillas, publicaciones largas), and any other professional output. Trigger on: any document or design creation request, any mention of FUCAI, 'colores institucionales', 'marca FUCAI', 'identidad visual', 'logo FUCAI', 'presentación', 'informe', 'acta', 'presupuesto', 'libro', 'cartilla', 'publicación', or when the user asks for any document without specifying a different brand. Also trigger when writing text content for FUCAI to apply voice & tone. If in doubt, apply FUCAI branding — it is the default for ALL outputs."
 ---
 
 # FUCAI Institutional Branding
 
 Single source of truth for everything produced for **Fundación Caminos de Identidad (FUCAI)**, aligned to *Manual de Identidad Visual v1.1 (abril 2026)*.
-**Version 3.2** (modular: lean overview + `references/` + executable `scripts/`; web y AppSheet como referencias propias; sincronizado 2026-08 con el sistema de diseño: reglas de redes/carrusel 2026-07, prohibición de IA para personas, contrastes calculados, hover naranja oscuro).
+**Version 3.3** (modular: lean overview + `references/` + executable `scripts/`; web, AppSheet, correo y publicaciones como referencias propias; sincronizado 2026-09 con el sistema de diseño: reglas de redes/carrusel 2026-07, prohibición de IA para personas, contrastes calculados, hover naranja oscuro).
 
 > Firma: *Nuestro centro es la periferia* · www.fucaicolombia.org · comunicaciones@fucaicolombia.org · NIT 800.173.574-1
 
@@ -18,8 +18,8 @@ Single source of truth for everything produced for **Fundación Caminos de Ident
 5. **Space Grotesk solo para títulos; Calibri (Carlito) para cuerpo.**
 6. **Slogan en cursiva** en pies/cierres; **www.fucaicolombia.org** en pies y comunicaciones externas.
 7. **Voz:** sin palabras de la lista "evitar"; comunidades como protagonistas; idioma español por defecto.
-8. **Tras generar un .docx, corre `python3 scripts/check_fucai.py <archivo>` y haz QA visual en PDF** antes de entregar.
-9. **Imágenes generadas por IA: PROHIBIDAS para representar personas o comunidades** (solo conceptos abstractos u objetos). Fotos siempre reales, del banco autorizado, con consentimiento y color auténtico (sin duotonos naranjas).
+8. **Tras generar un `.docx`, `.pptx` o `.xlsx`, corre `python3 scripts/check_fucai.py <archivo>` y haz QA visual** antes de entregar. El verificador comprueba que todo color explícito del artefacto sea un token.
+9. **Imágenes generadas por IA: PROHIBIDO fabricar personas o comunidades.** No se inventan rostros ni escenas comunitarias: las comunidades protagonistas son reales. Fotos siempre reales, del banco autorizado, con consentimiento y color auténtico (sin duotonos naranjas). **Única excepción — el retrato ilustrado de una publicación:** parte de una fotografía real que la persona entregó, no altera sus rasgos, la persona lo aprueba antes de publicarse y se declara en el índice de ilustraciones (ver `references/libro-cartilla.md`).
 10. **Redes: carrusel 1080×1350 con máximo 2 láminas intensas** (gancho y cierre); la proporción 60-25-10-5 se mide sobre el carrusel completo (ver `references/canva.md`).
 11. **Tintes al 50 % (naranja claro `#F4A28A`, verde claro `#74B597`) solo como FONDO** con texto oscuro; nunca color de texto/ícono. Hover de acciones = naranja oscuro `#C13A10`.
 
@@ -38,11 +38,13 @@ Pilares (uno por sección, en cursiva): *Nuestro camino es la identidad · Nuest
 | Tarea | Referencia | Script ejecutable |
 |-------|-----------|-------------------|
 | Documento Word (.docx) | `references/docx.md` | `scripts/fucai_docx.js` · ejemplo `scripts/example_informe.js` · QA `scripts/check_fucai.py` |
-| Presentación (.pptx) | `references/pptx.md` | `scripts/fucai_pptx.js` · ejemplo `scripts/example_presentacion.js` |
-| Hoja de cálculo (.xlsx) | `references/xlsx.md` | `scripts/fucai_xlsx.py` · ejemplo `scripts/example_presupuesto.py` |
+| Presentación (.pptx) | `references/pptx.md` | `scripts/fucai_pptx.js` · ejemplo `scripts/example_presentacion.js` · QA `scripts/check_fucai.py` |
+| Hoja de cálculo (.xlsx) | `references/xlsx.md` | `scripts/fucai_xlsx.py` · ejemplo `scripts/example_presupuesto.py` · QA `scripts/check_fucai.py` |
 | Diseño en Canva | `references/canva.md` | (brand kit `kAGulOuplLw`) |
 | Páginas del sitio web (Squarespace) · HTML/React | `references/web.md` | — |
 | Aplicaciones AppSheet | `references/appsheet.md` | (fórmulas: skill `appsheet-fundacion-caminos-de-identidad`) |
+| Libro, cartilla o publicación larga | `references/libro-cartilla.md` | (ilustración: `02_identidad-visual/ilustracion-editorial.md`) |
+| Correo: notificación, boletín o firma | `references/email.md` | (notificaciones AppSheet: `04_componentes/appsheet/notificaciones-correo.md`) |
 | Google Docs/Slides/Sheets | `references/gworkspace.md` | — |
 | Detalle de color (tintes, rampas, combinaciones) | `references/color-system.md` | — |
 | Tipografía y espaciado | `references/typography-layout.md` | — |
@@ -70,12 +72,9 @@ Tono: sencillo, concreto, entusiasta, empoderador, realista, cercano. Voz activa
 `voiceQuote()` Voz de la comunidad · `h1(texto, pilar)` apertura con pilar · `heroNumber()` dato héroe · banda arena de portada · barra naranja de contraportada.
 
 ## Firma de email
-```
-Nombre Apellido
-Cargo | Fundación Caminos de Identidad — FUCAI
-www.fucaicolombia.org
-Nuestro centro es la periferia
-```
+Borde izquierdo naranja de 3 px, 13 px de separación, 420 px de ancho máximo, y cuatro líneas: **Nombre Apellido** (14 px negrita) · **CARGO · FUCAI** (10 px, mayúsculas, naranja) · teléfono y `fucaicolombia.org` (12 px gris, URL en naranja) · *Nuestro centro es la periferia* (11 px cursiva).
+
+**Sin logo en imagen ni banners:** el filete naranja es la marca. En respuestas y reenvíos, firma corta. El HTML listo para pegar en Gmail está en `references/email.md`.
 
 ## Reglas generales y nombres de archivo
 - Aplica FUCAI por defecto salvo que se pida otra marca; sin azul/gris genérico.

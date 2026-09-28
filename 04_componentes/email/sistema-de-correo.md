@@ -24,6 +24,10 @@ Un correo FUCAI debe reconocerse **antes de leerlo**: lienzo arena claro, tarjet
 
 ## 2. Qué encontramos (auditoría de septiembre 2026)
 
+<!-- paleta-libre: esta sección cita a propósito valores ajenos a la paleta —la
+     submarca Bancabundancia y los grises de firma que hay que corregir—. Son
+     contraejemplos, no valores de uso. -->
+
 Revisamos las notificaciones que ya envían Fucai Campo y Bancabundancia, el Boletín Informativo N.º 23–24 y las firmas actuales. El diseño de **Fucai Campo** (avances, legalizaciones y pasajes) es la referencia: ya aplica la paleta, la jerarquía y el pie de marca. Lo que hay que alinear:
 
 | Hallazgo | Dónde | Corrección |
@@ -42,18 +46,20 @@ Revisamos las notificaciones que ya envían Fucai Campo y Bancabundancia, el Bol
 
 Proporción **60-25-10-5** adaptada al correo: el lienzo y la tarjeta ocupan casi todo; el naranja aparece en 3–5 puntos, nunca como fondo de bloque.
 
+<!-- [GEN] derivado de tokens.json (email.*) — lo verifica build-skill.js -->
+
 | Token | Hex | Uso en correo | Nunca |
 |---|---|---|---|
-| `lienzo` (arena claro) | `#F6F3E9` | Fondo exterior, chip de estado, caja de acción | Texto |
-| `tarjeta` (blanco) | `#FFFFFF` | Fondo del contenido | — |
-| `acento` (naranja) | `#E94513` | Filete superior 3 px, dato héroe, enlaces, borde izquierdo de chip/caja, cabecera de tabla, total | Párrafos de cuerpo; fondos grandes |
-| `territorio` (verde) | `#2D6A4F` | Solo contenidos de territorio/naturaleza (boletín, monitoreo ambiental) | Estados de "aprobado"; notificaciones financieras |
-| `titulo` (negro) | `#000000` | Número del registro, títulos de sección | — |
-| `texto` | `#333333` | Cuerpo y valores | — |
-| `secundario` | `#666666` | Etiquetas, sistema, pie | Texto largo |
-| `filete` | `#CCCCCC` | Líneas de tabla y separador del pie | — |
+| `email.surface.canvas` | `#F6F3E9` | Fondo exterior, chip de estado, caja de acción | Texto |
+| `email.surface.card` | `#FFFFFF` | Fondo del contenido | — |
+| `email.accent` | `#E94513` | Filete superior 3 px, dato héroe, enlaces, borde izquierdo de chip/caja, cabecera de tabla, total | Párrafos de cuerpo; fondos grandes |
+| `email.territory` | `#2D6A4F` | Solo contenidos de territorio/naturaleza (boletín, monitoreo ambiental) | Estados de "aprobado"; notificaciones financieras |
+| `email.text.title` | `#000000` | Número del registro, títulos de sección | — |
+| `email.text.body` | `#333333` | Cuerpo y valores | — |
+| `email.text.muted` | `#666666` | Etiquetas, sistema, pie | Texto largo |
+| `email.rule` | `#CCCCCC` | Líneas de tabla y separador del pie | — |
 
-**Contraste:** naranja sobre blanco (3.1:1) solo en textos ≥ 18 px o negrita ≥ 14 px. Enlaces naranjas siempre subrayados en el cuerpo para que no dependan del color.
+**Contraste:** naranja sobre blanco es **3.9:1** — no alcanza el 4.5:1 del texto de cuerpo. Se usa solo en **texto grande**: ≥ 24 px (18 pt), o ≥ 18.66 px (14 pt) en negrita. El cuerpo va siempre en negro o gris oscuro. Enlaces naranjas siempre subrayados en el cuerpo para que no dependan del color.
 
 ---
 
@@ -192,7 +198,7 @@ El chip de estado es **siempre neutro** (arena + borde naranja). El color no com
 
 ## 7. Voz en los correos
 
-Basada en `references/voice-tone.md`.
+Basada en `skill/fucai-branding/references/voice-tone.md`.
 - **Tuteo cercano**, voz activa, oraciones de 25 palabras o menos.
 - Apertura de notificación: "Hola." + qué pasó con sujeto y verbo. Apertura de boletín o correo personal: "Hola, [nombre]:".
 - Cierre de notificación: `— {Sistema}` (ej. *— Fucai Campo*). Cierre de correo personal o boletín: *Seguimos caminando juntos. Un abrazo desde la periferia.*
@@ -215,6 +221,22 @@ Mismo esqueleto de §5, con estas variaciones:
 - **Pie:** firma de marca + dirección (Calle 54 N.º 10-81, Bogotá) + redes en texto o íconos monocromos `#666666` + *Darse de baja*. Reemplaza el pie genérico de la plataforma cuando la herramienta lo permita.
 - **Frecuencia y extensión:** un tema central por edición; ≤ 350 palabras de texto visible antes de los enlaces.
 
+### 8.1 Boletín de serie
+
+Cuando el boletín no informa sino que **entrega una serie por entregas** —un relato
+por envío a lo largo de una campaña— se comporta como una familia propia, distinta
+de las notificaciones de sistema. Lo verificó la campaña de 35 años con 46 envíos:
+35 relatos, 7 aperturas de temporada y 4 transversales (bienvenida, libro, cierre).
+
+- **Una sola anatomía para toda la serie.** Lo que cambia entre envíos son los
+  datos, no la estructura; es lo que hace que la serie se reconozca.
+- **Cada envío se define una vez** con asunto, preheader, ficha y fecha de
+  calendario, y de ahí lo consumen todos los canales.
+- **Asunto:** ≤ 50 caracteres, con **la voz o la comunidad como sujeto** —«Lo que
+  enseña la abuela…» funciona mejor que «FUCAI presenta…»—. Sin mayúsculas
+  sostenidas y sin emoji. El **preheader completa** el asunto; no lo repite.
+- **Contador de serie** (n.º / total) visible: ubica a quien llega tarde.
+
 ---
 
 ## 9. Submarcas y sistemas (Fucai Campo, Bancabundancia, Caminos Artesanos, Activos, CRM…)
@@ -224,7 +246,7 @@ Todas las apps de FUCAI usan **el mismo esqueleto y la misma paleta**. Lo único
 2. La firma del cierre (`— Bancabundancia`).
 3. La frase de "por qué recibes este correo".
 
-No se crean paletas por app. Si una submarca necesita identificarse más, se añade su nombre como sobretítulo, nunca otro color de acento. Co-branding con financiadores (Naane/CC217, Tienda FUCAI) sigue `references/subbrands.md`.
+No se crean paletas por app. Si una submarca necesita identificarse más, se añade su nombre como sobretítulo, nunca otro color de acento. Co-branding con financiadores (Naane/CC217, Tienda FUCAI) sigue `skill/fucai-branding/references/subbrands.md`.
 
 ---
 
@@ -237,7 +259,7 @@ No se crean paletas por app. Si una submarca necesita identificarse más, se añ
 ▌+57 601 249 7984  ·  fucaicolombia.org           (12 px · #666666 · URL en naranja)
 ▌Nuestro centro es la periferia                   (11 px · cursiva · #666666)
 ```
-Borde izquierdo naranja 3 px, `padding-left` 13 px, ancho máximo 420 px, pila `Calibri, Carlito, Arial, sans-serif`.
+Borde izquierdo naranja `email.signature.border` (3 px), `padding-left` `email.signature.padding` (13 px), ancho máximo `email.signature.maxWidth` (420 px), pila `Calibri, Carlito, Arial, sans-serif`.
 
 ### 10.2 Reglas
 - **Sin logo en imagen** ni banners: muchos clientes bloquean imágenes y los adjuntos inflan los hilos. El filete naranja es la marca.

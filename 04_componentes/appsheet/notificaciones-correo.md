@@ -2,7 +2,7 @@
 
 **Versión 1.0 · septiembre 2026**
 **Para:** Claude (y cualquier persona) que diseñe o modifique correos de automatización en las apps AppSheet de FUCAI: Fucai Campo, Bancabundancia, Caminos Artesanos, Activos FUCAI, FUCAI CRM, Catálogo Maderables y las que vengan.
-**Complementa:** `FUCAI_SistemaDiseno_Correo_2026-09.md`, que dice *cómo se ve*. Este documento dice *cómo se construye*, paso a paso y sin margen de interpretación.
+**Complementa:** `../email/sistema-de-correo.md`, que dice *cómo se ve*. Este documento dice *cómo se construye*, paso a paso y sin margen de interpretación.
 
 > Objetivo: que dos correos generados en apps distintas, por sesiones distintas de Claude, sean indistinguibles en estructura, estilo y voz. Solo cambian los datos.
 

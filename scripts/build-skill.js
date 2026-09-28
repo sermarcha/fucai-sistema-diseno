@@ -9,7 +9,7 @@
  *       que embeben los generadores y la plataforma de marca (Misión/Visión/Valores).
  *       Así, el "skill" que se distribuye INCLUYE todo el sistema de diseño.
  *
- *   [B] VERIFICAR que las tablas marcadas <!-- [GEN] ... --> de la capa 02/06 sigan
+ *   [B] VERIFICAR que las tablas marcadas <!-- [GEN] ... --> de las capas 02/04/06 sigan
  *       coincidiendo con los tokens (detección de deriva). Es la forma segura e
  *       idempotente de "mantener generadas" esas tablas.
  *
@@ -70,15 +70,20 @@ function buildBrandConstants() {
 /* ===================== [B] verificación de tablas [GEN] =================== */
 const GEN_TARGETS = [
   "GUIA-RAPIDA.md",
+  "DESIGN.md",
   "02_identidad-visual/color.md",
   "02_identidad-visual/tipografia.md",
   "02_identidad-visual/espaciado-y-layout.md",
   "02_identidad-visual/forma-y-profundidad.md",
   "02_identidad-visual/movimiento.md",
   "06_accesibilidad/estandar-accesibilidad.md",
+  "04_componentes/email/sistema-de-correo.md",
+  "skill/fucai-branding/references/email.md",
+  "02_identidad-visual/ilustracion-editorial.md",
+  "04_componentes/cartografia/README.md",
 ];
 const GEN_RE = /\[GEN\][^\n]*tokens\.json/;
-const TOKEN_REF = /`((?:color|surface|brand|accent|text|font|space|layout|docx|pptx|appsheet|dataviz|radius|elevation|motion)\.[A-Za-z0-9_.\-]+)`/g;
+const TOKEN_REF = /`((?:color|surface|brand|accent|text|font|space|layout|docx|pptx|appsheet|email|state|carto|dataviz|radius|elevation|motion)\.[A-Za-z0-9_.\-]+)`/g;
 
 function checkGenTables() {
   const issues = [];
@@ -90,6 +95,7 @@ function checkGenTables() {
     let marker = null;
     for (const line of lines) {
       if (GEN_RE.test(line)) { marker = (/[Cc]ontraste|Manual/.test(line)) ? null : line; if (marker) tablesChecked++; continue; }
+      if (/^#{1,6}\s/.test(line)) { marker = null; continue; } // el marcador no cruza titulares
       if (!marker) continue;
       if (!line.trim().startsWith("|") || /^\|[\s|:-]+\|?\s*$/.test(line)) continue; // no fila / separador
       const refs = [...line.matchAll(TOKEN_REF)].map((m) => m[1].replace(/\.$/, ""));
@@ -139,7 +145,7 @@ const fmtRatio = (r) => String(Math.round(r * 10) / 10) + ":1"; // 21:1, 3.9:1�
 
 // Verifica las tablas marcadas "[GEN] contraste calculado desde tokens.json":
 // cada fila con exactamente dos tokens `color.*` debe declarar la razón calculada.
-const CONTRAST_TARGETS = ["GUIA-RAPIDA.md", "02_identidad-visual/color.md", "06_accesibilidad/estandar-accesibilidad.md"];
+const CONTRAST_TARGETS = ["GUIA-RAPIDA.md", "DESIGN.md", "02_identidad-visual/color.md", "06_accesibilidad/estandar-accesibilidad.md"];
 const CONTRAST_RE = /\[GEN\]\s*contraste calculado desde tokens\.json/;
 function checkContrastTables() {
   const issues = [];
@@ -238,6 +244,41 @@ function checkWebCss() {
     }
   }
   return { issues, filesChecked, hexChecked };
+}
+
+/* ====== [B5] documentación: todo hex escrito a mano ∈ tokens ============== */
+// Un `.md` puede citar un color ajeno (una submarca, un contraejemplo, un valor que
+// se está corrigiendo). Para eso existe el escape explícito, que vale hasta el
+// siguiente titular:  <!-- paleta-libre: motivo -->
+const LIBRE_RE = /<!--\s*paleta-libre:/;
+function checkDocHex() {
+  const issues = [];
+  let filesChecked = 0, hexChecked = 0, exentos = 0;
+  const palette = new Set(Object.keys(T.leaves)
+    .map((k) => T.resolve(T.leaves[k]))
+    .filter((v) => typeof v === "string" && /^#[0-9a-fA-F]{6}$/.test(v))
+    .map((v) => v.toUpperCase()));
+  const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const full = path.join(dir, e.name);
+    if (e.isDirectory()) return /node_modules|^dist$|^\.git$/.test(e.name) ? [] : walk(full);
+    return e.name.endsWith(".md") ? [full] : [];
+  });
+  for (const full of walk(ROOT)) {
+    const rel = path.relative(ROOT, full);
+    filesChecked++;
+    let libre = false;
+    for (const line of fs.readFileSync(full, "utf8").split("\n")) {
+      if (LIBRE_RE.test(line)) { libre = true; continue; }
+      if (/^#{1,6}\s/.test(line)) { libre = false; }
+      for (const m of line.matchAll(/#([0-9a-fA-F]{6})\b/g)) {
+        const hex = "#" + m[1].toUpperCase();
+        if (libre) { exentos++; continue; }
+        hexChecked++;
+        if (!palette.has(hex)) issues.push(rel + ": " + hex + " no corresponde a ningún token (¿deriva, o falta el escape `paleta-libre`?)");
+      }
+    }
+  }
+  return { issues, filesChecked, hexChecked, exentos };
 }
 
 /* ===================== [A] emitir el paquete dist/skill =================== */
@@ -399,7 +440,14 @@ function main() {
   if (rw.issues.length) rw.issues.forEach((i) => console.log("    ✗ " + i));
   else console.log("    ✓ todos los hex del CSS/HTML pertenecen a la paleta");
 
-  const allIssues = [].concat(r.issues, rc.issues, rt.issues, rw.issues);
+  console.log("\n[B5] Documentación (.md) vs tokens — todo hex escrito a mano:");
+  const rd = checkDocHex();
+  console.log("    archivos: " + rd.filesChecked + " | hex verificados: " + rd.hexChecked +
+              " | exentos con `paleta-libre`: " + rd.exentos);
+  if (rd.issues.length) rd.issues.forEach((i) => console.log("    ✗ " + i));
+  else console.log("    ✓ todo hex de la documentación corresponde a un token");
+
+  const allIssues = [].concat(r.issues, rc.issues, rt.issues, rw.issues, rd.issues);
 
   if (PACKAGE) {
     const pkg = packageSkill();
@@ -415,4 +463,4 @@ function main() {
 }
 
 if (require.main === module) process.exit(main());
-module.exports = { buildBrandConstants, checkGenTables, checkContrastTables, checkThemes, checkWebCss, emitBundle, GEN_TARGETS };
+module.exports = { buildBrandConstants, checkGenTables, checkDocHex, checkContrastTables, checkThemes, checkWebCss, emitBundle, GEN_TARGETS };

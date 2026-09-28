@@ -74,6 +74,13 @@ Archivos provistos: `SpaceGrotesk-Regular.ttf` (400), `-Medium.ttf` (500),
 5. Alineación de cuerpo: justificada o a la izquierda; centrado solo en portadas.
 6. Tras un título: ≥ 12 pt de espaciado (ver `espaciado-y-layout.md`).
 
+## Campañas
+
+**Una campaña hereda la tipografía de su canal.** No se introducen familias nuevas
+por campaña, por vistosa que sea la pieza: es lo que evita que una sección de
+campaña se lea como un micrositio ajeno pegado al sitio. Si la campaña necesita
+otro registro, se consigue con peso, escala y aire, no con otra fuente.
+
 ## Fuentes de respaldo (web)
 
 Titulares: cargar **Space Grotesk** (`tipografia/*.woff2`) o Google Fonts; respaldo

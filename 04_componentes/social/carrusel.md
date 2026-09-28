@@ -74,6 +74,14 @@ todas las láminas.
   lo exige. 5–9 láminas; el arco completo (gancho → desarrollo → dato → cierre)
   no se sacrifica por brevedad.
 
+### Carrusel testimonial (6 láminas)
+
+Variante validada en la campaña de 35 años para publicar un relato de una voz.
+Secuencia fija: **portada con la voz → cita → contexto del territorio → relato (2
+láminas) → cierre con llamado**. El pie de publicación lleva voz, pueblo, llamado
+y el hashtag de campaña. Sigue rigiendo el límite de dos láminas intensas
+(portada y cierre) y la proporción 60-25-10-5 medida sobre el carrusel completo.
+
 ## Lista de chequeo antes de publicar
 
 1. ¿Máximo 2 láminas intensas y el resto respira en blanco/arena/foto?

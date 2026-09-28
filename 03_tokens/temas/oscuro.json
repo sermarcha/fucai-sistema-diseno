@@ -1,9 +1,9 @@
 {
-  "$description": "Tema OSCURO — modo oscuro del Manual v1.1: fondo negro, texto arena. Mismas claves que los demás temas; solo cambian los valores. Para pantalla/web/pptx; Word mantiene fondo blanco por regla dura.",
+  "$description": "Tema OSCURO — modo oscuro del Manual v1.1: fondo negro cálido #161310 (el de las bandas oscuras del sitio), texto arena. Mismas claves que los demás temas; solo cambian los valores. Para pantalla/web/pptx; Word mantiene fondo blanco por regla dura.",
   "$meta": { "theme": "oscuro", "extends": "tokens.json", "default": false },
   "surface": {
     "$type": "color",
-    "page":    { "$value": "#000000" },
+    "page":    { "$value": "#161310" },
     "warmth":  { "$value": "#EDE8D3" },
     "title":   { "$value": "#E94513" },
     "section": { "$value": "#EDE8D3" }
@@ -32,7 +32,7 @@
   "component": {
     "$type": "color",
     "docx": { "coverBand": { "$value": "#EDE8D3" }, "tableHeaderBg": { "$value": "#E94513" } },
-    "pptx": { "titleBg": { "$value": "#000000" } },
+    "pptx": { "titleBg": { "$value": "#161310" } },
     "appsheet": { "primary": { "$value": "#E94513" } }
   }
 }
