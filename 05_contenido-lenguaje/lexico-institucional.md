@@ -32,6 +32,7 @@ no puede decirlo es FUCAI cuando escribe alrededor.
 | tercer mundo / subdesarrollado | (reescribir; nombrar territorios y realidades concretas) | Marco colonial. Prohibido. |
 | primitivo / atrasado | ancestral, con saberes propios | Los saberes no son atraso. |
 | salvar / civilizar | acompañar, articular, fortalecer | FUCAI no salva ni civiliza. Prohibido. |
+| mis proyectos, mi comunidad | proyectos coordinados, comunidades acompañadas | **Lenguaje de servicio, no de propiedad.** Los proyectos son de la fundación y de las comunidades; quien los coordina no los posee. Vale para apps, tableros e informes. |
 
 ## Palabras que sí usamos (vocabulario de marca)
 

@@ -34,6 +34,19 @@ Texto descriptivo del destino (no "aquí"). Naranja; subrayado solo en hover.
 - **Consentimiento** explícito en datos de personas e imágenes; en piezas
   comunitarias, opción de restricción cultural/espiritual (ética fotográfica del skill).
 
+### Reglas de etiqueta (validadas en FucaiCampo)
+
+- **Pregunta lo que la persona diligencia, nombra lo que solo lee.** Campos de
+  entrada en forma de pregunta —«¿Qué se va a comprar o contratar?», «¿Cuándo
+  termina la actividad?»—; campos de lectura con sustantivo corto —«Solicitante»,
+  «Total ejecutado»—.
+- **Mayúscula solo al inicio:** «Fecha de legalización», no «Fecha de Legalización».
+- **Sin dos puntos finales** ni textos de sistema en las etiquetas.
+- **Lo opcional se dice:** «Notas de la legalización (opcional)», «Retención de ICA
+  (solo si aplica)».
+- **Pasos cuando hay más de ocho campos**, no una pantalla larga.
+- **Nada de lenguaje de propiedad** — ver `lexico-institucional.md`.
+
 > [Pendiente: catálogo validado de etiquetas y textos de ayuda por formulario
 > real (contacto, donación, voluntariado). Lo anterior son patrones, no copys
 > oficiales.]

@@ -54,8 +54,15 @@ de FUCAI) · **deuda** (técnica, implementable).
   **librería de `.svg`** outline. *(2026-09: el **ícono de aplicación** sí quedó
   resuelto — estilo Cristal FUCAI en `prompts-cristal.md`. El vacío que queda es el
   set plano de interfaz.)*
-- **(M · decisión)** **Colores de estado** (éxito/error/alerta): sin definir como tokens;
-  la paleta excluye rojo/azul genéricos, así que requiere decisión + tokenización.
+- **(A · decisión)** **Colores de estado** (éxito/error/alerta): sin definir como
+  tokens; la paleta excluye rojo/azul genéricos, así que requiere decisión +
+  tokenización. **Sube a prioridad alta (2026-09):** ya no es hipotético. Las apps
+  AppSheet en producción usan **azul** («Aprobado – pendiente desembolso») y **rojo**
+  (alertas, mora) en sus Format Rules, y el estándar propone un semáforo de seis
+  categorías con ambos colores (`04_componentes/appsheet/estandar-de-app.md` §6).
+  O se amplía la paleta con tokens de estado, o se resuelve el semáforo dentro de la
+  paleta cerrada. Mientras tanto, las apps están fuera de norma y el sistema no
+  puede decir cuál es el color correcto.
 - **(M · deuda)** **Tipografía web:** faltan **H4–H6** y la conversión de la escala (pt)
   a **rem/px** para web.
 - **(M · deuda)** **Grilla de columnas y breakpoints** responsive (web/AppSheet): no tokenizados.
@@ -142,6 +149,25 @@ uno están en `aprendizajes-ecosistema-35-voces-2026-09.md`.
   fuente de datos y cinco salidas. Funcionó; falta documentarlo como método.
 - **(B · decisión)** **Set de íconos:** sigue `[POR CONFIRMAR]` (Lucide recoloreado
   o set propio). Es el mismo vacío del apartado 3, visto desde el lado digital.
+
+## 10. Apps AppSheet (aprendizajes 2026-09)
+
+Abiertos por la revisión de FucaiCampo; el detalle está en
+`04_componentes/appsheet/estandar-de-app.md`.
+
+- **(M · deuda)** **Orden de los estados:** AppSheet agrupa alfabéticamente, no por
+  flujo. La solución estándar es una columna virtual de orden (1 = Borrador …
+  9 = Legalizado); falta aplicarla y fijarla como convención.
+- **(M · deuda)** **Paleta de estados dispersa** entre avances, pasajes y hallazgos:
+  tres conjuntos de Format Rules que deberían ser uno. Depende de la decisión de
+  colores de estado del apartado 3.
+- **(M · deuda)** **Vistas con nombre técnico visible** (`coord_proyectos_Detail`,
+  `rf_*_Detail`): todo lo que ve la persona necesita Display Name en español.
+- **(M · deuda)** **Set de íconos de estado:** hoy Font Awesome vía Format Rules, sin
+  catálogo fijado. Es el mismo vacío de iconografía del apartado 3, visto desde la app.
+- **(A · decisión)** **Llevar el estándar a las demás apps** del ecosistema (Caminos
+  Artesanos, Activos FUCAI, CRM B2B, Bancabundancia, Catálogo Maderables). Es lo que
+  convierte cinco apps sueltas en una familia.
 
 ---
 

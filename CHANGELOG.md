@@ -93,7 +93,32 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   la tabla sí/no se aplican al marco editorial, nunca al testimonio.
 - **Cursivas cuando todo el texto es una cita** en la guía editorial.
 
+- **`04_componentes/appsheet/estandar-de-app.md`** — estándar de construcción de las
+  apps AppSheet, validado en FucaiCampo: principios, navegación con inicio numerado
+  y paneles alimentados por tabla de accesos, vistas de detalle por secciones en
+  orden del flujo, tarjeta de dos datos, estados con Format Rule, formularios por
+  pasos, visibilidad por alcance y rol, convenciones de nombres, trampas técnicas y
+  checklist de «hecho» para cada vista nueva. Cierra el pendiente que `patrones.md`
+  arrastraba —el catálogo de vistas concretas— y trae una tabla de dónde quedó cada
+  aprendizaje.
+- **`references/appsheet.md` pasa de identidad visual a estándar de app** — el skill
+  solo sabía de color y tipografía; un agente que construyera una vista no tenía
+  navegación, microcopy, nombres ni checklist. Ahora sí.
+- **Reglas de etiqueta en `microcopy.md`** — pregunta lo que la persona diligencia,
+  nombra lo que solo lee; mayúscula solo al inicio; lo opcional se dice; pasos por
+  encima de ocho campos.
+
 ### Cambiado
+- **«Lenguaje de servicio, no de propiedad» entra en la tabla sí/no** del léxico:
+  «proyectos coordinados», no «mis proyectos». Los proyectos son de la fundación y
+  de las comunidades; quien los coordina no los posee.
+- **Los colores de estado suben a prioridad alta en el registro de vacíos** — dejó de
+  ser hipotético: las apps en producción usan **azul y rojo** en sus Format Rules y
+  el estándar propone un semáforo con ambos, colores que la paleta FUCAI excluye. O
+  se amplía la paleta con tokens de estado, o se resuelve el semáforo dentro de la
+  paleta cerrada; mientras tanto el sistema no puede decir cuál es el color correcto.
+- **`patrones.md`:** su pendiente de «catálogo de vistas concretas» queda resuelto y
+  apunta al estándar; conserva solo el set de íconos como pendiente.
 - **Contraste naranja↔blanco corregido: 3.1 → 3.9:1** — el capítulo de correo citaba
   un valor que no era el que calcula el propio build. Corregido tambien en
   `references/email.md`, junto con los umbrales WCAG de texto grande, que

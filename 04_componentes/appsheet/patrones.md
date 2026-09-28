@@ -34,6 +34,13 @@
 - **Usar:** cualquier app AppSheet de FUCAI.
 - **No usar:** no fondo naranja general; no verde fuera de lo territorial.
 
-> [Pendiente: catálogo de vistas concretas (deck, tabla, detalle, dashboard) con
-> sus formatos y tokens, y el set de íconos. El skill fija color/tipografía, no un
-> catálogo de vistas.]
+## El estándar de app
+
+Este documento fija la **identidad visual**. Cómo se arma la app —navegación,
+paneles de tarjetas con tabla de accesos, orden de las vistas de detalle, listas,
+estados, formularios por pasos, visibilidad por alcance y rol, convenciones de
+nombres, trampas técnicas y el checklist de «hecho» para cada vista nueva— está en
+`estandar-de-app.md`, validado en FucaiCampo y pensado para todas las apps del
+ecosistema.
+
+> [Pendiente: el set de íconos. El skill fija color y tipografía, no una librería.]
