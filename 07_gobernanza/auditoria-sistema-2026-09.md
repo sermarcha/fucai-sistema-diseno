@@ -44,7 +44,7 @@ quedan enlazadas a tokens y bajo verificación. Las cuentas suben de 20 a 21 tab
 de 97 a 111 celdas y de 25 a 46 pares de contraste. Los 10 valores de contraste que
 declaraba eran correctos; solo estaban sin vigilar.
 
-### B. La paleta cerrada está bajo presión desde tres frentes · **abierto**
+### B. La paleta cerrada está bajo presión desde tres frentes · **resuelto**
 
 - **Apps AppSheet:** azul y rojo **en producción** en los Format Rules.
 - **Cartografía:** `#A9C9D6` / `#5B8AA6` (agua), `#E9C46A` (chagra), `#B08968`
@@ -57,8 +57,16 @@ Y hay una contradicción de fondo: `DESIGN.md` § Estados semánticos marca el a
 confirmación = verde solo territorial, neutros = grises). Producción ya salió de
 ella. **El sistema propone una cosa y las apps hacen otra.**
 
-No son tres parches: es **una sola decisión de paleta**. Es la más importante que
-tiene pendiente el sistema.
+No eran tres parches: era **una sola decisión de paleta**, y se tomó el 28 de
+septiembre de 2026:
+
+1. **Capa funcional `state.*`**, fuera de `color.*`, para que la paleta de marca siga
+   cerrada. Solo dentro de interfaces, nunca solo color.
+2. **El verde sigue siendo solo territorio.** El «cerrado OK» usa un verde funcional
+   distinto (`#0F7B4F`), no `brand.territory`.
+3. **Extensión `carto.*`** válida únicamente dentro de un mapa, porque la cartografía
+   tiene convenciones de lectura propias.
+4. **`#161310` pasa a ser `color.negro-calido`** y el tema oscuro lo adopta.
 
 ### C. Citación ambigua de las referencias del skill · **abierto**
 
@@ -102,7 +110,7 @@ gobernanza (12), identidad visual (10) y componentes (10).
 | # | Oportunidad | Estado |
 |---|---|---|
 | 1 | Meter `DESIGN.md` bajo `[GEN]` | **Hecho** en esta auditoría |
-| 2 | **Resolver la paleta de estados de una vez** — destraba apps, cartografía y el oscuro de la web | Abierto · **prioridad alta** |
+| 2 | **Resolver la paleta de estados de una vez** — destraba apps, cartografía y el oscuro de la web | **Hecho** (2026-09-28) |
 | 3 | Publicar 1.9.0: el trabajo de un mes está sin etiquetar | Abierto |
 | 4 | Extender la verificación de «hex ∈ paleta» del CSS de Squarespace a todos los `.md` | Abierto |
 | 5 | QA para `pptx` y `xlsx`, como el que ya tiene `docx` | Abierto |

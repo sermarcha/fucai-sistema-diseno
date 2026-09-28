@@ -54,15 +54,13 @@ de FUCAI) · **deuda** (técnica, implementable).
   **librería de `.svg`** outline. *(2026-09: el **ícono de aplicación** sí quedó
   resuelto — estilo Cristal FUCAI en `prompts-cristal.md`. El vacío que queda es el
   set plano de interfaz.)*
-- **(A · decisión)** **Colores de estado** (éxito/error/alerta): sin definir como
-  tokens; la paleta excluye rojo/azul genéricos, así que requiere decisión +
-  tokenización. **Sube a prioridad alta (2026-09):** ya no es hipotético. Las apps
-  AppSheet en producción usan **azul** («Aprobado – pendiente desembolso») y **rojo**
-  (alertas, mora) en sus Format Rules, y el estándar propone un semáforo de seis
-  categorías con ambos colores (`04_componentes/appsheet/estandar-de-app.md` §6).
-  O se amplía la paleta con tokens de estado, o se resuelve el semáforo dentro de la
-  paleta cerrada. Mientras tanto, las apps están fuera de norma y el sistema no
-  puede decir cuál es el color correcto.
+- **~~Colores de estado~~ — RESUELTO (2026-09).** El sistema define la capa funcional
+  `state.*` (`success` `#0F7B4F`, `danger` `#9B2226`, `info` `#2A6F97`, más `warning` y
+  `neutral` que reusan naranja y gris). Vive **fuera de `color.*`**: la paleta de marca
+  sigue cerrada y estos colores solo existen dentro de interfaces, nunca en piezas
+  públicas ni documentos, y nunca solo color. El verde de «cerrado» es funcional y
+  **no** es `brand.territory`, que sigue siendo solo narrativo. Los tres valores nuevos
+  pasan AA sobre blanco y sobre arena claro.
 - **(M · deuda)** **Tipografía web:** faltan **H4–H6** y la conversión de la escala (pt)
   a **rem/px** para web.
 - **(M · deuda)** **Grilla de columnas y breakpoints** responsive (web/AppSheet): no tokenizados.
@@ -124,6 +122,10 @@ subpaleta propia es una **decisión registrada**, no un hueco.
 Abiertos por el proyecto *Ecosistema 35 Voces*; el detalle y la propuesta de cada
 uno están en `aprendizajes-ecosistema-35-voces-2026-09.md`.
 
+- **~~Oscuro `#161310` del sitio sin token~~ — RESUELTO (2026-09).** Es ya
+  `color.negro-calido`, y el tema oscuro lo adopta como superficie en vez de `#000000`.
+- **~~Colores de cartografía sin definir~~ — RESUELTO (2026-09).** Son el grupo
+  `carto.*`, extensión válida **solo dentro de un mapa**.
 - **(M · deuda)** **Enlaces fuera de `.sqs-block-content`:** el CSS de Squarespace
   solo pinta de naranja los enlaces de párrafo y lista. Cualquier `<a>` fuera de
   esos selectores sale azul de navegador y rompe la paleta cerrada. Falta un
@@ -159,8 +161,8 @@ Abiertos por la revisión de FucaiCampo; el detalle está en
   flujo. La solución estándar es una columna virtual de orden (1 = Borrador …
   9 = Legalizado); falta aplicarla y fijarla como convención.
 - **(M · deuda)** **Paleta de estados dispersa** entre avances, pasajes y hallazgos:
-  tres conjuntos de Format Rules que deberían ser uno. Depende de la decisión de
-  colores de estado del apartado 3.
+  tres conjuntos de Format Rules que deberían ser uno. **Ya no está bloqueada:** con
+  `state.*` resuelto, es trabajo de aplicar los cinco tokens en las apps.
 - **(M · deuda)** **Vistas con nombre técnico visible** (`coord_proyectos_Detail`,
   `rf_*_Detail`): todo lo que ve la persona necesita Display Name en español.
 - **(M · deuda)** **Set de íconos de estado:** hoy Font Awesome vía Format Rules, sin

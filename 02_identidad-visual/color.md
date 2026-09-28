@@ -92,6 +92,24 @@ información solo por color.
 
 ## Colores semánticos de estado (éxito / error / alerta)
 
+**Resuelto (2026-09): capa funcional, no de marca.** Vive fuera de `color.*` a
+propósito — la paleta de marca sigue cerrada — y solo existe dentro de interfaces.
+
+<!-- [GEN] derivado de tokens.json (state.*) — lo verifica build-skill.js -->
+
+| Token | Hex | Qué señala | Sobre blanco |
+|---|---|---|---|
+| `state.neutral` | `#666666` | Borrador, inicial, anulado | 5.7:1 |
+| `state.warning` | `#E94513` | En trámite: pendiente, en revisión | 3.9:1 · solo texto grande |
+| `state.info` | `#2A6F97` | En curso: desembolsado, en camino | 5.5:1 |
+| `state.success` | `#0F7B4F` | Cerrado correctamente: legalizado, aprobado | 5.3:1 |
+| `state.danger` | `#9B2226` | Requiere acción: devuelto, mora, alerta | 7.9:1 |
+
+**No se usan** en piezas públicas, documentos, portadas, presentaciones ni redes.
+**Nunca solo color:** siempre con ícono y etiqueta. Y `state.success` **no es** el
+verde de territorio: `brand.territory` `#2D6A4F` sigue siendo solo narrativo.
+
+
 > [Pendiente: definir como tokens los colores de estado (éxito/error/alerta) para
 > interfaces. `tokens.json` **no** los define hoy, y la paleta del Manual excluye
 > rojo/azul/morado/amarillo genéricos. Propuesta a validar y luego tokenizar (no

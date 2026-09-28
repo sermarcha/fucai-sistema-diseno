@@ -232,10 +232,29 @@ de presentación, no a documentos ni a fondos generales de web.
 
 ### Estados semánticos (éxito/error/alerta)
 
-`[POR CONFIRMAR]` — el sistema **no** define colores de estado y la paleta excluye
-rojo/azul/morado/amarillo genéricos. Propuesta a validar: alerta = `--color-primario`;
-confirmación con verde **solo** si el contexto es territorial; estados neutros con
-grises. Acompañar siempre de ícono/etiqueta, nunca solo color.
+**Resuelto (2026-09).** El sistema define una **capa funcional** de estado, que vive
+fuera de `color.*` a propósito: la paleta de marca sigue cerrada.
+
+<!-- [GEN] derivado de tokens.json (state.*) — lo verifica build-skill.js -->
+
+| Token | Hex | Qué señala | Sobre blanco |
+|---|---|---|---|
+| `state.neutral` | `#666666` | Borrador, inicial, anulado | 5.7:1 |
+| `state.warning` | `#E94513` | En trámite: pendiente, en revisión | 3.9:1 · solo texto grande |
+| `state.info` | `#2A6F97` | En curso: desembolsado, en camino | 5.5:1 |
+| `state.success` | `#0F7B4F` | Cerrado correctamente: legalizado, aprobado | 5.3:1 |
+| `state.danger` | `#9B2226` | Requiere acción: devuelto, mora, alerta | 7.9:1 |
+
+**Reglas duras de la capa funcional:**
+
+1. **No son colores de marca.** No se usan en piezas públicas, documentos, portadas,
+   presentaciones ni redes. Solo comunican el estado de un registro en una interfaz.
+2. **Nunca solo color:** siempre con ícono y etiqueta de texto.
+3. **`state.success` no es el verde de territorio.** `brand.territory` `#2D6A4F` sigue
+   siendo exclusivamente narrativo —selva, chagra, agua, territorio vivo—. El verde
+   funcional es otro (`#0F7B4F`) y solo aparece como estado.
+4. **`state.warning` y `state.neutral` no añaden color:** reusan el naranja de marca
+   y el gris de soporte.
 
 ### Rampas de visualización de datos
 

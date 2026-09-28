@@ -28,10 +28,14 @@ Heredan del sistema (no se redefinen aquí):
 
 ## Extensiones cartográficas (candidatas a token)
 
-La cartografía necesita valores que la marca aún no define. Viven en `fucai-geo` y son
-**candidatos a promoverse** a `03_tokens/tokens.json` (vía PR, revisión del Dueño de marca):
+**Resuelto (2026-09):** estos valores son ya tokens en `03_tokens/tokens.json`, en el
+grupo `carto.*`. Son una **extensión cartográfica**, válida **únicamente dentro de un
+mapa**: los mapas tienen convenciones de lectura propias —el agua se lee azul— y
+forzarlas a la paleta de marca perjudica la comprensión. Fuera de un mapa no existen.
 
-| Extensión | Uso | Valor propuesto |
+<!-- [GEN] derivado de tokens.json (carto.*) — lo verifica build-skill.js -->
+
+| Token | Uso | Hex |
 | --- | --- | --- |
 | `carto.agua` / `carto.agua-linea` | Cuerpos de agua y ríos | `#A9C9D6` / `#5B8AA6` |
 | `carto.chagra` | Chagra / cultivo (coberturas) | `#E9C46A` |

@@ -168,16 +168,21 @@ Actividades, Participantes y Niños: **agrupar por comunidad y ordenar por fecha
 
 **Pendiente de estandarizar:** al agrupar por estado, AppSheet ordena los grupos **alfabéticamente**, no según el flujo. La solución estándar es una columna virtual `vc_orden_estado` (1 = Borrador … 9 = Legalizado) para agrupar u ordenar.
 
-**Propuesta de semáforo institucional:**
+**Semáforo institucional — resuelto (2026-09).** El sistema define la capa funcional
+`state.*`, fuera de `color.*` para que la paleta de marca siga cerrada:
 
-| Categoría | Color | Estados |
-|---|---|---|
-| Borrador / inicial | Gris | Borrador |
-| En trámite | Naranja FUCAI | Pendiente …, En revisión … |
-| Aprobado / en curso | Azul | Aprobado – pendiente desembolso, Desembolsado |
-| Cerrado OK | Verde | Legalizado, Cerrado, Gestionado |
-| Requiere acción | Rojo | Devuelto, alertas, mora |
-| Anulado | Gris tachado | Cancelado |
+| Categoría | Token | Hex | Estados |
+|---|---|---|---|
+| Borrador / inicial | `state.neutral` | `#666666` | Borrador |
+| En trámite | `state.warning` | `#E94513` | Pendiente …, En revisión … |
+| En curso | `state.info` | `#2A6F97` | Aprobado – pendiente desembolso, Desembolsado |
+| Cerrado OK | `state.success` | `#0F7B4F` | Legalizado, Cerrado, Gestionado |
+| Requiere acción | `state.danger` | `#9B2226` | Devuelto, alertas, mora |
+| Anulado | `state.neutral` tachado | `#666666` | Cancelado |
+
+Dos precisiones que cambian lo que se propuso en la revisión: el verde de «cerrado»
+**no es** `brand.territory` `#2D6A4F` —ese sigue siendo solo narrativo— sino el verde
+funcional `#0F7B4F`; y estos colores **no se usan fuera de una interfaz**.
 
 ---
 

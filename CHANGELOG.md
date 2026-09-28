@@ -113,7 +113,33 @@ y el versionado es [Semántico](https://semver.org/lang/es/) (MAJOR.MINOR.PATCH)
   destilados. Registra lo sano, los cinco hallazgos de coherencia, el estado de
   madurez (72 % en borrador) y siete oportunidades por retorno.
 
+- **Capa funcional `state.*`** — cinco tokens de estado para interfaces: `success`
+  `#0F7B4F`, `danger` `#9B2226`, `info` `#2A6F97`, más `warning` y `neutral` que
+  reusan el naranja de marca y el gris de soporte, sin añadir color. **Viven fuera de
+  `color.*` a propósito:** la paleta de marca sigue cerrada. No se usan en piezas
+  públicas, documentos, portadas ni redes, y nunca solo color — siempre con ícono y
+  etiqueta. Los tres valores nuevos pasan AA sobre blanco y sobre arena claro.
+- **Extensión `carto.*`** — `agua`, `agua-linea`, `chagra` y `curva-nivel`, válidos
+  **únicamente dentro de un mapa**: la cartografía tiene convenciones de lectura
+  propias —el agua se lee azul— y forzarlas a la paleta perjudica la comprensión.
+  Eran «valor propuesto» en el componente de cartografía; ahora son tokens.
+- **`color.negro-calido` `#161310`** — el negro de las bandas oscuras del sitio, que
+  estaba en producción sin token.
+
 ### Cambiado
+- **El verde de territorio no significa «éxito»** — el semáforo propuesto para las
+  apps usaba `brand.territory` para «cerrado OK». Se rechazó: el verde narrativo es un
+  activo de marca y diluirlo en un formulario financiero lo desgasta en todas partes.
+  El «cerrado» usa el verde **funcional** `#0F7B4F`, distinto y solo de interfaz.
+- **El tema oscuro adopta `#161310`** en vez de `#000000`, alineándose con el sitio.
+- **El semáforo de las apps queda resuelto** en `estandar-de-app.md` §6 y en
+  `references/appsheet.md`, que dejan de advertir de un vacío abierto.
+- **Tres vacíos cerrados en el registro:** colores de estado (era prioridad alta),
+  oscuro del sitio sin token y colores de cartografía. La paleta de estados dispersa
+  entre apps deja de estar bloqueada.
+- **Verificación ampliada a 24 tablas y 125 celdas** (desde 21/111): entran las tablas
+  de estado de `DESIGN.md` y `color.md`, y la de cartografía. `TOKEN_REF` reconoce
+  ahora los prefijos `state.` y `carto.`.
 - **`DESIGN.md` entra bajo verificación** — era el mayor riesgo de deriva del repo:
   625 líneas y 69 hex escritos a mano, **copiado al paquete que se distribuye** y
   anunciado como «guía de diseño completa», pero fuera de `GEN_TARGETS`, del mapa de

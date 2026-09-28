@@ -32,7 +32,17 @@ Branding y estándar de construcción de las apps AppSheet de FUCAI. Para **sint
 
 Color **+ ícono + texto**, idéntico en todas las vistas, con un Format Rule por estado (`FR_estado_<estado>`). El estado va en el encabezado del detalle. AppSheet ordena los grupos alfabéticamente, no por flujo: para agrupar en el orden del proceso hace falta una columna virtual de orden.
 
-> **[● Pendiente de decisión]** La paleta de estados en uso incluye azul y rojo, que **no están en la paleta FUCAI**. Es un vacío abierto del sistema (`07_gobernanza/analisis-de-vacios.md`): no inventes tokens de estado; usa los de la app existente y deja constancia.
+**Usa los tokens `state.*`** (`07_gobernanza/analisis-de-vacios.md` ya no lo lista como vacío):
+
+| Token | Hex | Qué señala |
+|---|---|---|
+| `state.neutral` | `#666666` | Borrador, anulado |
+| `state.warning` | `#E94513` | En trámite, en revisión |
+| `state.info` | `#2A6F97` | En curso, desembolsado |
+| `state.success` | `#0F7B4F` | Legalizado, aprobado, cerrado |
+| `state.danger` | `#9B2226` | Devuelto, mora, alerta |
+
+Son **funcionales, no de marca**: nunca en piezas públicas ni documentos, y nunca solo color. `state.success` no es el verde de territorio, que sigue siendo solo narrativo.
 
 ## Microcopy en la app
 

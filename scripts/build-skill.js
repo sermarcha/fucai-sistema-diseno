@@ -80,9 +80,10 @@ const GEN_TARGETS = [
   "04_componentes/email/sistema-de-correo.md",
   "skill/fucai-branding/references/email.md",
   "02_identidad-visual/ilustracion-editorial.md",
+  "04_componentes/cartografia/README.md",
 ];
 const GEN_RE = /\[GEN\][^\n]*tokens\.json/;
-const TOKEN_REF = /`((?:color|surface|brand|accent|text|font|space|layout|docx|pptx|appsheet|email|dataviz|radius|elevation|motion)\.[A-Za-z0-9_.\-]+)`/g;
+const TOKEN_REF = /`((?:color|surface|brand|accent|text|font|space|layout|docx|pptx|appsheet|email|state|carto|dataviz|radius|elevation|motion)\.[A-Za-z0-9_.\-]+)`/g;
 
 function checkGenTables() {
   const issues = [];
